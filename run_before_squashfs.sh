@@ -109,21 +109,17 @@ rm /boot/intel-ucode.img
 rm /boot/vmlinuz-linux
 
 # to install locally builded packages on ISO:
-pacman -U --noconfirm /root/calamares_current-3.2.44.3-4-any.pkg.tar.zst
-rm /root/calamares_current-3.2.44.3-4-any.pkg.tar.zst
-pacman -U --noconfirm /root/calamares_config_next_default-1.0-4-any.pkg.tar.zst
-rm /root/calamares_config_next_default-1.0-4-any.pkg.tar.zst
-pacman -U --noconfirm /root/calamares_config_next_ce-2.0-3-any.pkg.tar.zst
-rm /root/calamares_config_next_ce-2.0-3-any.pkg.tar.zst
-pacman -U --noconfirm /root/endeavouros-skel-xfce4-2.0-0-any.pkg.tar.zst
-rm /root/endeavouros-skel-xfce4-2.0-0-any.pkg.tar.zst
-rm /var/log/pacman.log
+#pacman -U --noconfirm /root/calamares_current-3.2.44.3-4-any.pkg.tar.zst
+#rm /root/calamares_current-3.2.44.3-4-any.pkg.tar.zst
+#rm /var/log/pacman.log
 
 # fix packages that we want to keep but they would get uninstalled caused by dependency removals
 pacman -D --asexplicit sshfs rsync
 rm /var/log/pacman.log
 
 # custom fixes currently needed:
+# current fix for getting bash configs installed:
+cp /home/liveuser/
 # move blacklisting nouveau out of ISO (needs to pull to target for offline installs)
 mv /usr/lib/modprobe.d/nvidia-dkms.conf /etc/calamares/files/
 # fix for r8169 module
