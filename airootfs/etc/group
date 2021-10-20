@@ -1,0 +1,8 @@
+root:x:0:root
+adm:x:4:liveuser
+wheel:x:10:liveuser
+uucp:x:14:liveuser
+nopasswdlogin:x:966:liveuser
+rfkill:x:983:liveuser
+sys:x:3:bin,liveuser
+liveuser:x:1000:liveuser

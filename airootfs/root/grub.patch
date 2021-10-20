@@ -1,0 +1,31 @@
+--- grub	2021-09-16 13:14:14.937804998 +0200
++++ grub-eos	2021-09-16 13:18:37.043262715 +0200
+@@ -2,10 +2,10 @@
+ 
+ GRUB_DEFAULT=0
+ GRUB_TIMEOUT=5
+-GRUB_DISTRIBUTOR="Arch"
+-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"
++GRUB_DISTRIBUTOR="EndeavourOS"
++GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 nowatchdog"
+ GRUB_CMDLINE_LINUX=""
+-
++GRUB_DISABLE_OS_PROBER=false
+ # Preload both GPT and MBR modules so that they are not missed
+ GRUB_PRELOAD_MODULES="part_gpt part_msdos"
+ 
+@@ -44,7 +44,7 @@
+ 
+ # Uncomment one of them for the gfx desired, a image background or a gfxtheme
+ #GRUB_BACKGROUND="/path/to/wallpaper"
+-#GRUB_THEME="/path/to/gfxtheme"
++GRUB_THEME=/boot/grub/themes/EndeavourOS/theme.txt
+ 
+ # Uncomment to get a beep at GRUB start
+ #GRUB_INIT_TUNE="480 440 1"
+@@ -54,4 +54,4 @@
+ #GRUB_SAVEDEFAULT=true
+ 
+ # Uncomment to disable submenus in boot menu
+-#GRUB_DISABLE_SUBMENU=y
++GRUB_DISABLE_SUBMENU=y
