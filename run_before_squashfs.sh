@@ -118,9 +118,9 @@ pacman -D --asexplicit sshfs rsync
 rm /var/log/pacman.log
 
 # custom fixes currently needed:
-# current fix for getting bash configs installed:
-cp /home/liveuser/
-# move blacklisting nouveau out of ISO (needs to pull to target for offline installs)
+# current fix for getting bash configs installed
+cp /home/liveuser/{.bashrc,.bash_profile} /etc/calamares/files/
+# move blacklisting nouveau out of ISO (copy back to target for offline installs)
 mv /usr/lib/modprobe.d/nvidia-dkms.conf /etc/calamares/files/
 # fix for r8169 module
 sed -i /usr/lib/modprobe.d/r8168.conf -e 's|r8169|r8168|'
