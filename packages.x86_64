@@ -269,8 +269,8 @@ python
 solid
 qt5-tools
 calamares_current
-calamares_config_next_default
-calamares_config_next_ce
+calamares_config_default
+calamares_config_ce
 
 #endeavouros-repo
 rate-mirrors-bin
