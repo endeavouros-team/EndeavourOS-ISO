@@ -2,7 +2,7 @@
 
 # Made by Fernando "maroto"
 # Run anything in the filesystem right before being "mksquashed"
-# ISO-NEXT specific cleanup removals and additions (08-2021) @killajoe and @manuel
+# ISO-NEXT specific cleanup removals and additions (08-2021 + 10-2021) @killajoe and @manuel
 
 script_path=$(readlink -f ${0%/*})
 work_dir=work
