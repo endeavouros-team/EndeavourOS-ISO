@@ -119,7 +119,7 @@ rm /var/log/pacman.log
 
 # custom fixes currently needed:
 # current fix for getting bash configs installed
-cp /home/liveuser/{.bashrc,.bash_profile} /etc/calamares/files/
+cp -af /home/liveuser/{.bashrc,.bash_profile} /etc/calamares/files/
 # move blacklisting nouveau out of ISO (copy back to target for offline installs)
 mv /usr/lib/modprobe.d/nvidia-dkms.conf /etc/calamares/files/
 # fix for r8169 module
