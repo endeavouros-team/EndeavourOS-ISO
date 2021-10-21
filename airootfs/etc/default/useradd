@@ -1,9 +1,0 @@
-# useradd defaults file for ArchLinux
-# original changes by TomK
-GROUP=users
-HOME=/home
-INACTIVE=-1
-EXPIRE=
-SHELL=/bin/bash
-SKEL=/usr/share/endeavouros/skel
-CREATE_MAIL_SPOOL=no
