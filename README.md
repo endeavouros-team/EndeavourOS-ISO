@@ -1,4 +1,4 @@
-## EndeavourOS-iso-next
+# EndeavourOS-iso-next
 
 New merged repository structure (october 2021) by joekamprad@endeavouros.com
 now live-user-desktop-settings are included under /airootfs/root/liveuser-desktop-settings
@@ -54,38 +54,42 @@ Bios-boot for legacy systems:
 
 <img src="https://raw.githubusercontent.com/endeavouros-team/artwork-images-logo/master/NEXT/bios-boot.png" alt="drawing" width="600"/>
 
-## How to build ISO:
-To build you need to use installed EndeavourOS system or any archbased system with EndeavourOS repository enabled.
 
-https://github.com/endeavouros-team/mirrors
+# How to build ISO
 
-## Install necessary packages
-`sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed`
+You need to use installed EndeavourOS system or any archbased system with EndeavourOS [repository](https://github.com/endeavouros-team/mirrors) enabled.
 
-Clone:
-`git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git`
 
-for testing you can use a branch: `git clone -b 08-2021 --single-branch https://github.com/endeavouros-team/EndeavourOS-ISO.git`
+### Install necessary packages
 
-`cd EndeavourOS-iso-next`
+```bash
+sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
+```
 
-## Run fix permissions script
-`sudo ./fix_permissions.sh`
+### Build
 
-## Build
-`sudo ./mkarchiso /path/to/profile` 
+```bash
+git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
+cd "EndeavourOS-iso-next"
+sudo ./fix_permissions.sh
+sudo ./mkarchiso "."
+```
+or to build with log
 
-path is where you clone the ISO structure... 
+~~~bash
+sudo ./mkarchiso "." 2>&1 | tee "archiso.log"
+~~~
 
-## The iso appears at `out` folder
+The .iso appears in `out` directory
 
-to install locally builded packages on ISO:
-you can do so like that putting the packages inside ISO-next/airootfs/root/ and use this lines:
 
-`pacman -U --noconfirm /root/calamares_current-3.2.41.1-5-any.pkg.tar.zst`
+## Advanced
 
-`rm /root/calamares_current-3.2.41.1-5-any.pkg.tar.zst`
+To install locally builded packages on ISO put the packages inside `airootfs/root` and use this lines:
 
-`pacman -U --noconfirm /root/calamares_config_next-2.0-4-any.pkg.tar.zst`
-
-`rm /root/calamares_config_next-2.0-4-any.pkg.tar.zst`
+```bash
+pacman -U --noconfirm "/root/calamares_current-3.2.41.1-5-any.pkg.tar.zst"
+rm "/root/calamares_current-3.2.41.1-5-any.pkg.tar.zst"
+pacman -U --noconfirm "/root/calamares_config_next-2.0-4-any.pkg.tar.zst"
+rm "/root/calamares_config_next-2.0-4-any.pkg.tar.zst"
+```
