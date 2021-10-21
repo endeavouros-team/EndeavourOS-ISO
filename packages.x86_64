@@ -40,7 +40,6 @@ pv
 
 #x-system
 xorg-server
-libglvnd
 xorg-xinit
 xorg-xkill
 xorg-xrandr
