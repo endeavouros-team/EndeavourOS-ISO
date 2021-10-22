@@ -59,12 +59,12 @@ _open_files_for_editing() {
     #    - Uses 'mime' bindings, so you may need to use
     #      e.g. a file manager to make proper file bindings.
 
-    if [ -x /usr/bin/exo-open ] && [ 1 -eq 1 ] ; then
+    if [ -x /usr/bin/exo-open ] ; then
         echo "exo-open $@" >&2
         setsid exo-open "$@" >& /dev/null
         return
     fi
-    if [ -x /usr/bin/xdg-open ]  && [ 1 -eq 1 ] ; then
+    if [ -x /usr/bin/xdg-open ] ; then
         for file in "$@" ; do
             echo "xdg-open $file" >&2
             setsid xdg-open "$file" >& /dev/null
