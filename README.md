@@ -58,7 +58,7 @@ Bios-boot for legacy systems:
 You need to use installed EndeavourOS system or any archbased system with EndeavourOS [repository](https://github.com/endeavouros-team/mirrors) enabled.
 
 
-### Install necessary packages
+### Install build dependencies
 
 ```bash
 sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
@@ -66,7 +66,7 @@ sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
 
 ### Build
 
-1. Prepare
+##### 1. Prepare
 
 ```bash
 git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
@@ -74,7 +74,7 @@ cd "EndeavourOS-ISO"
 sudo ./fix_permissions.sh
 ```
 
-2. Build
+##### 2. Build
 
 ~~~bash
 sudo ./mkarchiso "."
@@ -86,7 +86,7 @@ or with log
 sudo ./mkarchiso "." 2>&1 | tee "archiso.log"
 ~~~
 
-3. The .iso appears in `out` directory
+##### 3. The .iso appears in `out` directory
 
 
 ## Advanced
