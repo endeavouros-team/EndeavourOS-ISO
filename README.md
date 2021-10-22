@@ -1,58 +1,56 @@
-# EndeavourOS-iso-next
-
-New merged repository structure (october 2021) by joekamprad@endeavouros.com
-now live-user-desktop-settings are included under /airootfs/root/liveuser-desktop-settings
-
+# EndeavourOS-ISO
 
 [![Maintenance](https://img.shields.io/maintenance/yes/2021.svg)]()
 
-Developer: [joekamprad](https://github.com/killajoe), [manuel](https://github.com/manuel-192) and our beloved community.
+New merged repository structure (october 2021) by joekamprad@endeavouros.com  
+now `live-user-desktop-settings` are included under `/airootfs/root/liveuser-desktop-settings`
 
-Initial Developer: [fernandomaroto](https://github.com/Portergos)
+### Developers:
+- [joekamprad](https://github.com/killajoe)
+- [manuel](https://github.com/manuel-192)
+- [fernandomaroto](https://github.com/Portergos) (initial developer)
+- our beloved community
 
-More info: [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io/EndeavourOS-Development/)
+This ISO is based on hugely modified Arch-ISO to provide Installation Environment for EndeavourOS.  
+More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io/EndeavourOS-Development/)
 
-## This ISO is based on Arch-ISO modified hugely to provide Installation Environment for EndeavourOS.
 
-https://endeavouros.com
+
+# Resources
 
 <img src="https://raw.githubusercontent.com/endeavouros-team/artwork-images-logo/master/NEXT/livesession.png" alt="drawing" width="600"/>
 
-EndeavourOS-archiso Sources:
+- https://endeavouros.com
+- [Getting help at the forum](https://forum.endeavouros.com)
+- [Bug report](https://forum.endeavouros.com/c/Arch-based-related-questions/bug-reports)
+- [Telegrap help-chat](https://t.me/Endeavouros)
+- [Reddit news](https://www.reddit.com/r/EndeavourOS)
+- [Twitter news](https://twitter.com/OsEndeavour)
 
-https://github.com/endeavouros-team/EndeavourOS-iso-next
+Our journey wouldn't be made possible without the generosity of our [Open Collective community](https://opencollective.com/endeavouros)!
 
-Arch-ISO Source:
 
-https://gitlab.archlinux.org/archlinux/archiso
+### Development source
 
-Live environment on XFCE4-Desktop with calamares as your installer:
+- [EndeavourOS-ISO source](https://github.com/endeavouros-team/EndeavourOS-ISO)
+- [EndeavourOS-calamares](https://github.com/endeavouros-team/EndeavourOS-calamares) (Live environment on XFCE4-Desktop)
 
-https://github.com/calamares/calamares
 
-Bugs can be reported here:
+### Base source
 
-https://forum.endeavouros.com/c/Arch-based-related-questions/bug-reports
+- [Arch-ISO](https://gitlab.archlinux.org/archlinux/archiso)
+- [Calamares](https://github.com/calamares/calamares)
 
-Getting help at the forum: https://forum.endeavouros.com
 
-Help-Chat is available on telegram: https://t.me/Endeavouros
 
-News at reddit: https://www.reddit.com/r/EndeavourOS
+# Boot options
 
-News at twitter: https://twitter.com/OsEndeavour
-
-Our journey wouldn't be made possible without the generosity of our open collective community:
-
-https://opencollective.com/endeavouros
-
-Systemd-boot for UEFI systems:
-
+Systemd-boot for UEFI systems:  
 <img src="https://raw.githubusercontent.com/endeavouros-team/artwork-images-logo/master/NEXT/systemd-boot.png" alt="drawing" width="600"/>
 
-Bios-boot for legacy systems:
-
+Bios-boot for legacy systems:  
 <img src="https://raw.githubusercontent.com/endeavouros-team/artwork-images-logo/master/NEXT/bios-boot.png" alt="drawing" width="600"/>
+
 
 
 # How to build ISO
@@ -68,19 +66,27 @@ sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
 
 ### Build
 
+1. Prepare
+
 ```bash
 git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
-cd "EndeavourOS-iso-next"
+cd "EndeavourOS-ISO"
 sudo ./fix_permissions.sh
-sudo ./mkarchiso "."
 ```
-or to build with log
+
+2. Build
+
+~~~bash
+sudo ./mkarchiso "."
+~~~
+
+or with log
 
 ~~~bash
 sudo ./mkarchiso "." 2>&1 | tee "archiso.log"
 ~~~
 
-The .iso appears in `out` directory
+3. The .iso appears in `out` directory
 
 
 ## Advanced
@@ -88,8 +94,6 @@ The .iso appears in `out` directory
 To install locally builded packages on ISO put the packages inside `airootfs/root` and use this lines:
 
 ```bash
-pacman -U --noconfirm "/root/calamares_current-3.2.41.1-5-any.pkg.tar.zst"
-rm "/root/calamares_current-3.2.41.1-5-any.pkg.tar.zst"
-pacman -U --noconfirm "/root/calamares_config_next-2.0-4-any.pkg.tar.zst"
-rm "/root/calamares_config_next-2.0-4-any.pkg.tar.zst"
+pacman -U --noconfirm "/root/calamares_current-3.2.44.3-4-any.pkg.tar.zst"
+rm "/root/calamares_current-3.2.44.3-4-any.pkg.tar.zst"
 ```
