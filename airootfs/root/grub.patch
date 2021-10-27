@@ -7,7 +7,7 @@
 -GRUB_DISTRIBUTOR="Arch"
 -GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"
 +GRUB_DISTRIBUTOR="EndeavourOS"
-+GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 nowatchdog"
++GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 nowatchdog nvme_load=YES"
  GRUB_CMDLINE_LINUX=""
 -
 +GRUB_DISABLE_OS_PROBER=false
