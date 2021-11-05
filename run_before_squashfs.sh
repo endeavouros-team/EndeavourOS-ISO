@@ -53,7 +53,9 @@ rm -R liveuser-desktop-settings
 chmod 644 /usr/share/endeavouros/*.png
 rm -rf /usr/share/backgrounds/xfce/xfce-verticals.png
 ln -s /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png /usr/share/backgrounds/xfce/xfce-verticals.png
-
+# add builddate to motd:
+_date=$(date +%Y.%m.%d)
+sed -i 's|^\(version:[ ]*\).*$|\1$_date|' /etc/motd
 
 # fixing permission on other file paths
 chmod 755 /etc/sudoers.d
