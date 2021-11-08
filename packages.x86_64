@@ -292,6 +292,7 @@ eos-apps-info
 keyserver-rank
 reflector-simple
 eos-rankmirrors
+nvidia-installer-dkms
 
 #vm-support
 qemu-guest-agent
