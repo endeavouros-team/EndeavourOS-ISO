@@ -55,6 +55,10 @@ chmod 644 /usr/share/endeavouros/*.png
 rm -rf /usr/share/backgrounds/xfce/xfce-verticals.png
 ln -s /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png /usr/share/backgrounds/xfce/xfce-verticals.png
 
+# add builddate to motd:
+cat /usr/lib/endeavouros-release >> /etc/motd
+echo ------------------ >> /etc/motd
+
 # fixing permission on other file paths
 chmod 755 /etc/sudoers.d
 mkdir -p /media
