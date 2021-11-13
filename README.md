@@ -83,7 +83,7 @@ sudo ./mkarchiso "."
 or with log
 
 ~~~bash
-sudo ./mkarchiso "." 2>&1 | tee "archiso.log"
+sudo ./mkarchiso "." 2>&1 | tee "eosiso.log"
 ~~~
 
 ##### 3. The .iso appears in `out` directory
