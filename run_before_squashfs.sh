@@ -119,7 +119,7 @@ rm /boot/vmlinuz-linux
 
 # fix packages that we want to keep but they would get uninstalled caused by dependency removals
 pacman -D --asexplicit sshfs rsync
-rm /var/log/pacman.log
+#rm /var/log/pacman.log
 
 # custom fixes currently needed:
 
@@ -130,8 +130,11 @@ cp -af /home/liveuser/{.bashrc,.bash_profile} /etc/skel/
 mv /usr/lib/modprobe.d/nvidia-dkms.conf /etc/calamares/files/
 
 # fix for r8169 module
-sed -i /usr/lib/modprobe.d/r8168.conf -e 's|r8169|r8168|'
-#pacman -Sw --noconfirm --cachedir /opt/extra-drivers/ r8168
+#sed -i /usr/lib/modprobe.d/r8168.conf -e 's|r8169|r8168|'
+# get extra drivers!
+mkdir /opt/extra-drivers
+sudo pacman -Sw --noconfirm --cachedir /opt/extra-drivers r8168
+rm /var/log/pacman.log
 
 ############################
 # end chrooted commandlist #
