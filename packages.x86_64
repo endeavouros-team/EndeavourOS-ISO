@@ -194,7 +194,6 @@ dnsutils
 ipw2100-fw
 ipw2200-fw
 linux-atm
-r8168
 
 #network
 nbd
@@ -289,7 +288,6 @@ eos-hooks
 eos-update-notifier
 eos-log-tool
 eos-apps-info
-keyserver-rank
 reflector-simple
 eos-rankmirrors
 nvidia-installer-dkms
