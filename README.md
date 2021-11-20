@@ -49,7 +49,7 @@ Systemd-boot for UEFI systems:
 <img src="https://raw.githubusercontent.com/endeavouros-team/artwork-images-logo/master/NEXT/systemd-boot.png" alt="drawing" width="600"/>
 
 Bios-boot for legacy systems:  
-<img src="https://raw.githubusercontent.com/endeavouros-team/artwork-images-logo/master/NEXT/bios-boot.png" alt="drawing" width="600"/>
+<img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/eos-iso-syslinux-nov2021.png" alt="drawing" width="600"/>
 
 
 
