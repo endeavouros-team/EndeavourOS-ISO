@@ -50,11 +50,6 @@ rm /home/liveuser/xed.dconf
 cd ..
 rm -R liveuser-desktop-settings
 
-# set wallpaper for live-session
-chmod 644 /usr/share/endeavouros/*.png
-rm -rf /usr/share/backgrounds/xfce/xfce-verticals.png
-ln -s /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png /usr/share/backgrounds/xfce/xfce-verticals.png
-
 # add builddate to motd:
 cat /usr/lib/endeavouros-release >> /etc/motd
 echo ------------------ >> /etc/motd
@@ -117,8 +112,16 @@ rm /boot/vmlinuz-linux
 #rm /root/calamares_current-3.2.44.3-4-any.pkg.tar.zst
 #rm /var/log/pacman.log
 
+# set wallpaper for live-session and save original for later
+wget https://raw.githubusercontent.com/endeavouros-team/endeavouros-theming/master/backgrounds/endeavouros-wallpaper.png
+mv endeavouros-wallpaper.png /etc/calamares/files/endeavouros-wallpaper.png
+mv /root/livewall.png /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
+chmod 644 /usr/share/endeavouros/backgrounds/*.png
+rm -rf /usr/share/backgrounds/xfce/xfce-verticals.png
+ln -s /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png /usr/share/backgrounds/xfce/xfce-verticals.png
+
 # fix packages that we want to keep but they would get uninstalled caused by dependency removals
-pacman -D --asexplicit sshfs rsync
+pacman -D --asexplicit sshfs rsync reiserfsprogs
 #rm /var/log/pacman.log
 
 # custom fixes currently needed:
@@ -131,6 +134,7 @@ mv /usr/lib/modprobe.d/nvidia-dkms.conf /etc/calamares/files/
 
 # fix for r8169 module
 #sed -i /usr/lib/modprobe.d/r8168.conf -e 's|r8169|r8168|'
+
 # get extra drivers!
 mkdir /opt/extra-drivers
 sudo pacman -Sw --noconfirm --cachedir /opt/extra-drivers r8168
