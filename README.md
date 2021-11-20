@@ -18,7 +18,7 @@ More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io
 
 # Resources
 
-<img src="https://raw.githubusercontent.com/endeavouros-team/artwork-images-logo/master/NEXT/livesession.png" alt="drawing" width="600"/>
+<img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/eos-installer-iso-nov-2021.png" alt="drawing" width="600"/>
 
 - https://endeavouros.com
 - [Getting help at the forum](https://forum.endeavouros.com)
