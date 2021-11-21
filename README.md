@@ -91,9 +91,10 @@ sudo ./mkarchiso "." 2>&1 | tee "eosiso.log"
 
 ## Advanced
 
-To install locally builded packages on ISO put the packages inside `airootfs/root` and use this lines:
+To install locally builded packages on ISO put the packages inside `airootfs/root` and use something like this lines:
 
-```bash
-pacman -U --noconfirm "/root/calamares_current-3.2.44.3-4-any.pkg.tar.zst"
-rm "/root/calamares_current-3.2.44.3-4-any.pkg.tar.zst"
 ```
+pacman -U --noconfirm "/root/calamares_current-3.2.44.3-4-any.pkg.tar.zst
+rm /root/calamares_current-3.2.44.3-4-any.pkg.tar.zst
+```
+inside `run_before_squashfs.sh
