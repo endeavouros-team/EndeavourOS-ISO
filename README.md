@@ -100,4 +100,4 @@ To install locally builded packages on ISO put the packages inside `airootfs/roo
 pacman -U --noconfirm "/root/calamares_current-3.2.44.3-4-any.pkg.tar.zst
 rm /root/calamares_current-3.2.44.3-4-any.pkg.tar.zst
 ```
-inside `run_before_squashfs.sh
+inside `run_before_squashfs.sh` 
