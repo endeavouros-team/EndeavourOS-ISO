@@ -2,7 +2,7 @@
 
 [![Maintenance](https://img.shields.io/maintenance/yes/2021.svg)]()
 
-New merged repository structure (october 2021) by joekamprad@endeavouros.com  
+New merged repository structure (october 2021) by joekamprad.
 now `live-user-desktop-settings` are included under `/airootfs/root/liveuser-desktop-settings`
 
 ### Developers:
