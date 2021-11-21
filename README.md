@@ -32,8 +32,8 @@ Our journey wouldn't be made possible without the generosity of our [Open Collec
 
 ### Development source
 
-- [EndeavourOS-ISO source](https://github.com/endeavouros-team/EndeavourOS-ISO)
-- [EndeavourOS-calamares](https://github.com/endeavouros-team/EndeavourOS-calamares) (Live environment on XFCE4-Desktop)
+- [EndeavourOS-ISO source](https://github.com/endeavouros-team/EndeavourOS-ISO) (Live environment with XFCE4-Desktop)
+- [EndeavourOS-calamares](https://github.com/endeavouros-team/EndeavourOS-calamares) (installer framework)
 
 
 ### Base source
@@ -46,9 +46,9 @@ Our journey wouldn't be made possible without the generosity of our [Open Collec
 # Boot options
 
 Systemd-boot for UEFI systems:  
-<img src="https://raw.githubusercontent.com/endeavouros-team/artwork-images-logo/master/NEXT/systemd-boot.png" alt="drawing" width="600"/>
+<img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/systemd-boot-iso-nov21.png" alt="drawing" width="600"/>
 
-Bios-boot for legacy systems:  
+Bios-boot (syslinux) for legacy systems:  
 <img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/eos-iso-syslinux-nov2021.png" alt="drawing" width="600"/>
 
 
@@ -56,7 +56,7 @@ Bios-boot for legacy systems:
 # How to build ISO
 
 You need to use installed EndeavourOS system or any archbased system with EndeavourOS [repository](https://github.com/endeavouros-team/mirrors) enabled.
-
+general information: https://endeavouros-team.github.io/EndeavourOS-Development/
 
 ### Install build dependencies
 
