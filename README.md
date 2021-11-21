@@ -23,7 +23,7 @@ More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io
 - https://endeavouros.com
 - [Getting help at the forum](https://forum.endeavouros.com)
 - [Bug report](https://forum.endeavouros.com/c/Arch-based-related-questions/bug-reports)
-- [Telegrap help-chat](https://t.me/Endeavouros)
+- [Telegram help-chat](https://t.me/Endeavouros)
 - [Reddit news](https://www.reddit.com/r/EndeavourOS)
 - [Twitter news](https://twitter.com/OsEndeavour)
 
