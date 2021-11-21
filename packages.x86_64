@@ -294,6 +294,7 @@ nvidia-installer-dkms
 
 #vm-support
 qemu-guest-agent
+spice-vdagent
 virtualbox-guest-utils
 open-vm-tools
 xf86-input-vmmouse
