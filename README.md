@@ -55,12 +55,15 @@ Bios-boot (syslinux) for legacy systems:
 
 # How to build ISO
 
-You need to use installed EndeavourOS system or any archbased system with EndeavourOS [repository](https://github.com/endeavouros-team/mirrors) enabled.
+You need to use an installed EndeavourOS system or any archbased system with EndeavourOS [repository](https://github.com/endeavouros-team/mirrors) enabled.
+
+As the installer packages and needed dependencies will get installed from EndeavourOS repository.
+
 general information: https://endeavouros-team.github.io/EndeavourOS-Development/
 
 ### Install build dependencies
 
-```bash
+```
 sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
 ```
 
@@ -68,7 +71,7 @@ sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
 
 ##### 1. Prepare
 
-```bash
+```
 git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
 cd "EndeavourOS-ISO"
 sudo ./fix_permissions.sh
@@ -76,13 +79,13 @@ sudo ./fix_permissions.sh
 
 ##### 2. Build
 
-~~~bash
+~~~
 sudo ./mkarchiso "."
 ~~~
 
 or with log
 
-~~~bash
+~~~
 sudo ./mkarchiso "." 2>&1 | tee "eosiso.log"
 ~~~
 
