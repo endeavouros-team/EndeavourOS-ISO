@@ -12,19 +12,20 @@
 # Tip: save your customized commands into a file on an internet server
 # and fetch that file with command:
 #
-#   wget -O ~/user_commands.bash "URL-referring-the-file"
+#     wget -O ~/user_commands.bash "URL-referring-the-file"
 #
 # Ideas for customization:
 #   - install packages
 #   - remove packages
 #   - enable or disable system services
+#   - writing dotfiles under $HOME
 #   - etc.
 #
 # Example commands:
 #
-#   pacman -S --noconfirm --needed gufw geany chromium
-#   pacman -Rsn --noconfirm xed
-#   systemctl enable ufw
+#     pacman -S --noconfirm --needed gufw geany chromium
+#     pacman -Rsn --noconfirm xed
+#     systemctl enable ufw
 #
 # There are some limitations to the commands:
 #   - The 'pacman' commands mentioned above require option '--noconfirm',
@@ -35,3 +36,11 @@
 #     The 'makepkg' command suffers from the same limitation.
 #     This essentially blocks installing AUR packages here.
 #
+# Advanced tip:
+# To write files directly into $HOME, you can find the new username
+# with command
+#     username=$(cat /tmp/new_username.txt)
+# and then write files under folder
+#     /home/$username
+#
+
