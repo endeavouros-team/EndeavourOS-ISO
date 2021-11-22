@@ -168,8 +168,10 @@ alsa-utils
 alsa-plugins
 alsa-firmware
 sof-firmware
-pulseaudio-alsa
-pulseaudio-jack
+pipewire-pulse
+pipewire-media-session
+pipewire-alsa
+pipewire-jack
 pavucontrol
 paprefs
 ffmpegthumbnailer
@@ -216,7 +218,6 @@ openvpn
 rp-pppoe
 wireless-regdb
 wpa_supplicant
-wvdial
 gnu-netcat
 iwd
 ndisc6
