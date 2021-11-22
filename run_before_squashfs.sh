@@ -130,7 +130,8 @@ pacman -D --asexplicit sshfs rsync reiserfsprogs
 cp -af /home/liveuser/{.bashrc,.bash_profile} /etc/skel/
 
 # move blacklisting nouveau out of ISO (copy back to target for offline installs)
-mv /usr/lib/modprobe.d/nvidia-dkms.conf /etc/calamares/files/
+mv /usr/lib/modprobe.d/nvidia-utils.conf /etc/calamares/files/nv-modprobe
+mv /usr/lib/modules-load.d/nvidia-utils.conf /etc/calamares/files/nv-modules-load
 
 # fix for r8169 module
 #sed -i /usr/lib/modprobe.d/r8168.conf -e 's|r8169|r8168|'
