@@ -234,6 +234,7 @@ hdparm
 fsarchiver
 glances
 python-defusedxml
+python-packaging
 bash-completion
 downgrade
 pcurses
