@@ -121,7 +121,7 @@ rm -rf /usr/share/backgrounds/xfce/xfce-verticals.png
 ln -s /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png /usr/share/backgrounds/xfce/xfce-verticals.png
 
 # fix packages that we want to keep but they would get uninstalled caused by dependency removals
-pacman -D --asexplicit sshfs rsync reiserfsprogs
+pacman -D --asexplicit sshfs rsync reiserfsprogs python-packaging
 #rm /var/log/pacman.log
 
 # custom fixes currently needed:
