@@ -1,2 +1,2 @@
 #!/bin/sh
-rm -R work out
+rm -R "work" "out"
