@@ -9,7 +9,8 @@ script_path=$(readlink -f "${0%/*}")
 work_dir="work"
 
 # Adapted from AIS. An excellent bit of code!
-# all pathes must be in "path/to/file/or/folder" for now.
+# all pathes must be in quotation marks "path/to/file/or/folder" for now.
+
 arch_chroot(){
     arch-chroot "${script_path}/${work_dir}/x86_64/airootfs" /bin/bash -c "${1}"
 }
