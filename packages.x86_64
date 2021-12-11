@@ -94,7 +94,7 @@ expect
 git
 pkgfile
 reflector
-tlp
+power-profiles-daemon
 unrar
 unzip
 wget
