@@ -6,3 +6,7 @@ window.xfce4-panel widget > box > button > image{
 window#whiskermenu-window treeview>* {
   padding:0.2em 0.16em;
 }
+
+VteTerminal, vte-terminal {
+    padding: 13px;
+}
