@@ -1,6 +1,6 @@
 # EndeavourOS-ISO
 
-[![Maintenance](https://img.shields.io/maintenance/yes/2021.svg)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2022.svg)]()
 
 New merged repository structure (october 2021) by joekamprad.
 now `live-user-desktop-settings` are included under `/airootfs/root/liveuser-desktop-settings`
