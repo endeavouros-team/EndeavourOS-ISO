@@ -1,5 +1,5 @@
 --- grub-package	2022-01-25 13:55:20.078479899 +0100
-+++ grub-eos	2022-01-25 13:58:06.038021029 +0100
++++ grub-eos	2022-01-25 16:45:38.161873490 +0100
 @@ -2,8 +2,8 @@
  
  GRUB_DEFAULT=0
@@ -7,7 +7,7 @@
 -GRUB_DISTRIBUTOR="Arch"
 -GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"
 +GRUB_DISTRIBUTOR="EndeavourOS"
-+GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 nowatchdog nvme_load=YES"
++GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 nowatchdog nvme_load=YES"
  GRUB_CMDLINE_LINUX=""
  
  # Preload both GPT and MBR modules so that they are not missed
