@@ -142,7 +142,7 @@ xfce4-weather-plugin
 xfce4-whiskermenu-plugin
 xfce4-xkb-plugin
 neofetch
-capitaine-cursors
+#capitaine-cursors
 file-roller
 libwnck3
 network-manager-applet
@@ -280,7 +280,8 @@ ckbcomp
 grub2-theme-endeavouros
 endeavouros-xfce4-terminal-colors
 endeavouros-theming
-arc-x-icons-theme
+#arc-x-icons-theme
+eos-qogir-icons
 arc-gtk-theme-eos
 yay
 yad-eos
