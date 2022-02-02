@@ -31,7 +31,6 @@ MiscSlimTabs=FALSE
 MiscNewTabAdjacent=FALSE
 ColorForeground=#e3e3ea
 ColorBackground=#08052b
-ColorPalette=rgb(8,5,43);rgb(255,127,127);rgb(71,179,93);rgb(204,57,128);rgb(127,186,255);rgb(127,63,191);rgb(127,127,255);rgb(205,204,219);rgb(127,186,255);rgb(255,127,127);rgb(153,153,204);rgb(255,127,127);rgb(127,127,255);rgb(127,63,191);rgb(127,127,255);rgb(227,227,234)
 ColorCursor=#ff7f7f
 ColorCursorForeground=#FFFFFF
 ColorBold=#7fbaff
