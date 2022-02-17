@@ -108,6 +108,7 @@ usbutils
 #DM
 accountsservice
 lightdm-slick-greeter
+eos-lightdm-slick-theme
 
 #xfce4-desktop
 endeavouros-skel-xfce4
