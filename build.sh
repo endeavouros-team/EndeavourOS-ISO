@@ -5,5 +5,5 @@ pacman-key --init && pacman-key --recv-key 003DB8B0CB23504F --keyserver keyserve
 wget https://raw.githubusercontent.com/endeavouros-team/EndeavourOS-ISO/main/airootfs/etc/pacman.conf -O /etc
 wget https://raw.githubusercontent.com/endeavouros-team/PKGBUILDS/master/endeavouros-mirrorlist/endeavouros-mirrorlist -O /etc/pacman.d/endeavouros-mirrorlist
 
-mkarchiso -v -w ./work -o ./out ./
+./mkarchiso "."
 echo "ISO Built in ./out folder!"
