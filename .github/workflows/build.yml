@@ -24,7 +24,7 @@ jobs:
         run: echo "DATE=`date +'%Y.%m.%d'`" >>$GITHUB_ENV
 
       - name: Update packages and install archiso
-        run: pacman -Syu --noconfirm archiso
+        run: pacman -Syu --noconfirm archiso mkinitcpio-archiso git squashfs-tools 
 
       - name: Build ISO
         run: bash build.sh
