@@ -1,7 +1,4 @@
 #base-system
-archlinux-keyring
-endeavouros-mirrorlist
-endeavouros-keyring
 amd-ucode
 base
 base-devel
@@ -9,6 +6,9 @@ cryptsetup
 device-mapper
 diffutils
 edk2-shell
+archlinux-keyring
+endeavouros-mirrorlist
+endeavouros-keyring
 inetutils
 intel-ucode
 less
@@ -31,6 +31,7 @@ sysfsutils
 systemd-sysvcompat
 texinfo
 which
+vim
 
 #ISO-specific
 mkinitcpio-archiso
@@ -119,7 +120,7 @@ lightdm-slick-greeter
 eos-lightdm-slick-theme
 
 #xfce4-desktop
-endeavouros-skel-xfce4
+endeavouros-skel-xfce4-testing
 file-roller
 firefox
 galculator
@@ -238,10 +239,10 @@ duf
 inxi
 
 #calamares
-boost-libs
 calamares_config_ce
 calamares_config_default
 calamares_current
+boost-libs
 cmake
 dmidecode
 doxygen
@@ -271,7 +272,6 @@ upower
 yaml-cpp
 
 #endeavouros-repo
-#arc-x-icons-theme
 arc-gtk-theme-eos
 ckbcomp
 endeavouros-theming
