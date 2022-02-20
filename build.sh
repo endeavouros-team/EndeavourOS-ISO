@@ -1,3 +1,4 @@
+pacman -Syyu
 pacman -S --noconfirm --needed archlinux-keyring
 pacman -S --needed --noconfirm archiso mkinitcpio-archiso
 pacman -S wget --noconfirm --needed
