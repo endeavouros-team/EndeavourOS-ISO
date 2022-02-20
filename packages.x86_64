@@ -239,6 +239,9 @@ duf
 inxi
 
 #calamares
+calamares_config_ce
+calamares_config_default
+calamares_current
 boost-libs
 cmake
 dmidecode
