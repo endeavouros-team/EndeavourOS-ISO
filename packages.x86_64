@@ -287,6 +287,7 @@ grub2-theme-endeavouros
 meld
 mkinitcpio-openswap
 nvidia-installer-dkms
+rate-mirrors
 reflector-simple
 welcome
 yad-eos
