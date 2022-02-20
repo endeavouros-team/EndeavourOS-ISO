@@ -1,4 +1,7 @@
 #base-system
+archlinux-keyring
+endeavouros-mirrorlist
+endeavouros-keyring
 amd-ucode
 base
 base-devel
@@ -6,8 +9,6 @@ cryptsetup
 device-mapper
 diffutils
 edk2-shell
-endeavouros-keyring
-endeavouros-mirrorlist
 inetutils
 intel-ucode
 less
