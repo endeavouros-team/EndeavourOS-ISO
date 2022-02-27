@@ -1,5 +1,11 @@
-#base-system
-amd-ucode
+# BASE
+
+## Keyring mirros
+archlinux-keyring
+endeavouros-mirrorlist
+endeavouros-keyring
+
+## Base system
 base
 base-devel
 cryptsetup
@@ -10,7 +16,6 @@ archlinux-keyring
 endeavouros-mirrorlist
 endeavouros-keyring
 inetutils
-intel-ucode
 less
 linux
 linux-firmware
@@ -33,30 +38,7 @@ texinfo
 which
 vim
 
-#ISO-specific
-mkinitcpio-archiso
-syslinux
-memtest86+
-arch-install-scripts
-pv
-
-#x-system
-mesa
-mesa-utils
-nvidia-dkms
-nvidia-utils
-xf86-input-libinput
-xf86-video-amdgpu
-xf86-video-ati
-xf86-video-intel
-xorg-server
-xorg-xdpyinfo
-xorg-xinit
-xorg-xinput
-xorg-xkill
-xorg-xrandr
-
-#filesystem
+## Filesystem
 btrfs-progs
 dosfstools
 e2fsprogs
@@ -77,7 +59,72 @@ ntfs-3g
 reiserfsprogs
 xfsprogs
 
-#general-system
+## Boot
+efibootmgr
+efitools
+grub
+grub-tools
+os-prober
+refind
+
+
+# HARDWARE
+
+## CPU
+amd-ucode
+intel-ucode
+
+## X system
+mesa
+mesa-utils
+nvidia-dkms
+nvidia-utils
+xf86-input-libinput
+xf86-video-amdgpu
+xf86-video-ati
+xf86-video-intel
+xorg-server
+xorg-xdpyinfo
+xorg-xinit
+xorg-xinput
+xorg-xkill
+xorg-xrandr
+
+## Network hardware
+b43-fwcutter
+broadcom-wl-dkms
+ipw2100-fw
+ipw2200-fw
+linux-atm
+
+## General hardware
+lsscsi
+sg3_utils
+smartmontools
+usbutils
+
+## Audio hardware
+alsa-firmware
+alsa-plugins
+alsa-utils
+ffmpegthumbnailer
+gst-libav
+gst-plugin-pipewire
+gst-plugins-bad
+gst-plugins-ugly
+libdvdcss
+paprefs
+pavucontrol
+pipewire-alsa
+pipewire-jack
+pipewire-media-session
+pipewire-pulse
+sof-firmware
+
+
+# SOFTWARE
+
+## General system
 crda
 dialog
 dmraid
@@ -108,91 +155,7 @@ xdg-user-dirs-gtk
 xdg-utils
 xz
 
-#general-hardware
-lsscsi
-sg3_utils
-smartmontools
-usbutils
-
-#DM
-accountsservice
-lightdm-slick-greeter
-eos-lightdm-slick-theme
-
-#xfce4-desktop
-endeavouros-skel-xfce4-testing
-file-roller
-firefox
-galculator
-libwnck3
-neofetch
-network-manager-applet
-parole
-ristretto
-thunar-archive-plugin
-thunar-media-tags-plugin
-xed
-xfce4
-xfce4-battery-plugin
-xfce4-datetime-plugin
-xfce4-mount-plugin
-xfce4-netload-plugin
-xfce4-notifyd
-xfce4-pulseaudio-plugin
-xfce4-screensaver
-xfce4-screenshooter
-xfce4-taskmanager
-xfce4-wavelan-plugin
-xfce4-weather-plugin
-xfce4-whiskermenu-plugin
-xfce4-xkb-plugin
-
-#fonts
-adobe-source-han-sans-cn-fonts
-adobe-source-han-sans-jp-fonts
-adobe-source-han-sans-kr-fonts
-cantarell-fonts
-noto-fonts
-opendesktop-fonts
-ttf-bitstream-vera
-ttf-dejavu
-ttf-liberation
-ttf-opensans
-
-#audio
-alsa-firmware
-alsa-plugins
-alsa-utils
-ffmpegthumbnailer
-gst-libav
-gst-plugin-pipewire
-gst-plugins-bad
-gst-plugins-ugly
-libdvdcss
-paprefs
-pavucontrol
-pipewire-alsa
-pipewire-jack
-pipewire-media-session
-pipewire-pulse
-sof-firmware
-
-#boot
-efibootmgr
-efitools
-grub
-grub-tools
-os-prober
-refind
-
-#net-hardware
-b43-fwcutter
-broadcom-wl-dkms
-ipw2100-fw
-ipw2200-fw
-linux-atm
-
-#network
+## Network
 bind
 dhclient
 dnsmasq
@@ -222,7 +185,17 @@ wireless_tools
 wpa_supplicant
 xl2tpd
 
-#live-iso-tools
+
+# ISO
+
+## Live iso specific
+arch-install-scripts
+memtest86+
+mkinitcpio-archiso
+pv
+syslinux
+
+## Live iso tools
 gparted
 grsync
 clonezilla
@@ -238,7 +211,69 @@ tldr
 duf
 inxi
 
-#calamares
+
+# DESKTOP
+
+## Display manager
+accountsservice
+lightdm-slick-greeter
+eos-lightdm-slick-theme
+
+## Desktop environment
+endeavouros-skel-xfce4-testing
+libwnck3
+network-manager-applet
+thunar-archive-plugin
+thunar-media-tags-plugin
+xfce4
+xfce4-battery-plugin
+xfce4-datetime-plugin
+xfce4-mount-plugin
+xfce4-netload-plugin
+xfce4-notifyd
+xfce4-pulseaudio-plugin
+xfce4-screensaver
+xfce4-screenshooter
+xfce4-taskmanager
+xfce4-wavelan-plugin
+xfce4-weather-plugin
+xfce4-whiskermenu-plugin
+xfce4-xkb-plugin
+
+## Editor
+xed
+
+## Archive
+file-roller
+
+## Image viewer
+ristretto
+
+## Video player
+parole
+
+## Browser
+firefox
+
+## System
+galculator
+neofetch
+
+## Fonts
+adobe-source-han-sans-cn-fonts
+adobe-source-han-sans-jp-fonts
+adobe-source-han-sans-kr-fonts
+cantarell-fonts
+noto-fonts
+opendesktop-fonts
+ttf-bitstream-vera
+ttf-dejavu
+ttf-liberation
+ttf-opensans
+
+
+# CALAMARES
+
 calamares_config_ce
 calamares_config_default
 calamares_current
@@ -271,7 +306,9 @@ tcpdump
 upower
 yaml-cpp
 
-#endeavouros-repo
+
+# ENDEAVOUROS REPO
+
 arc-gtk-theme-eos
 ckbcomp
 endeavouros-theming
@@ -294,10 +331,19 @@ welcome
 yad-eos
 yay
 
-#vm-support
-open-vm-tools
+
+# VM SUPPORT
+
+## qemu
 qemu-guest-agent
+
+## spice
 spice-vdagent
+
+## virtual-box
 virtualbox-guest-utils
+
+## vmware.packages
+open-vm-tools
 xf86-input-vmmouse
 xf86-video-vmware
