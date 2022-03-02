@@ -8,13 +8,11 @@ endeavouros-keyring
 ## Base system
 base
 base-devel
+amd-ucode
 cryptsetup
 device-mapper
 diffutils
 edk2-shell
-archlinux-keyring
-endeavouros-mirrorlist
-endeavouros-keyring
 inetutils
 less
 linux
