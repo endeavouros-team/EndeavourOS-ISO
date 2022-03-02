@@ -8,7 +8,6 @@ endeavouros-keyring
 ## Base system
 base
 base-devel
-amd-ucode
 cryptsetup
 device-mapper
 diffutils
@@ -272,9 +271,12 @@ ttf-opensans
 
 # CALAMARES
 
+## Calamares EndeavourOS
 calamares_config_ce
 calamares_config_default
 calamares_current
+
+## Calamares
 boost-libs
 cmake
 dmidecode
@@ -332,16 +334,16 @@ yay
 
 # VM SUPPORT
 
-## qemu
+## Qemu
 qemu-guest-agent
 
-## spice
+## Spice
 spice-vdagent
 
-## virtual-box
+## Virtual-box
 virtualbox-guest-utils
 
-## vmware.packages
+## VMware
 open-vm-tools
 xf86-input-vmmouse
 xf86-video-vmware
