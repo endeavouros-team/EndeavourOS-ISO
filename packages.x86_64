@@ -1,13 +1,11 @@
 # BASE
 
-## Keyring mirros
-archlinux-keyring
-endeavouros-mirrorlist
-endeavouros-keyring
-
 ## Base system
 base
 base-devel
+archlinux-keyring
+endeavouros-mirrorlist
+endeavouros-keyring
 cryptsetup
 device-mapper
 diffutils
