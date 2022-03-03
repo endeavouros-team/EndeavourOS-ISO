@@ -27,7 +27,6 @@ arch_chroot "$(cat << EOF
 sed -i 's/#\(en_US\.UTF-8\)/\1/' "/etc/locale.gen"
 locale-gen
 ln -sf "/usr/share/zoneinfo/UTC" "/etc/localtime"
-rm "/etc/skel/"{"set_once.sh","mousepad.dconf"}
 
 #set root permission and shell
 chmod -R 700 "/root"
