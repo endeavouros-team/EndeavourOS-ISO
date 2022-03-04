@@ -154,7 +154,6 @@ xz
 bind
 dhclient
 dnsmasq
-elinks
 ethtool
 gnu-netcat
 iwd
@@ -248,6 +247,7 @@ ristretto
 parole
 
 ## Browser
+elinks
 firefox
 
 ## System
