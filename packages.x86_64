@@ -151,91 +151,6 @@ xdg-utils
 xz
 
 ## Network
-
-#general-hardware
-lsscsi
-sg3_utils
-smartmontools
-usbutils
-
-#DM
-accountsservice
-lightdm-slick-greeter
-eos-lightdm-slick-theme
-
-#xfce4-desktop
-endeavouros-skel-xfce4-testing
-file-roller
-firefox
-galculator
-libwnck3
-neofetch
-network-manager-applet
-parole
-ristretto
-thunar-archive-plugin
-thunar-media-tags-plugin
-xed
-xfce4
-xfce4-battery-plugin
-xfce4-datetime-plugin
-xfce4-mount-plugin
-xfce4-netload-plugin
-xfce4-notifyd
-xfce4-pulseaudio-plugin
-xfce4-screensaver
-xfce4-screenshooter
-xfce4-taskmanager
-xfce4-wavelan-plugin
-xfce4-weather-plugin
-xfce4-whiskermenu-plugin
-xfce4-xkb-plugin
-
-#fonts
-adobe-source-han-sans-cn-fonts
-adobe-source-han-sans-jp-fonts
-adobe-source-han-sans-kr-fonts
-cantarell-fonts
-noto-fonts
-opendesktop-fonts
-ttf-bitstream-vera
-ttf-dejavu
-ttf-liberation
-ttf-opensans
-
-#audio
-alsa-firmware
-alsa-plugins
-alsa-utils
-ffmpegthumbnailer
-gst-libav
-gst-plugin-pipewire
-gst-plugins-bad
-gst-plugins-ugly
-libdvdcss
-paprefs
-pavucontrol
-pipewire-alsa
-pipewire-jack
-pipewire-media-session
-pipewire-pulse
-sof-firmware
-
-#boot
-efibootmgr
-efitools
-grub
-grub-tools
-os-prober
-refind
-
-#net-hardware
-b43-fwcutter
-broadcom-wl-dkms
-ipw2100-fw
-ipw2200-fw
-linux-atm
-
 bind
 dhclient
 dnsmasq
@@ -289,6 +204,7 @@ pcurses
 tldr
 duf
 inxi
+
 
 # DESKTOP
 
@@ -351,12 +267,10 @@ ttf-dejavu
 ttf-liberation
 ttf-opensans
 
+
 # CALAMARES
 
-#calamares
-calamares_config_ce
-calamares_config_default
-calamares_current
+## Calamares
 boost-libs
 cmake
 dmidecode
@@ -387,8 +301,9 @@ upower
 yaml-cpp
 
 
-
 # ENDEAVOUROS REPO
+
+## General
 
 arc-gtk-theme-eos
 ckbcomp
