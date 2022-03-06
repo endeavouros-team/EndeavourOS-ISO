@@ -52,6 +52,7 @@ sudo -H -u liveuser bash -c 'dbus-launch dconf load / < "/home/liveuser/xed.dcon
 rm "/home/liveuser/xed.dconf"
 cd ..
 rm -R "liveuser-desktop-settings"
+rm endeavouros-wallpaper-blank-develiso.xcf
 
 # add builddate to motd:
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
