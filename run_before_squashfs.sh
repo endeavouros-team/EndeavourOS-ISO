@@ -110,9 +110,9 @@ rm "/boot/initramfs-linux.img"
 rm "/boot/intel-ucode.img"
 rm "/boot/vmlinuz-linux"
 
-# to install locally builded packages on ISO (place packages under ..airootfs/root/packages)
-pacman -U --noconfirm "/root/packages/"*".pkg.tar.zst"
-rm -rf "/root/packages/"
+# to install locally builded packages on ISO:
+#pacman -U --noconfirm "/root/calamares_current-3.2.44.3-4-any.pkg.tar.zst"
+#rm "/root/calamares_current-3.2.44.3-4-any.pkg.tar.zst"
 #rm "/var/log/pacman.log"
 
 # set wallpaper for live-session and save original for later
