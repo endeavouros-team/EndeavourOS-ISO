@@ -94,13 +94,10 @@ sudo ./mkarchiso "." 2>&1 | tee "eosiso.log"
 
 ## Advanced
 
-To install locally builded packages on ISO put the packages inside `airootfs/root/packages` folder, the will get installed and files will get removed after that:
+To install locally builded packages on ISO put the packages inside directory:
 
-```
+~~~
+airootfs/root/packages
+~~~
 
-# to install locally builded packages on ISO (place packages under ..airootfs/root/packages)
-pacman -U --noconfirm "/root/packages/"*".pkg.tar.zst"
-rm -rf "/root/packages/"
-#rm "/var/log/pacman.log"
-```
-inside `run_before_squashfs.sh` 
+Packages will get installed and directory will be cleaned up after that.
