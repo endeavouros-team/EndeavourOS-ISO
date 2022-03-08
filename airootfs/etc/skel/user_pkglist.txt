@@ -1,0 +1,2 @@
+# Add package names available from repositories (not from AUR) one package-name per line.
+# Note: not for offline install.

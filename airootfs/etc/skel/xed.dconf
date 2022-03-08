@@ -1,0 +1,6 @@
+[org/x/editor/preferences/editor]
+bracket-matching=false
+display-line-numbers=true
+prefer-dark-theme=true
+scheme='cobalt'
+wrap-mode='none'
