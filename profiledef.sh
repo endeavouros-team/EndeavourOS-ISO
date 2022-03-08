@@ -22,4 +22,9 @@ file_permissions=(
   ["/root"]="0:0:750"
   ["/root/.automated_script.sh"]="0:0:755"
   ["/etc/sudoers.d"]="0:0:750"
+
+  ["/etc/skel/.xprofile"]="0:0:755"
+  ["/etc/skel/.xinitrc"]="0:0:755"
+  ["/etc/skel/set_once_xfce4.sh"]="0:0:755"
+  ["/etc/skel/user_commands.bash"]="0:0:755"
 )
