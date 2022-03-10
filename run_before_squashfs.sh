@@ -54,7 +54,6 @@ wget "https://raw.githubusercontent.com/endeavouros-team/EndeavourOS-ISO/main/LI
 mv "LICENSE" "/home/liveuser/"
 cd ..
 rm -R "liveuser-desktop-settings"
-rm endeavouros-wallpaper-blank-develiso.xcf
 
 # add builddate to motd:
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
