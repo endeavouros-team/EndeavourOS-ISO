@@ -36,11 +36,25 @@
 #     The 'makepkg' command suffers from the same limitation.
 #     This essentially blocks installing AUR packages here.
 #
-# Advanced tip:
-# To write files directly into $HOME, you can find the new username
-# with command
-#     username=$(cat /tmp/new_username.txt)
-# and then write files under folder
-#     /home/$username
+# Advanced tip (for ISOs since year 2022):
+#    To write files directly into $HOME, you can find the new username
+#    as the first parameter given to user_commands.bash, e.g.
+#        username="$1"
+#    Then you may write files under folder
+#        /home/$username
 #
+# For ISOs released before year 2022:
+#    Find your new username with command
+#        username=$(cat /tmp/new_username.txt)
+#
+#----------------------------------------------------------------------------------
+# Full example (to try it, remove the first '#' from the lines below):
+#
+# #!/bin/bash
+#
+# # Note: needs ISO since year 2022
+#
+# username="$1"
+# echo "# Hello world!" >> /home/$username/.bashrc
+# pacman -S --noconfirm --needed geany chromium libreoffice-fresh
 
