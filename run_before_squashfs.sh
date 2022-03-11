@@ -80,7 +80,7 @@ sed -i 's/#\(PermitRootLogin \).\+/\1yes/' "/etc/ssh/sshd_config"
 #sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' "/etc/systemd/logind.conf"
 
 # enable systemd services
-systemctl enable NetworkManager.service
+systemctl enable NetworkManager.service systemd-timesyncd.service
 systemctl enable vboxservice.service vmtoolsd.service vmware-vmblock-fuse.service
 systemctl set-default multi-user.target
 
