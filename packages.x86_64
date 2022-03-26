@@ -179,6 +179,8 @@ wireless_tools
 wpa_supplicant
 xl2tpd
 
+# Firewall
+firewalld
 
 # ISO
 
