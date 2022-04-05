@@ -46,7 +46,7 @@ Our journey wouldn't be made possible without the generosity of our [Open Collec
 # Boot options
 
 Systemd-boot for UEFI systems:  
-<img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/systemd-boot-iso-nov21.png" alt="drawing" width="600"/>
+<img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/Apollo/apollo-systemdboot.png" alt="drawing" width="600"/>
 
 Bios-boot (syslinux) for legacy systems:  
 <img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/Apollo/apollo-syslinux.png" alt="drawing" width="600"/>
