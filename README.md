@@ -80,13 +80,13 @@ sudo ./fix_permissions.sh
 ##### 2. Build
 
 ~~~
-sudo ./mkarchiso "."
+sudo ./mkarchiso -v "."
 ~~~
 
 or with log
 
 ~~~
-sudo ./mkarchiso "." 2>&1 | tee "eosiso.log"
+sudo ./mkarchiso -v "." 2>&1 | tee "eosiso.log"
 ~~~
 
 ##### 3. The .iso appears in `out` directory
