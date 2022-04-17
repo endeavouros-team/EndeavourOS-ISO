@@ -118,7 +118,7 @@ rm -rf "/root/packages/"
 #rm "/var/log/pacman.log"
 
 # set wallpaper for live-session and save original for later
-wget "https://raw.githubusercontent.com/endeavouros-team/endeavouros-theming/apollo/backgrounds/endeavouros-wallpaper.png"
+wget "https://raw.githubusercontent.com/endeavouros-team/endeavouros-theming/master/backgrounds/endeavouros-wallpaper.png"
 mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
 mv "/root/livewall.png" "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png"
 chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
