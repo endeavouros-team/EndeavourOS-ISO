@@ -88,17 +88,11 @@ systemctl set-default multi-user.target
 cp -rf "/usr/share/mkinitcpio/hook.preset" "/etc/mkinitcpio.d/linux.preset"
 sed -i 's?%PKGBASE%?linux?' "/etc/mkinitcpio.d/linux.preset"
 
-# fetch fallback mirrorlist for offline installs:
-wget https://raw.githubusercontent.com/endeavouros-team/EndeavourOS-ISO/main/mirrorlist
-cp "mirrorlist" "/etc/pacman.d/"
-rm "mirrorlist"
-
 # patching EndeavourOS specific grub config
 patch -u "/etc/default/grub" -i "/root/grub.patch"
 rm "/root/grub.patch"
 
-# get default mkinitcpio.conf (possible patching it here)
-wget https://raw.githubusercontent.com/archlinux/mkinitcpio/master/mkinitcpio.conf
+# Patching mkinitcpio.conf
 patch -u "mkinitcpio.conf" -i "/root/mkinitcpio.patch"
 cp "mkinitcpio.conf" "/etc/"
 rm "mkinitcpio.conf" "/root/mkinitcpio.patch"
@@ -117,8 +111,7 @@ pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
 #rm "/var/log/pacman.log"
 
-# set wallpaper for live-session and save original for later
-wget "https://raw.githubusercontent.com/endeavouros-team/endeavouros-theming/master/backgrounds/endeavouros-wallpaper.png"
+# Set wallpaper for live-session and original for installed system
 mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
 mv "/root/livewall.png" "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png"
 chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
