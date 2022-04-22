@@ -23,6 +23,11 @@ echo "##############################"
 echo "# start chrooted commandlist #"
 echo "##############################"
 
+cd "/root"
+
+# Install liveuser skel (in case of conflicts use overwrite)
+pacman -U --noconfirm --overwrite "/etc/skel/.bash_profile","/etc/skel/.bashrc" -- "/root/endeavouros-skel-liveuser/"*".pkg.tar.zst"
+
 # Prepare livesession settings and user
 sed -i 's/#\(en_US\.UTF-8\)/\1/' "/etc/locale.gen"
 locale-gen
@@ -34,36 +39,24 @@ chown root:root -R "/root"
 usermod -s /usr/bin/bash root
 
 # Create liveuser
-useradd -m -p "" -g users -G 'sys,rfkill,wheel,uucp,nopasswdlogin,adm,tty' -s /bin/bash liveuser
+useradd -m -p "" -g 'liveuser' -G 'sys,rfkill,wheel,uucp,nopasswdlogin,adm,tty' -s /bin/bash liveuser
 
-# insert special desktop settings for installer livesession
-# placing needed config files for user tools
-# fix permissions and owner
-cd "/root/liveuser-desktop-settings"
+# Remove liveuser skel to then install user skel
+pacman -Rns --noconfirm -- "endeavouros-skel-liveuser"
+rm -rf "/root/endeavouros-skel-liveuser"
+
+# Root qt style for Calamares
 mkdir "/root/.config"
-cp -R ".config/"{"Kvantum","qt5ct"} "/root/.config/"
-dbus-launch dconf load / < "xed.dconf"
-rm -R "/home/liveuser/.config"
-cp -R ".config" "/home/liveuser/.config"
-rm "/home/liveuser/"{".bashrc",".bash_profile","xed.dconf","set_once_xfce4.sh"}
-cp ".bashrc" ".bash_profile" "user_pkglist.txt" "user_commands.bash" ".xinitrc" ".xprofile" ".Xauthority" "xed.dconf" "/home/liveuser/"
-chown -R liveuser:liveuser "/home/liveuser"
-chmod +x "/home/liveuser/"{".xprofile",".xinitrc","user_commands.bash"}
-sudo -H -u liveuser bash -c 'dbus-launch dconf load / < "/home/liveuser/xed.dconf"'
-rm "/home/liveuser/xed.dconf"
-wget "https://raw.githubusercontent.com/endeavouros-team/EndeavourOS-ISO/main/LICENSE"
-mv "LICENSE" "/home/liveuser/"
-cd ..
-rm -R "liveuser-desktop-settings"
+cp -Rf "/home/liveuser/.config/"{"Kvantum","qt5ct"} "/root/.config/"
 
 # Add builddate to motd:
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
 echo "------------------" >> "/etc/motd"
 
 # Fixing permission on other file paths
-chmod 755 "/etc/sudoers.d"
 mkdir -p "/media"
 chmod 755 "/media"
+chmod 755 "/etc/sudoers.d"
 chmod 440 "/etc/sudoers.d/g_wheel"
 chown 0 "/etc/sudoers.d"
 chown 0 "/etc/sudoers.d/g_wheel"
