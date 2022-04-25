@@ -9,6 +9,9 @@ wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/
 # Get wallpaper for installed system
 wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/endeavouros-team/endeavouros-theming/master/backgrounds/endeavouros-wallpaper.png"
 
+# Make sure build scripts are executable
+chmod +x "./"{"mkarchiso","prepare.sh","run_before_squashfs.sh"}
+
 get_pkg() {
     sudo pacman -Sw "$1" --noconfirm --cachedir "airootfs/root/packages" \
     && sudo chown $USER:$USER "airootfs/root/packages/"*".pkg.tar"*

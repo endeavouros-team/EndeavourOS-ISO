@@ -34,8 +34,6 @@ locale-gen
 ln -sf "/usr/share/zoneinfo/UTC" "/etc/localtime"
 
 # Set root permission and shell
-chmod -R 700 "/root"
-chown root:root -R "/root"
 usermod -s /usr/bin/bash root
 
 # Create liveuser
@@ -52,17 +50,6 @@ cp -Rf "/home/liveuser/.config/"{"Kvantum","qt5ct"} "/root/.config/"
 # Add builddate to motd:
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
 echo "------------------" >> "/etc/motd"
-
-# Fixing permission on other file paths
-mkdir -p "/media"
-chmod 755 "/media"
-chmod 755 "/etc/sudoers.d"
-chmod 440 "/etc/sudoers.d/g_wheel"
-chown 0 "/etc/sudoers.d"
-chown 0 "/etc/sudoers.d/g_wheel"
-chown root:root "/etc/sudoers.d"
-chown root:root "/etc/sudoers.d/g_wheel"
-chmod 755 "/etc"
 
 # Fix configurations
 sed -i 's/#\(PermitRootLogin \).\+/\1yes/' "/etc/ssh/sshd_config"
