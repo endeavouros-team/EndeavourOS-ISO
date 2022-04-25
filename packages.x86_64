@@ -1,6 +1,7 @@
 # BASE
 
 ## Base system
+iptables-nft
 base
 base-devel
 archlinux-keyring
