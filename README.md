@@ -74,7 +74,7 @@ sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
 ```
 git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
 cd "EndeavourOS-ISO"
-sudo ./fix_permissions.sh
+./prepare.sh
 ```
 
 ##### 2. Build

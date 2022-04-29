@@ -222,7 +222,6 @@ lightdm-slick-greeter
 eos-lightdm-slick-theme
 
 ## Desktop environment
-endeavouros-skel-xfce4
 libwnck3
 network-manager-applet
 thunar-archive-plugin
