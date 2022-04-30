@@ -116,7 +116,7 @@ pipewire-jack
 pipewire-media-session
 pipewire-pulse
 sof-firmware
-
+rtkit
 
 # SOFTWARE
 
