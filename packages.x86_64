@@ -115,8 +115,9 @@ pipewire-alsa
 pipewire-jack
 pipewire-media-session
 pipewire-pulse
-sof-firmware
 rtkit
+sof-firmware
+
 
 # SOFTWARE
 
