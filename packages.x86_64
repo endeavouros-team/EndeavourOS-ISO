@@ -113,7 +113,7 @@ paprefs
 pavucontrol
 pipewire-alsa
 pipewire-jack
-pipewire-media-session
+wireplumber
 pipewire-pulse
 rtkit
 sof-firmware
