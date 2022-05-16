@@ -86,7 +86,7 @@ sudo ./mkarchiso -v "."
 or with log
 
 ~~~
-sudo ./mkarchiso -v "." 2>&1 | tee "eosiso.log"
+sudo ./mkarchiso -v "." 2>&1 | tee "eosiso_$(date -u +'%Y.%m.%d-%H:%M').log"
 ~~~
 
 ##### 3. The .iso appears in `out` directory
