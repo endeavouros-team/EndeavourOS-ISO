@@ -113,10 +113,10 @@ paprefs
 pavucontrol
 pipewire-alsa
 pipewire-jack
-wireplumber
 pipewire-pulse
 rtkit
 sof-firmware
+wireplumber
 
 
 # SOFTWARE
