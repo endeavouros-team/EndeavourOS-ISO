@@ -122,18 +122,22 @@ wireplumber
 # SOFTWARE
 
 ## General system
+bash-completion
 dialog
 dmraid
-expect
+downgrade
+duf
 fakeroot
 freetype2
 git
-gpart
+glances
+python-packaging
 gpm
 gptfdisk
 haveged
 hwdetect
 hwinfo
+inxi
 libgsf
 libopenraw
 mlocate
@@ -144,6 +148,7 @@ poppler-glib
 power-profiles-daemon
 rebuild-detector
 reflector
+tldr
 unrar
 unzip
 wget
@@ -180,15 +185,16 @@ wireless_tools
 wpa_supplicant
 xl2tpd
 
-# Bluetooth
+## Bluetooth
 bluez
 bluez-utils
 blueberry
 
-# Firewall
+## Firewall
 firewalld
 python-pyqt5
 python-capng
+
 
 # ISO
 
@@ -200,19 +206,11 @@ pv
 syslinux
 
 ## Live iso tools
+clonezilla
+gpart
 gparted
 grsync
-clonezilla
 hdparm
-fsarchiver
-glances
-python-defusedxml
-python-packaging
-bash-completion
-downgrade
-tldr
-duf
-inxi
 
 
 # DESKTOP
@@ -274,43 +272,9 @@ ttf-liberation
 ttf-opensans
 
 
-# CALAMARES
-
-## Calamares
-boost-libs
-cmake
-dmidecode
-doxygen
-extra-cmake-modules
-kconfig
-kcoreaddons
-ki18n
-kparts
-kpmcore
-kservice
-kvantum
-kwidgetsaddons
-libpwquality
-lsb-release
-parted
-polkit-qt5
-python
-qt5-svg
-qt5-tools
-qt5-webengine
-qt5-xmlpatterns
-qt5ct
-solid
-squashfs-tools
-tcpdump
-upower
-yaml-cpp
-
-
 # ENDEAVOUROS REPO
 
 ## General
-
 arc-gtk-theme-eos
 ckbcomp
 endeavouros-theming
@@ -336,6 +300,8 @@ yay
 calamares_config_ce
 calamares_config_default
 calamares_current
+kvantum
+qt5ct
 
 
 # VM SUPPORT
