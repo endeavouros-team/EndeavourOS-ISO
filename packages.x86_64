@@ -180,15 +180,16 @@ wireless_tools
 wpa_supplicant
 xl2tpd
 
-# Bluetooth
+## Bluetooth
 bluez
 bluez-utils
 blueberry
 
-# Firewall
+## Firewall
 firewalld
 python-pyqt5
 python-capng
+
 
 # ISO
 
@@ -200,19 +201,19 @@ pv
 syslinux
 
 ## Live iso tools
-gparted
-grsync
+bash-completion
 clonezilla
-hdparm
+downgrade
+duf
 fsarchiver
 glances
+gparted
+grsync
+hdparm
+inxi
 python-defusedxml
 python-packaging
-bash-completion
-downgrade
 tldr
-duf
-inxi
 
 
 # DESKTOP
@@ -277,7 +278,6 @@ ttf-opensans
 # ENDEAVOUROS REPO
 
 ## General
-
 arc-gtk-theme-eos
 ckbcomp
 endeavouros-theming
