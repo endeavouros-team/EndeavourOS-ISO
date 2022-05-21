@@ -127,7 +127,6 @@ dialog
 dmraid
 downgrade
 duf
-expect
 fakeroot
 freetype2
 git
@@ -208,13 +207,10 @@ syslinux
 
 ## Live iso tools
 clonezilla
-fsarchiver
 gpart
 gparted
 grsync
 hdparm
-python-defusedxml
-python-packaging
 tldr
 
 
