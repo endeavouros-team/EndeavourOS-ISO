@@ -122,18 +122,23 @@ wireplumber
 # SOFTWARE
 
 ## General system
+bash-completion
 dialog
 dmraid
+downgrade
+duf
 expect
 fakeroot
 freetype2
 git
-gpart
+glances
+python-packaging
 gpm
 gptfdisk
 haveged
 hwdetect
 hwinfo
+inxi
 libgsf
 libopenraw
 mlocate
@@ -144,6 +149,7 @@ poppler-glib
 power-profiles-daemon
 rebuild-detector
 reflector
+tldr
 unrar
 unzip
 wget
@@ -201,16 +207,12 @@ pv
 syslinux
 
 ## Live iso tools
-bash-completion
 clonezilla
-downgrade
-duf
 fsarchiver
-glances
+gpart
 gparted
 grsync
 hdparm
-inxi
 python-defusedxml
 python-packaging
 tldr
