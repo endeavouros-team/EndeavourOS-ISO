@@ -276,7 +276,6 @@ ttf-opensans
 
 ## General
 arc-gtk-theme-eos
-ckbcomp
 endeavouros-theming
 endeavouros-xfce4-terminal-colors
 eos-apps-info
@@ -300,6 +299,7 @@ yay
 calamares_config_ce
 calamares_config_default
 calamares_current
+ckbcomp
 kvantum
 qt5ct
 
