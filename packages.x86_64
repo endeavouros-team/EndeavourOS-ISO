@@ -274,39 +274,6 @@ ttf-liberation
 ttf-opensans
 
 
-# CALAMARES
-
-## Calamares
-boost-libs
-cmake
-dmidecode
-doxygen
-extra-cmake-modules
-kconfig
-kcoreaddons
-ki18n
-kparts
-kpmcore
-kservice
-kvantum
-kwidgetsaddons
-libpwquality
-lsb-release
-parted
-polkit-qt5
-python
-qt5-svg
-qt5-tools
-qt5-webengine
-qt5-xmlpatterns
-qt5ct
-solid
-squashfs-tools
-tcpdump
-upower
-yaml-cpp
-
-
 # ENDEAVOUROS REPO
 
 ## General
@@ -336,6 +303,8 @@ yay
 calamares_config_ce
 calamares_config_default
 calamares_current
+kvantum
+qt5ct
 
 
 # VM SUPPORT
