@@ -98,9 +98,6 @@ chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
 rm -rf "/usr/share/backgrounds/xfce/xfce-verticals.png"
 ln -s "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png" "/usr/share/backgrounds/xfce/xfce-verticals.png"
 
-# Fix packages that we want to keep but they could get uninstalled as dependency removal
-pacman -D --asexplicit sshfs rsync reiserfsprogs python-packaging
-
 
 # TEMPORARY CUSTOM FIXES
 
