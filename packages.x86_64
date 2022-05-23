@@ -148,6 +148,7 @@ poppler-glib
 power-profiles-daemon
 rebuild-detector
 reflector
+rsync
 tldr
 unrar
 unzip
