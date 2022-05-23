@@ -177,6 +177,7 @@ openvpn
 ppp
 pptpclient
 rp-pppoe
+rsync
 usb_modeswitch
 vpnc
 whois
