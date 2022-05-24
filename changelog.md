@@ -1,7 +1,7 @@
 ## Changelog holding milestones and major changes to the code
 ---
 
-# April Mai 2022 // @keybreak and @killajoe ::ISO process cleanup for package handling and LiveSession creation::
+# April Mai 2022 // @keybreak and @killajoe ISO process cleanup for package handling and LiveSession creation:
 
 * [packages.x86_64](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64)
 and:
@@ -24,7 +24,7 @@ All over file permissions are now handled centralized in the way archiso gives:
 [prepare.sh](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/prepare.sh)
 handles file downloads and liveuser-skel-package needed for the buildprocess in one place outside `run_before_squashfs.sh` easy to use for future changes and needs.
 
-# october 2021
+# October 2021
 
 New merged repository structure (october 2021) by joekamprad. 
 Now live-user-desktop-settings are included under /airootfs/root/liveuser-desktop-settings
