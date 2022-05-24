@@ -7,11 +7,10 @@
 - [manuel](https://github.com/manuel-192)
 - [fernandomaroto](https://github.com/Portergos) (initial developer)
 
-..and our beloved community
-
 ### Contributors:
 - [keybreak](https://github.com/keybreak)
 
+..and our beloved community
 
 This ISO is based on hugely modified Arch-ISO to provide Installation Environment for EndeavourOS.  
 More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io/EndeavourOS-Development/)
