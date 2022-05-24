@@ -2,24 +2,34 @@ clean up of ISO structure:
 
 added:
 
-  `# Pull /usr/lib/endeavouros-release at place to use for prompt info in Live Session
+```
+ # Pull /usr/lib/endeavouros-release at place to use for prompt info in Live Session
 	mkdir -p "${pacstrap_dir}/usr/lib"
-	echo "VERSION=${iso_version}" >> "${pacstrap_dir}/usr/lib/endeavouros-release"`
+	echo "VERSION=${iso_version}" >> "${pacstrap_dir}/usr/lib/endeavouros-release"
+
+```
   
 it deletes all stuff in /boot per default need to be changed to leave grub theming and files there as they will be missing for offline installs.. 
 done that in run_before_squashfs to have it do what we need...
-`# Delete all files in /boot
+
+```
+# Delete all files in /boot
  #   [[ -d "${pacstrap_dir}/boot" ]] && find "${pacstrap_dir}/boot" -mindepth 1 -delete`
 ```
 
 we need package databases present for offline installs and live-session:
+
+```
     # Delete pacman database sync cache
     # [[ -d "${pacstrap_dir}/var/lib/pacman/sync" ]] && find "${pacstrap_dir}/var/lib/pacman/sync" -delete
 
 ```
-}
+
+
 
 # Cleanup airootfs
+
+```
 _cleanup_pacstrap_dir() {
     _msg_info "Cleaning up in pacstrap location..."
     # Pull /usr/lib/endeavouros-release at place to use for prompt info in Live Session
@@ -47,11 +57,13 @@ _cleanup_pacstrap_dir() {
 }
 ```
 
-added parts for run_before_squashfs to run:
+# added parts for run_before_squashfs to run:
 
 ```
 script_path="$( cd -P "$( dirname "$(readlink -f "$0")" )" && pwd )"
 # executed inside _mkairootfs_sfs right before squashfs
 RUN_BEFORE_SQUASHFS=$script_path/run_before_squashfs.sh
+
+    $RUN_BEFORE_SQUASHFS
 ```
-    $RUN_BEFORE_SQUASHFS`
+    
