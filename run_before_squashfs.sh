@@ -25,6 +25,10 @@ echo "##############################"
 
 cd "/root"
 
+# Init & Populate keys
+pacman-key --init
+pacman-key --populate archlinux endeavouros
+
 # Install liveuser skel (in case of conflicts use overwrite)
 pacman -U --noconfirm --overwrite "/etc/skel/.bash_profile","/etc/skel/.bashrc" -- "/root/endeavouros-skel-liveuser/"*".pkg.tar.zst"
 
