@@ -24,6 +24,10 @@ All over file permissions are now handled centralized in the way archiso gives:
 [prepare.sh](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/prepare.sh)
 handles file downloads and liveuser-skel-package needed for the buildprocess in one place outside `run_before_squashfs.sh` easy to use for future changes and needs.
 
+- Remove sshd_config and legacy comments
+[run_before_squashfs.sh](https://github.com/keybreak/EndeavourOS-ISO/commit/9f1cdc6cd824478dc0fdb7e3350fac87ffd2404b)
+
+
 # October 2021
 
 New merged repository structure (october 2021) by joekamprad. 
