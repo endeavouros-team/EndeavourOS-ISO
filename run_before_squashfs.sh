@@ -55,15 +55,6 @@ cp -Rf "/home/liveuser/.config/"{"Kvantum","qt5ct"} "/root/.config/"
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
 echo "------------------" >> "/etc/motd"
 
-# Fix configurations
-sed -i 's/#\(PermitRootLogin \).\+/\1yes/' "/etc/ssh/sshd_config"
-# archiso now has a /airootfs/etc/systemd/journald.conf.d/volatile-storage.conf
-#sed -i 's/#\(Storage=\)auto/\1volatile/' "/etc/systemd/journald.conf"
-# archiso now has /airootfs/etc/systemd/logind.conf.d/do-not-suspend.conf
-#sed -i 's/#\(HandleSuspendKey=\)suspend/\1ignore/' "/etc/systemd/logind.conf"
-#sed -i 's/#\(HandleHibernateKey=\)hibernate/\1ignore/' "/etc/systemd/logind.conf"
-#sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' "/etc/systemd/logind.conf"
-
 # Enable systemd services
 systemctl enable NetworkManager.service systemd-timesyncd.service bluetooth.service firewalld.service
 systemctl enable vboxservice.service vmtoolsd.service vmware-vmblock-fuse.service
