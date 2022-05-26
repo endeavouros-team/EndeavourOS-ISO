@@ -74,7 +74,6 @@ cp "mkinitcpio.conf" "/etc/"
 rm "mkinitcpio.conf" "/root/mkinitcpio.patch"
 
 # Remove unneeded grub stuff from /boot
-# rm "/boot/grub/grub.cfg" #archiso does not create it anymore
 rm -R "/boot/syslinux"
 rm -R "/boot/memtest86+"
 rm "/boot/amd-ucode.img"
@@ -102,9 +101,6 @@ cp -af "/home/liveuser/"{".bashrc",".bash_profile"} "/etc/skel/"
 # Move blacklisting nouveau out of ISO (copy back to target for offline installs)
 mv "/usr/lib/modprobe.d/nvidia-utils.conf" "/etc/calamares/files/nv-modprobe"
 mv "/usr/lib/modules-load.d/nvidia-utils.conf" "/etc/calamares/files/nv-modules-load"
-
-# Fix for r8169 module
-#sed -i "/usr/lib/modprobe.d/r8168.conf" -e 's|r8169|r8168|'
 
 # Get extra drivers!
 mkdir "/opt/extra-drivers"
