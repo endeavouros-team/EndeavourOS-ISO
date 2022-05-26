@@ -1,7 +1,7 @@
 ## Changelog holding milestones and major changes to the code
 ---
 
-# April Mai 2022 // @keybreak and @killajoe ISO process cleanup for package handling and LiveSession creation:
+# April, May 2022 // @keybreak and @killajoe ISO process cleanup for package handling and LiveSession creation:
 
 * [packages.x86_64](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64)
 and:
@@ -23,6 +23,11 @@ All over file permissions are now handled centralized in the way archiso gives:
 
 [prepare.sh](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/prepare.sh)
 handles file downloads and liveuser-skel-package needed for the buildprocess in one place outside `run_before_squashfs.sh` easy to use for future changes and needs.
+
+Remove legacy code from `run_before_squashfs.sh`
+- https://github.com/endeavouros-team/EndeavourOS-ISO/commit/c8603d5cb5805da0e68c52fbea054f4ccab0064a
+- https://github.com/endeavouros-team/EndeavourOS-ISO/commit/c484f3895770870013d33ac5483e15abb13f6b37
+
 
 # October 2021
 
