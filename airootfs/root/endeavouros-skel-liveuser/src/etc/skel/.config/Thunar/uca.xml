@@ -5,7 +5,7 @@
 	<name>Open Terminal Here</name>
 	<unique-id>1562725534387696-1</unique-id>
 	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
-	<description>Example for a custom action</description>
+	<description>Open Terminal here action for Thunar</description>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<directories/>
