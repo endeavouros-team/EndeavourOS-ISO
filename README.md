@@ -18,7 +18,7 @@ More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io
 
 # Resources
 
-<img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/Apollo/apollo-calamares.png" alt="drawing" width="600"/>
+<img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/Artemis/Artemis-LiveSesion.png" alt="drawing" width="600"/>
 
 - https://endeavouros.com
 - [Getting help at the forum](https://forum.endeavouros.com)
