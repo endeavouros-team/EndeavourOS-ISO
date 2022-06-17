@@ -16,7 +16,7 @@ This ISO is based on hugely modified Arch-ISO to provide Installation Environmen
 More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io/EndeavourOS-Development/)
 
 
-# Resources
+## Resources:
 
 <img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/Artemis/Artemis-LiveSession.png" alt="Installer LiveSession" width="600"/>
 
