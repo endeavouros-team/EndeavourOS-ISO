@@ -2,6 +2,8 @@
 
 [![Maintenance](https://img.shields.io/maintenance/yes/2022.svg)]()
 
+[![pipeline status](https://gitlab.com/endeavouros-filemirror/EndeavourOS-ISO/badges/main/pipeline.svg)](https://gitlab.com/endeavouros-filemirror/EndeavourOS-ISO/-/commits/main)
+
 ### Developers:
 - [joekamprad](https://github.com/killajoe)
 - [manuel](https://github.com/manuel-192)
