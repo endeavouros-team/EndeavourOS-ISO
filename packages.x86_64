@@ -219,6 +219,7 @@ hdparm
 ## Display manager
 accountsservice
 lightdm-slick-greeter
+light-locker
 eos-lightdm-slick-theme
 
 ## Desktop environment
