@@ -76,9 +76,9 @@ rm "mkinitcpio.conf" "/root/mkinitcpio.patch"
 # Remove unneeded grub stuff from /boot
 rm -R "/boot/syslinux"
 rm -R "/boot/memtest86+"
-rm "/boot/amd-ucode.img"
+#rm "/boot/amd-ucode.img"
 rm "/boot/initramfs-linux.img"
-rm "/boot/intel-ucode.img"
+#rm "/boot/intel-ucode.img"
 rm "/boot/vmlinuz-linux"
 
 # Install locally builded packages on ISO (place packages under airootfs/root/packages)
