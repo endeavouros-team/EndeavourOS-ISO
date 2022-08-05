@@ -7,7 +7,7 @@ wget -qN --show-progress -P "airootfs/etc/pacman.d/" "https://raw.githubusercont
 wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/archlinux/mkinitcpio/master/mkinitcpio.conf"
 
 # Get wallpaper for installed system
-wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/endeavouros-team/endeavouros-theming/master/backgrounds/endeavouros-wallpaper.png"
+wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/endeavouros-team/endeavouros-theming/artemis_neo/backgrounds/endeavouros-wallpaper.png"
 
 # Make sure build scripts are executable
 chmod +x "./"{"mkarchiso","prepare.sh","run_before_squashfs.sh"}
