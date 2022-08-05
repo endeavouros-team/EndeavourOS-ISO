@@ -1,6 +1,13 @@
 ## Changelog holding milestones and major changes to the code
 ---
 
+# for Artemis neo (August 2022) 
+* we use calamares 3.2.59 version becaus of: https://github.com/calamares/calamares/issues/2008
+* packages injection install needs downgraded xkeyboard-config and the eos-theming-package to hold theming for neo.
+* https://archive.archlinux.org/packages/x/xkeyboard-config/xkeyboard-config-2.35.1-1-any.pkg.tar.zst
+* https://github.com/endeavouros-team/endeavouros-theming/tree/artemis_neo
+
+
 # April, May 2022 // @keybreak and @killajoe ISO process cleanup for package handling and LiveSession creation:
 
 * [packages.x86_64](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/packages.x86_64)
