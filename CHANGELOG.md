@@ -3,7 +3,8 @@
 
 # for Artemis neo (August 2022) 
 * we use calamares 3.2.59 version because of: https://github.com/calamares/calamares/issues/2008
-* packages injection install needs downgraded xkeyboard-config and the eos-theming-package (10.0-1) to hold theming for neo.
+* packages injection install needs downgraded xkeyboard-config (to show letters on example keyboards inside calamares) 
+ and the eos-theming-package (10.0-1) to hold theming for neo.
 * https://archive.archlinux.org/packages/x/xkeyboard-config/xkeyboard-config-2.35.1-1-any.pkg.tar.zst
 * https://github.com/endeavouros-team/endeavouros-theming/tree/artemis_neo
 
