@@ -1,6 +1,7 @@
 merged changes from latest mkarchiso on 17.9.2022 
-```Version: archiso 66-1
-
+```
+Version: archiso 66-1
+```
 clean up of ISO structure:
 
 added:
