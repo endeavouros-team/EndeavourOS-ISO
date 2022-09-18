@@ -79,3 +79,15 @@ pattern=^(file|http|https):\\/\\/(.*)$
 command=exo-open \\0
 regex=true
 
+[action5]
+name=EndeavourOS Forum
+pattern=forum
+command=exo-open --launch WebBrowser https://forum.endeavouros.com
+regex=false
+
+[action6]
+name=EndeavourOS Installer
+pattern=install
+command=exo-open welcome
+regex=false
+
