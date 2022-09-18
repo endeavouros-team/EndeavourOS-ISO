@@ -1,5 +1,14 @@
 ## Changelog holding milestones and major changes to the code
+
 ---
+# development starts for Cassini Release (September 2022)
+* changing format in modules to work with calamares 3.3 changes.
+
+# For ARtemis NOVA (September 2022)
+* using latest stabel 3.2 calamares version again 3.2.61 (locales are fixed)
+* implementing pacman.conf with endeavouros-repo on top
+* setting grub almoszt vanilla
+* changing Community Editions package to fit name change (ttf-nerd-fonts-symbols-2048-em)
 
 # for Artemis neo (August 2022) 
 * we use calamares 3.2.59 version because of: https://github.com/calamares/calamares/issues/2008
