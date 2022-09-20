@@ -78,7 +78,8 @@ Recommended to reboot after this changes.
 
 ##### 1. Prepare
 
-If you want the last release state to rebuild ISO you need to use specific branch to git clone. 
+If you want the last release state to rebuild ISO you need to use specific tag tarball.
+https://github.com/endeavouros-team/EndeavourOS-ISO/tags
 
 If not you will use latest "unstable" development state.
 
