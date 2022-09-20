@@ -72,6 +72,7 @@ https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/CHANGELOG.md
 ```
 sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
 ```
+Recommended to reboot after this changes.
 
 ### Build
 
@@ -105,7 +106,7 @@ cd "EndeavourOS-ISO"
 sudo ./mkarchiso -v "."
 ~~~
 
-or with log
+**or with log:**
 
 ~~~
 sudo ./mkarchiso -v "." 2>&1 | tee "eosiso_$(date -u +'%Y.%m.%d-%H:%M').log"
