@@ -89,7 +89,7 @@ tar -xvf 22.9.tar.gz
 cd "EndeavourOS-ISO-22.9"
 ./prepare.sh
 ```
-# or:
+**or:**
 
 use latest main branch (development branch):
 
