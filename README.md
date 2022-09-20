@@ -59,7 +59,13 @@ You need to use an installed EndeavourOS system or any archbased system with End
 
 As the installer packages and needed dependencies will get installed from EndeavourOS repository.
 
-general information: https://endeavouros-team.github.io/EndeavourOS-Development/
+general information: 
+
+https://endeavouros-team.github.io/EndeavourOS-Development/
+
+And read the changelog before starting to know about latest changes:
+
+https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/CHANGELOG.md
 
 ### Install build dependencies
 
@@ -70,6 +76,22 @@ sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
 ### Build
 
 ##### 1. Prepare
+
+If you want the last release state to rebuild ISO you need to use specific branch to git clone. 
+
+If not you will use latest "unstable" development state.
+
+use last stable release (exemple for 22.9 Artemis-nova Release):
+
+```
+wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/22.9.tar.gz
+tar -xvf 22.9.tar.gz
+cd "EndeavourOS-ISO-22.9"
+./prepare.sh
+```
+# or:
+
+use latest main branch (development branch):
 
 ```
 git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
