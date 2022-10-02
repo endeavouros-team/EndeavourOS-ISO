@@ -1,6 +1,7 @@
 # EndeavourOS-ISO
 
 [![Maintenance](https://img.shields.io/maintenance/yes/2022.svg)]()
+**main** branch is development latest (unstable)
 
 ### Developers:
 - [joekamprad](https://github.com/killajoe)
