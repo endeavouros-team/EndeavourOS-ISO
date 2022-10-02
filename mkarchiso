@@ -43,7 +43,6 @@ bootmodes=()
 airootfs_image_type=""
 airootfs_image_tool_options=()
 cert_list=()
-sign_netboot_artifacts=""
 declare -A file_permissions=()
 efibootimg=""
 efiboot_files=()
@@ -97,10 +96,11 @@ usage: ${app_name} [options] <profile_dir>
                       Default: '${iso_label}'
      -P <publisher>   Set the ISO publisher
                       Default: '${iso_publisher}'
-     -c [cert ..]     Provide certificates for codesigning of netboot artifacts
+     -c [cert ..]     Provide certificates for codesigning of netboot artifacts as
+                      well as the rootfs artifact.
                       Multiple files are provided as quoted, space delimited list.
                       The first file is considered as the signing certificate,
-                      the second as the key.
+                      the second as the key and the third as the optional certificate authority.
      -g <gpg_key>     Set the PGP key ID to be used for signing the rootfs image.
                       Passed to gpg as the value for --default-key
      -G <mbox>        Set the PGP signer (must include an email address)
@@ -159,7 +159,7 @@ _cleanup_pacstrap_dir() {
     # Delete pacman database sync cache files (*.tar.gz)
     [[ -d "${pacstrap_dir}/var/lib/pacman" ]] && find "${pacstrap_dir}/var/lib/pacman" -maxdepth 1 -type f -delete
     # Delete pacman database sync cache
-    # [[ -d "${pacstrap_dir}/var/lib/pacman/sync" ]] && find "${pacstrap_dir}/var/lib/pacman/sync" -delete
+    [[ -d "${pacstrap_dir}/var/lib/pacman/sync" ]] && find "${pacstrap_dir}/var/lib/pacman/sync" -delete
     # Delete pacman package cache
     [[ -d "${pacstrap_dir}/var/cache/pacman/pkg" ]] && find "${pacstrap_dir}/var/cache/pacman/pkg" -type f -delete
     # Delete all log files, keeps empty dirs.
@@ -256,14 +256,11 @@ _mkchecksum() {
 }
 
 # GPG sign the root file system image.
-_mksignature() {
-    local airootfs_image_filename gpg_options=()
-    _msg_info "Signing rootfs image..."
-    if [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.sfs" ]]; then
-        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.sfs"
-    elif [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.erofs" ]]; then
-        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.erofs"
-    fi
+_mk_pgp_signature() {
+    local gpg_options=()
+    local airootfs_image_filename="${1}"
+    _msg_info "Signing rootfs image using GPG..."
+   
     rm -f -- "${airootfs_image_filename}.sig"
     # Add gpg sender option if the value is provided
     [[ -z "${gpg_sender}" ]] || gpg_options+=('--sender' "${gpg_sender}")
@@ -348,6 +345,15 @@ _make_packages() {
         exec {ARCHISO_GNUPG_FD}<>"${work_dir}/pubkey.gpg"
         export ARCHISO_GNUPG_FD
     fi
+    if [[ -v cert_list[0] ]]; then
+        exec {ARCHISO_TLS_FD}<>"${cert_list[0]}"
+        export ARCHISO_TLS_FD
+    fi
+    if [[ -v cert_list[2] ]]; then
+        exec {ARCHISO_TLSCA_FD}<>"${cert_list[2]}"
+        export ARCHISO_TLSCA_FD
+    fi
+
 
     # Unset TMPDIR to work around https://bugs.archlinux.org/task/70580
     if [[ "${quiet}" = "y" ]]; then
@@ -356,6 +362,14 @@ _make_packages() {
         env -u TMPDIR pacstrap -C "${work_dir}/${buildmode}.pacman.conf" -c -G -M -- "${pacstrap_dir}" "${buildmode_pkg_list[@]}"
     fi
 
+    if [[ -v cert_list[0] ]]; then
+        exec {ARCHISO_TLS_FD}<&-
+        unset ARCHISO_TLS_FD
+    fi
+    if [[ -v cert_list[2] ]]; then
+        exec {ARCHISO_TLSCA_FD}<&-
+        unset ARCHISO_TLSCA_FD
+    fi
     if [[ -n "${gpg_key}" ]]; then
         exec {ARCHISO_GNUPG_FD}<&-
         unset ARCHISO_GNUPG_FD
@@ -1004,8 +1018,18 @@ _validate_requirements_bootmode_uefi-x64.grub.eltorito() {
 _prepare_airootfs_image() {
     _run_once "_mkairootfs_${airootfs_image_type}"
     _mkchecksum
+
+    if [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.sfs" ]]; then
+        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.sfs"
+    elif [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.erofs" ]]; then
+        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.erofs"
+    fi
+
     if [[ -n "${gpg_key}" ]]; then
-        _mksignature
+        _mk_pgp_signature "${airootfs_image_filename}"
+    fi
+    if [[ -v cert_list ]]; then
+        _cms_sign_artifact "${airootfs_image_filename}"
     fi
 }
 
@@ -1016,6 +1040,32 @@ _export_netboot_artifacts() {
     cp -a -- "${isofs_dir}/${install_dir}/" "${out_dir}/"
     _msg_info "Done!"
     du -hs -- "${out_dir}/${install_dir}"
+}
+
+_cms_sign_artifact() {
+    local artifact="${1}"
+    local openssl_flags=(
+        "-sign"
+        "-binary"
+        "-nocerts"
+        "-noattr"
+        "-outform" "DER" "-out" "${artifact}.cms.sig"
+        "-in" "${artifact}"
+        "-signer" "${cert_list[0]}"
+        "-inkey" "${cert_list[1]}"
+    )
+
+    if (( ${#cert_list[@]} > 2 )); then
+        openssl_flags+=("-certfile" "${cert_list[2]}")
+    fi
+
+    _msg_info "Signing ${artifact} image using openssl cms..."
+   
+    rm -f -- "${artifact}.cms.sig"
+
+    openssl cms "${openssl_flags[@]}"
+
+    _msg_info "Done!"
 }
 
 # sign build artifacts for netboot
@@ -1121,6 +1171,26 @@ _validate_common_requirements_buildmode_iso_netboot() {
         _msg_error "Packages file '${packages}' does not exist." 0
     fi
 
+    if [[ -v cert_list ]]; then
+        # Check if the certificate files exist
+        for _cert in "${cert_list[@]}"; do
+            if [[ ! -e "${_cert}" ]]; then
+                (( validation_error=validation_error+1 ))
+                _msg_error "File '${_cert}' does not exist." 0
+            fi
+        done
+        # Check if there are at least three certificate files to sign netboot and rootfs.
+        if (( ${#cert_list[@]} < 2 )); then
+            (( validation_error=validation_error+1 ))
+            _msg_error "Two certificates are required for codesigning netboot artifacts, but '${cert_list[*]}' is provided." 0
+        fi
+
+        if ! command -v openssl &> /dev/null; then
+            (( validation_error=validation_error+1 ))
+            _msg_error "Validating build mode '${_buildmode}': openssl is not available on this host. Install 'openssl'!" 0
+        fi
+    fi
+
     # Check if the specified airootfs_image_type is supported
     if typeset -f "_mkairootfs_${airootfs_image_type}" &> /dev/null; then
         if typeset -f "_validate_requirements_airootfs_image_type_${airootfs_image_type}" &> /dev/null; then
@@ -1162,31 +1232,8 @@ _validate_requirements_buildmode_iso() {
 }
 
 _validate_requirements_buildmode_netboot() {
-    local _override_cert_list=()
-
-    if [[ "${sign_netboot_artifacts}" == "y" ]]; then
-        # Check if the certificate files exist
-        for _cert in "${cert_list[@]}"; do
-            if [[ -e "${_cert}" ]]; then
-                _override_cert_list+=("$(realpath -- "${_cert}")")
-            else
-                (( validation_error=validation_error+1 ))
-                _msg_error "File '${_cert}' does not exist." 0
-            fi
-        done
-        cert_list=("${_override_cert_list[@]}")
-        # Check if there are at least two certificate files
-        if (( ${#cert_list[@]} < 2 )); then
-            (( validation_error=validation_error+1 ))
-            _msg_error "Two certificates are required for codesigning, but '${cert_list[*]}' is provided." 0
-        fi
-    fi
     _validate_common_requirements_buildmode_iso_netboot
     _validate_common_requirements_buildmode_all
-    if ! command -v openssl &> /dev/null; then
-        (( validation_error=validation_error+1 ))
-        _msg_error "Validating build mode '${_buildmode}': openssl is not available on this host. Install 'openssl'!" 0
-    fi
 }
 
 # SYSLINUX El Torito
@@ -1547,10 +1594,7 @@ _set_overrides() {
     fi
     [[ ! -v override_gpg_key ]] || gpg_key="$override_gpg_key"
     [[ ! -v override_gpg_sender ]] || gpg_sender="$override_gpg_sender"
-    if [[ -v override_cert_list ]]; then
-        sign_netboot_artifacts="y"
-    fi
-    [[ ! -v override_cert_list ]] || cert_list+=("${override_cert_list[@]}")
+    [[ ! -v override_cert_list ]] || mapfile -t cert_list < <(realpath -- "${override_cert_list[@]}")
     if [[ -v override_quiet ]]; then
         quiet="$override_quiet"
     elif [[ -z "$quiet" ]]; then
@@ -1681,8 +1725,16 @@ _build_buildmode_netboot() {
     local run_once_mode="${buildmode}"
 
     _build_iso_base
+
+    if [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.sfs" ]]; then
+        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.sfs"
+    elif [[ -e "${isofs_dir}/${install_dir}/${arch}/airootfs.erofs" ]]; then
+        airootfs_image_filename="${isofs_dir}/${install_dir}/${arch}/airootfs.erofs"
+    fi
+
     if [[ -v cert_list ]]; then
         _run_once _sign_netboot_artifacts
+        _cms_sign_artifact "${airootfs_image_filename}"
     fi
     _run_once _export_netboot_artifacts
 }
