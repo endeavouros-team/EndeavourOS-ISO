@@ -10,6 +10,7 @@ endeavouros-keyring
 cryptsetup
 device-mapper
 diffutils
+dracut
 edk2-shell
 inetutils
 less
@@ -20,9 +21,6 @@ logrotate
 man-db
 man-pages
 mdadm
-mkinitcpio
-mkinitcpio-busybox
-mkinitcpio-nfs-utils
 nano
 nano-syntax-highlighting
 perl
@@ -58,10 +56,6 @@ xfsprogs
 ## Boot
 efibootmgr
 efitools
-grub
-os-prober
-refind
-
 
 # HARDWARE
 
@@ -284,7 +278,6 @@ eos-quickstart
 eos-qogir-icons
 eos-rankmirrors
 eos-update-notifier
-grub2-theme-endeavouros
 nvidia-installer-dkms
 rate-mirrors
 reflector-simple

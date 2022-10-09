@@ -28,6 +28,7 @@ cd "/root"
 # Init & Populate keys
 pacman-key --init
 pacman-key --populate archlinux endeavouros
+pacman -Sy
 
 # Install liveuser skel (in case of conflicts use overwrite)
 pacman -U --noconfirm --overwrite "/etc/skel/.bash_profile","/etc/skel/.bashrc" -- "/root/endeavouros-skel-liveuser/"*".pkg.tar.zst"
@@ -60,19 +61,6 @@ systemctl enable NetworkManager.service systemd-timesyncd.service bluetooth.serv
 systemctl enable vboxservice.service vmtoolsd.service vmware-vmblock-fuse.service
 systemctl set-default multi-user.target
 
-# Revert from arch-iso preset to default preset
-cp -rf "/usr/share/mkinitcpio/hook.preset" "/etc/mkinitcpio.d/linux.preset"
-sed -i 's?%PKGBASE%?linux?' "/etc/mkinitcpio.d/linux.preset"
-
-# Patching EndeavourOS specific grub config
-patch -u "/etc/default/grub" -i "/root/grub.patch"
-rm "/root/grub.patch"
-
-# Patching mkinitcpio.conf
-patch -u "mkinitcpio.conf" -i "/root/mkinitcpio.patch"
-cp "mkinitcpio.conf" "/etc/"
-rm "mkinitcpio.conf" "/root/mkinitcpio.patch"
-
 # Install locally builded packages on ISO (place packages under airootfs/root/packages)
 pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
@@ -97,6 +85,10 @@ mv "/usr/lib/modules-load.d/nvidia-utils.conf" "/etc/calamares/files/nv-modules-
 # Get extra drivers!
 mkdir "/opt/extra-drivers"
 sudo pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
+
+# install packages
+mkdir -p "/usr/share/packages"
+sudo pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub dracut-hook kernel-install-for-dracut refind os-prober
 
 # Clean pacman log
 rm "/var/log/pacman.log"
