@@ -66,6 +66,9 @@ intel-ucode
 ## X system
 mesa
 mesa-utils
+libva-mesa-driver
+libva-intel-driver
+intel-media-driver
 nvidia-dkms
 nvidia-utils
 xf86-input-libinput
