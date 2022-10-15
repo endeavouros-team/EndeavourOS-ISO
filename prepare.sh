@@ -7,7 +7,7 @@ wget -qN --show-progress -P "airootfs/etc/pacman.d/" "https://raw.githubusercont
 wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/endeavouros-team/endeavouros-theming/master/backgrounds/endeavouros-wallpaper.png"
 
 # Make sure build scripts are executable
-chmod +x "./"{"mkarchiso","prepare.sh","run_before_squashfs.sh"}
+chmod +x "./"{"mkarchiso","run_before_squashfs.sh"}
 
 get_pkg() {
     sudo pacman -Syw "$1" --noconfirm --cachedir "airootfs/root/packages" \
