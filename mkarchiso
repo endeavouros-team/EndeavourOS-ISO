@@ -1630,16 +1630,16 @@ _make_version() {
     fi
 
     # Append IMAGE_ID & IMAGE_VERSION to os-release
-    _os_release="$(realpath -- "${pacstrap_dir}/etc/os-release")"
-    if [[ ! -e "${pacstrap_dir}/etc/os-release" && -e "${pacstrap_dir}/usr/lib/os-release" ]]; then
-        _os_release="$(realpath -- "${pacstrap_dir}/usr/lib/os-release")"
-    fi
-    if [[ "${_os_release}" != "${pacstrap_dir}"* ]]; then
-        _msg_warning "os-release file '${_os_release}' is outside of valid path."
-    else
-        [[ ! -e "${_os_release}" ]] || sed -i '/^IMAGE_ID=/d;/^IMAGE_VERSION=/d' "${_os_release}"
-        printf 'IMAGE_ID=%s\nIMAGE_VERSION=%s\n' "${iso_name}" "${iso_version}" >> "${_os_release}"
-    fi
+    #_os_release="$(realpath -- "${pacstrap_dir}/etc/os-release")"
+    #if [[ ! -e "${pacstrap_dir}/etc/os-release" && -e "${pacstrap_dir}/usr/lib/os-release" ]]; then
+    #    _os_release="$(realpath -- "${pacstrap_dir}/usr/lib/os-release")"
+    #fi
+    #if [[ "${_os_release}" != "${pacstrap_dir}"* ]]; then
+    #    _msg_warning "os-release file '${_os_release}' is outside of valid path."
+    #else
+    #    [[ ! -e "${_os_release}" ]] || sed -i '/^IMAGE_ID=/d;/^IMAGE_VERSION=/d' "${_os_release}"
+    #    printf 'IMAGE_ID=%s\nIMAGE_VERSION=%s\n' "${iso_name}" "${iso_version}" >> "${_os_release}"
+    #fi
 
     # Touch /usr/lib/clock-epoch to give another hint on date and time
     # for systems with screwed or broken RTC.
