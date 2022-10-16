@@ -1,3 +1,6 @@
+# removed os-release handling in mkarchiso (16.10.2022):
+https://github.com/endeavouros-team/EndeavourOS-ISO/commit/67a5a371967b57edf21b6e8a93a2720a358571ec
+
 merged changes from latest mkarchiso on 02.10.2022 
 ```
 Version: archiso 67-1
