@@ -18,6 +18,7 @@ linux
 linux-firmware
 linux-headers
 logrotate
+lsb-release
 man-db
 man-pages
 mdadm
