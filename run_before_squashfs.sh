@@ -90,8 +90,9 @@ sudo pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
 mkdir -p "/usr/share/packages"
 sudo pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub dracut-hook kernel-install-for-dracut refind os-prober
 
-# Clean pacman log
+# Clean pacman log and package cache
 rm "/var/log/pacman.log"
+pacman -Scc --noconfirm
 
 echo "############################"
 echo "# end chrooted commandlist #"
