@@ -181,7 +181,7 @@ xl2tpd
 ## Bluetooth
 bluez
 bluez-utils
-blueberry
+blueman
 
 ## Firewall
 firewalld
