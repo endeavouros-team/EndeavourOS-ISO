@@ -93,15 +93,6 @@ tar -xvf 22.9.tar.gz
 cd "EndeavourOS-ISO-22.9"
 ./prepare.sh
 ```
-**or:**
-
-use latest main branch (development branch):
-
-```
-git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
-cd "EndeavourOS-ISO"
-./prepare.sh
-```
 
 ##### 2. Build
 
