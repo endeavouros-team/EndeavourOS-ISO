@@ -9,6 +9,7 @@ iso_version="$(date +%Y.%m.%d)"
 install_dir="arch"
 buildmodes=('iso')
 quiet="n"
+copytoram="n"
 work_dir="work"
 out_dir="out"
 bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito' 'uefi-x64.systemd-boot.esp' 'uefi-x64.systemd-boot.eltorito')
