@@ -49,9 +49,13 @@ efiboot_files=()
 # adapted from GRUB_EARLY_INITRD_LINUX_STOCK in https://git.savannah.gnu.org/cgit/grub.git/tree/util/grub-mkconfig.in
 readonly ucodes=('intel-uc.img' 'intel-ucode.img' 'amd-uc.img' 'amd-ucode.img' 'early_ucode.cpio' 'microcode.cpio')
 
+# change for EndeavourOS start
+
 script_path="$( cd -P "$( dirname "$(readlink -f "$0")" )" && pwd )"
 # executed inside _mkairootfs_sfs right before squashfs
 RUN_BEFORE_SQUASHFS="$script_path/run_before_squashfs.sh"
+
+# change for EndeavourOS end
 
 # Show an INFO message
 # $1: message string
@@ -151,9 +155,15 @@ _show_config() {
 # Cleanup airootfs
 _cleanup_pacstrap_dir() {
     _msg_info "Cleaning up in pacstrap location..."
+
+# change for EndeavourOS start
+
     # Pull /usr/lib/endeavouros-release at place to use for prompt info in Live Session
     mkdir -p "${pacstrap_dir}/usr/lib"
     echo "VERSION=${iso_version}" >> "${pacstrap_dir}/usr/lib/endeavouros-release"
+
+# change for EndeavourOS end
+
     # Delete all files in /boot
     [[ -d "${pacstrap_dir}/boot" ]] && find "${pacstrap_dir}/boot" -mindepth 1 -delete
     # Delete pacman database sync cache files (*.tar.gz)
@@ -178,7 +188,13 @@ _cleanup_pacstrap_dir() {
 # Create a squashfs image and place it in the ISO 9660 file system.
 # $@: options to pass to mksquashfs
 _run_mksquashfs() {
+
+# change for EndeavourOS start
+
     "$RUN_BEFORE_SQUASHFS"
+
+# change for EndeavourOS end
+
     local mksquashfs_options=() image_path="${isofs_dir}/${install_dir}/${arch}/airootfs.sfs"
     rm -f -- "${image_path}"
     [[ ! "${quiet}" == "y" ]] || mksquashfs_options+=('-no-progress' '-quiet')
@@ -260,7 +276,7 @@ _mk_pgp_signature() {
     local gpg_options=()
     local airootfs_image_filename="${1}"
     _msg_info "Signing rootfs image using GPG..."
-   
+
     rm -f -- "${airootfs_image_filename}.sig"
     # Add gpg sender option if the value is provided
     [[ -z "${gpg_sender}" ]] || gpg_options+=('--sender' "${gpg_sender}")
@@ -1060,7 +1076,7 @@ _cms_sign_artifact() {
     fi
 
     _msg_info "Signing ${artifact} image using openssl cms..."
-   
+
     rm -f -- "${artifact}.cms.sig"
 
     openssl cms "${openssl_flags[@]}"
@@ -1079,7 +1095,8 @@ _sign_netboot_artifacts() {
             _files_to_sign+=("${_dir}${_file}")
         fi
     done
-    for _file in "${_files_to_sign[@]}" "${_dir}${arch}/vmlinuz-"* "${_dir}${arch}/initramfs-"*.img; do
+    for _file in "${_files_to_sign[@]}" "${_dir}${arch}/vmlinuz-"!(*.sig) "${_dir}${arch}/initramfs-"*.img; do
+        rm -f -- "${_file}".ipxe.sig
         openssl cms \
             -sign \
             -binary \
@@ -1629,6 +1646,8 @@ _make_version() {
             > "${isofs_dir}/${install_dir}/grubenv"
     fi
 
+# change for EndeavourOS start
+
     # Append IMAGE_ID & IMAGE_VERSION to os-release
     #_os_release="$(realpath -- "${pacstrap_dir}/etc/os-release")"
     #if [[ ! -e "${pacstrap_dir}/etc/os-release" && -e "${pacstrap_dir}/usr/lib/os-release" ]]; then
@@ -1640,6 +1659,8 @@ _make_version() {
     #    [[ ! -e "${_os_release}" ]] || sed -i '/^IMAGE_ID=/d;/^IMAGE_VERSION=/d' "${_os_release}"
     #    printf 'IMAGE_ID=%s\nIMAGE_VERSION=%s\n' "${iso_name}" "${iso_version}" >> "${_os_release}"
     #fi
+
+# change for EndeavourOS end
 
     # Touch /usr/lib/clock-epoch to give another hint on date and time
     # for systems with screwed or broken RTC.
