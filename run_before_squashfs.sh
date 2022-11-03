@@ -92,7 +92,9 @@ sudo pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub dracut-hook ke
 
 # Clean pacman log and package cache
 rm "/var/log/pacman.log"
-pacman -Scc --noconfirm
+#pacman -Scc --noconfirm
+# the -Scc seem to fail so:
+rm -rf "/var/cache/pacman/pkg/"
 
 echo "############################"
 echo "# end chrooted commandlist #"
