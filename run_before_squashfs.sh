@@ -69,8 +69,9 @@ rm -rf "/root/packages/"
 mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
 mv "/root/livewall.png" "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png"
 chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
-rm -rf "/usr/share/backgrounds/xfce/xfce-verticals.png"
-ln -s "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png" "/usr/share/backgrounds/xfce/xfce-verticals.png"
+#test to use the new xfce4-desktop.xml file
+#rm -rf "/usr/share/backgrounds/xfce/xfce-verticals.png"
+#ln -s "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png" "/usr/share/backgrounds/xfce/xfce-verticals.png"
 
 
 # TEMPORARY CUSTOM FIXES
