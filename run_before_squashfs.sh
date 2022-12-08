@@ -89,12 +89,11 @@ sudo pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
 
 # install packages
 mkdir -p "/usr/share/packages"
-sudo pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub dracut-hook kernel-install-for-dracut refind os-prober
+sudo pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut refind os-prober
 
 # Clean pacman log and package cache
 rm "/var/log/pacman.log"
-#pacman -Scc --noconfirm
-# the -Scc seem to fail so:
+# pacman -Scc seem to fail so:
 rm -rf "/var/cache/pacman/pkg/"
 
 echo "############################"
