@@ -96,6 +96,9 @@ rm "/var/log/pacman.log"
 # pacman -Scc seem to fail so:
 rm -rf "/var/cache/pacman/pkg/"
 
+#calamares BUG https://github.com/calamares/calamares/issues/2075
+rm -rf /home/build
+
 echo "############################"
 echo "# end chrooted commandlist #"
 echo "############################"
