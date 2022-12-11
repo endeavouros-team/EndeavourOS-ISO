@@ -83,7 +83,6 @@ xorg-xrandr
 ## Network hardware
 b43-fwcutter
 broadcom-wl-dkms
-linux-atm
 
 ## General hardware
 lsscsi
@@ -101,7 +100,6 @@ gst-plugin-pipewire
 gst-plugins-bad
 gst-plugins-ugly
 libdvdcss
-paprefs
 pavucontrol
 pipewire-alsa
 pipewire-jack
@@ -115,6 +113,7 @@ wireplumber
 
 ## General system
 bash-completion
+dmidecode
 dialog
 dmraid
 downgrade
@@ -154,7 +153,6 @@ bind
 dhclient
 dnsmasq
 ethtool
-gnu-netcat
 iwd
 modemmanager
 nbd
@@ -162,8 +160,8 @@ ndisc6
 net-tools
 netctl
 networkmanager
+networkmanager-openconnect
 networkmanager-openvpn
-nmap
 nss-mdns
 openconnect
 openvpn
@@ -188,7 +186,6 @@ firewalld
 python-pyqt5
 python-capng
 
-
 # ISO
 
 ## Live iso specific
@@ -204,7 +201,6 @@ gpart
 gparted
 grsync
 hdparm
-
 
 # DESKTOP
 
@@ -264,7 +260,6 @@ ttf-dejavu
 ttf-liberation
 ttf-opensans
 
-
 # ENDEAVOUROS REPO
 
 ## General
@@ -291,7 +286,6 @@ yay
 ckbcomp
 kvantum
 qt5ct
-
 
 # VM SUPPORT
 
