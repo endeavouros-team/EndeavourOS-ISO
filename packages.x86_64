@@ -172,7 +172,7 @@ usb_modeswitch
 vpnc
 whois
 wireless-regdb
-wireless_tools
+#wireless_tools
 wpa_supplicant
 xl2tpd
 
