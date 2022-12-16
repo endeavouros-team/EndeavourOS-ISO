@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 
 <channel name="xfce4-keyboard-shortcuts" version="1.0">
@@ -6,6 +5,8 @@
     <property name="default" type="empty">
       <property name="&lt;Super&gt;space" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="Print" type="string" value="xfce4-screenshooter"/>
+      <property name="&lt;Super&gt;Return" type="string" value="exo-open --launch TerminalEmulator"/>
+      <property name="Calculator" type="string" value="/usr/bin/galculator"/>
     </property>
   </property>
   <property name="providers" type="array">

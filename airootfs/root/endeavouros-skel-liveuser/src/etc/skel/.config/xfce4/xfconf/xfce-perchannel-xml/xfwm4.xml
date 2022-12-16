@@ -15,6 +15,7 @@
     <property name="cycle_raise" type="bool" value="false"/>
     <property name="cycle_hidden" type="bool" value="true"/>
     <property name="cycle_minimum" type="bool" value="true"/>
+    <property name="cycle_minimized" type="bool" value="false"/>
     <property name="cycle_preview" type="bool" value="true"/>
     <property name="cycle_tabwin_mode" type="int" value="0"/>
     <property name="cycle_workspaces" type="bool" value="false"/>
@@ -79,13 +80,12 @@
     <property name="wrap_windows" type="bool" value="true"/>
     <property name="wrap_workspaces" type="bool" value="false"/>
     <property name="zoom_desktop" type="bool" value="true"/>
-    <property name="workspace_names" type="array">
-      <value type="string" value="workspace 1"/>
-      <value type="string" value="workspace 2"/>
-      <value type="string" value="workspace 3"/>
-      <value type="string" value="workspace 4"/>
-    </property>
-    <property name="cycle_minimized" type="bool" value="false"/>
     <property name="zoom_pointer" type="bool" value="true"/>
+    <property name="workspace_names" type="array">
+      <value type="string" value="Workspace 1"/>
+      <value type="string" value="Workspace 2"/>
+      <value type="string" value="Workspace 3"/>
+      <value type="string" value="Workspace 4"/>
+    </property>
   </property>
 </channel>
