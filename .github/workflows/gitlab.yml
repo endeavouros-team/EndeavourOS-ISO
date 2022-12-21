@@ -1,0 +1,17 @@
+name: Gitlab Mirror
+
+on: [push, delete]
+
+jobs:
+  to_gitlab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url:
+            git@gitlab.com:endeavouros-filemirror/EndeavourOS-ISO.git
+          ssh_private_key:
+            ${{ secrets.GITLAB_SYNC }}
