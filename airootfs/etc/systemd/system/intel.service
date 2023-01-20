@@ -1,0 +1,10 @@
+[Unit]
+Description=detect intel legacy gpu and install xf86-video-intel
+Before=graphical.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/GPU-Intel-installer
+
+[Install]
+WantedBy=multi-user.target
