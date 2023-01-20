@@ -23,4 +23,5 @@ file_permissions=(
   ["/root/.automated_script.sh"]="0:0:755"
   ["/etc/sudoers.d"]="0:0:750"
   ["/etc/sudoers.d/g_wheel"]="0:0:440"
+  ["/usr/bin/GPU-Intel-installer"]="0:0:755"
 )
