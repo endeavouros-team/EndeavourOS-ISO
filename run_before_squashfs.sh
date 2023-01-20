@@ -60,6 +60,7 @@ echo "------------------" >> "/etc/motd"
 systemctl enable NetworkManager.service systemd-timesyncd.service bluetooth.service firewalld.service
 systemctl enable vboxservice.service vmtoolsd.service vmware-vmblock-fuse.service
 systemctl set-default multi-user.target
+systemctl enable intel.service
 
 # Install locally builded packages on ISO (place packages under airootfs/root/packages)
 pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
@@ -89,7 +90,7 @@ sudo pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
 
 # install packages
 mkdir -p "/usr/share/packages"
-sudo pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut refind os-prober
+sudo pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut refind os-prober xf86-video-intel
 
 # Clean pacman log and package cache
 rm "/var/log/pacman.log"
