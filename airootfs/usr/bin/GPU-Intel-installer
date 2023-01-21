@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # This app checks if an Intel graphics device in the system is of generation from 1 to 3.
-# If one is detected, app installs the xf86-video-intel package.
-# Also displays the found matching Intel device id.
+# If an old Intel device is detected, app installs the xf86-video-intel package.
+# This app is meant to install the package into the ISO only.
 # Returns 0 (=true) if a match is found.
 # Returns 1 (=false) otherwise.
+# Also displays the found matching Intel device id, or a simple message if not found.
 
 DIE() {
     echo "$progname: error: $1" >&2
@@ -34,26 +35,16 @@ Main() {
     # User may give graphics item(s) to search (VGA, Display, 3D).
     # By default VGA, Display, and 3D are searched.
 
-    local input_items="$*"       # any combination of: VGA Display 3D
-
-    [ "$input_items" = "" ] && input_items="VGA Display 3D"
-
-    for item in $input_items ; do
-        case "$item" in
-            VGA | Display | 3D) ;;
-            *) DIE "sorry, allowed items are: VGA Display 3D" ;;
-        esac
-    done
-
+    local input_items="VGA|Display|3D"
+    local data=$(lspci -nn | grep -P "$input_items")    # data = info about graphics devices
     local vendor_and_id
     local vendor
     local id
     local item
     local intel_vid=8086
     local pkg=xf86-video-intel
-    local data=$(lspci -nn | grep -P "VGA|Display|3D")    # data = info about graphics devices
 
-    for item in $input_items ; do
+    for item in ${input_items//|/ } ; do
         if [ -n "$(echo "$data" | grep -w "$item")" ] ; then
             vendor_and_id=$(echo "$data" | grep "$item" | sed -E 's|.*\[([0-9a-f]+:[0-9a-f]+)\].*|\1|')   # "xxxx:yyyy"
             [ -n "$vendor_and_id" ] || DIE "failed finding $item info"
@@ -69,6 +60,7 @@ Main() {
             fi
         fi
     done
+    echo "==> $progname: No gen1..gen3 Intel graphics device was found."
     return 1  # Intel graphics device not found
 }
 
