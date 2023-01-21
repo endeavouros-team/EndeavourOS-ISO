@@ -62,7 +62,7 @@ Main() {
                 id=${vendor_and_id#*:}
                 if IsIntelGeneration_1_to_3 "$id" ; then
                     echo "==> $progname: found Intel graphics device with id $id, installing package $pkg"
-                    local pkgs=(/usr/share/packages/{$pkg,libxvmc}-*.pkg.tar.zst})
+                    local pkgs=(/usr/share/packages/{$pkg,libxvmc}-*.pkg.tar.zst)
                     sudo pacman -U --noconfirm "${pkgs[@]}"
                     return 0
                 fi
