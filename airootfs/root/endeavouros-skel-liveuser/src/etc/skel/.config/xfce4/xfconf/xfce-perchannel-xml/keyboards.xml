@@ -2,6 +2,6 @@
 
 <channel name="keyboards" version="1.0">
   <property name="Default" type="empty">
-    <property name="Numlock" type="bool" value="true"/>
+    <property name="Numlock" type="bool" value="false"/>
   </property>
 </channel>
