@@ -47,6 +47,15 @@
 #    Find your new username with command
 #        username=$(cat /tmp/new_username.txt)
 #
+# New installer feature at 2023-Feb-02:
+#    To help customizing calamares on the ISO, user_commands.bash will be called
+#    (as root) with 2 parameters:
+#        --iso-config
+#        "install_mode"     (one of: online, offline, community)
+#    before starting the calamares installer.
+#    For example:
+#        bash ~/user_commands.bash --iso-config online
+#
 #----------------------------------------------------------------------------------
 # Full example (to try it, remove the first '#' from the lines below):
 #
