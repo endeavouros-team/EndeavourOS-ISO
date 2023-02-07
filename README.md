@@ -85,12 +85,12 @@ https://github.com/endeavouros-team/EndeavourOS-ISO/tags
 
 If not you will use latest "unstable" development state.
 
-use last stable release (exemple for 22.9 Artemis-nova Release):
+use last stable release (exemple for 22.12.2 Cassini nova Release)
 
 ```
-wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/22.9.tar.gz
-tar -xvf 22.9.tar.gz
-cd "EndeavourOS-ISO-22.9"
+wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/22.12.2.tar.gz
+tar -xvf 22.12.2.tar.gz
+cd "EndeavourOS-ISO-22.12.2"
 ./prepare.sh
 ```
 
