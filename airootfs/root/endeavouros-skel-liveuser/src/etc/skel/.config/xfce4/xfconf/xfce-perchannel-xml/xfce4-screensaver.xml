@@ -2,13 +2,11 @@
 
 <channel name="xfce4-screensaver" version="1.0">
   <property name="saver" type="empty">
-   <property name="mode" type="int" value="0"/>
-   <property name="enabled" type="bool" value="false"/>
- </property>
-   <property name="idle-activation" type="empty">
-   <property name="enabled" type="bool" value="false"/>
- </property>
-   <property name="lock" type="empty">
-   <property name="enabled" type="bool" value="false"/>
+    <property name="mode" type="int" value="0"/>
+    <property name="enabled" type="bool" value="false"/>
+    <property name="idle-activation" type="empty">
+      <property name="delay" type="int" value="0"/>
+      <property name="enabled" type="bool" value="false"/>
+    </property>
   </property>
 </channel>
