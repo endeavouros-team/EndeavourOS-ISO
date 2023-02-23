@@ -61,7 +61,7 @@ You need to use an installed EndeavourOS system or any archbased system with End
 
 As the installer packages and needed dependencies will get installed from EndeavourOS repository.
 
-general information: 
+General information: 
 
 https://endeavouros-team.github.io/EndeavourOS-Development/
 
@@ -93,7 +93,7 @@ tar -xvf 22.12.2.tar.gz
 cd "EndeavourOS-ISO-22.12.2"
 ./prepare.sh
 ```
-# Or use latest **unstable** debvelopment (git) by clone this repo:
+### Or use latest **unstable** debvelopment (git) by clone this repo:
 
 ```
 git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
