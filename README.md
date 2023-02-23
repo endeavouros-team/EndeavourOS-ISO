@@ -93,6 +93,13 @@ tar -xvf 22.12.2.tar.gz
 cd "EndeavourOS-ISO-22.12.2"
 ./prepare.sh
 ```
+# Or use latest **unstable** debvelopment (git) by clone this repo:
+
+```
+git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
+cd EndeavourOS-ISO
+./prepare.sh
+```
 
 ##### 2. Build
 
