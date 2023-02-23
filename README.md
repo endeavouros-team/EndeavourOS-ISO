@@ -35,7 +35,7 @@ Our journey wouldn't be made possible without the generosity of our [Open Collec
 ### Development source
 
 - [EndeavourOS-ISO source](https://github.com/endeavouros-team/EndeavourOS-ISO) (Live environment with XFCE4-Desktop)
-- [EndeavourOS-calamares](https://github.com/endeavouros-team/EndeavourOS-calamares) (installer framework)
+- [Calamares {EndeavourOS fork}](https://github.com/endeavouros-team/calamares) (installer framework)
 
 
 ### Base source
