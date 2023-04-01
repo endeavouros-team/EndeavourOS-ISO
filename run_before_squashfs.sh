@@ -28,7 +28,7 @@ cd "/root"
 # Init & Populate keys
 pacman-key --init
 pacman-key --populate archlinux endeavouros
-pacman -Sy
+pacman -Syy
 
 # Install liveuser skel (in case of conflicts use overwrite)
 pacman -U --noconfirm --overwrite "/etc/skel/.bash_profile","/etc/skel/.bashrc" -- "/root/endeavouros-skel-liveuser/"*".pkg.tar.zst"
@@ -86,11 +86,12 @@ mv "/usr/lib/modules-load.d/nvidia-utils.conf" "/etc/calamares/files/nv-modules-
 
 # Get extra drivers!
 mkdir "/opt/extra-drivers"
-sudo pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
+pacman -Syy
+pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
 
 # install packages
 mkdir -p "/usr/share/packages"
-sudo pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut refind os-prober xf86-video-intel
+pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut refind os-prober xf86-video-intel
 
 # Clean pacman log and package cache
 rm "/var/log/pacman.log"
@@ -99,6 +100,15 @@ rm -rf "/var/cache/pacman/pkg/"
 
 #calamares BUG https://github.com/calamares/calamares/issues/2075
 rm -rf /home/build
+
+#create package versions file
+pacman -Qs | grep "/calamares " | cut -c7- > iso_package_versions
+pacman -Qs | grep "/firefox " | cut -c7- >> iso_package_versions
+pacman -Qs | grep "/linux " | cut -c7- >> iso_package_versions
+pacman -Qs | grep "/mesa " | cut -c7- >> iso_package_versions
+pacman -Qs | grep "/xorg-server " | cut -c7- >> iso_package_versions
+pacman -Qs | grep "/nvidia-dkms " | cut -c7- >> iso_package_versions
+mv "iso_package_versions" "/home/liveuser/"
 
 echo "############################"
 echo "# end chrooted commandlist #"
