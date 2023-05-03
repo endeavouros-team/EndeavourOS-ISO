@@ -17,7 +17,6 @@ package() {
     # Find all scripts
     readarray -d '' scripts < <(find "${pkgdir}/etc/skel" -type f \( -iname "*.sh" -o -iname "*.bash" \) -print0)
     scripts+=(
-        "${pkgdir}/etc/skel/.xprofile"
         "${pkgdir}/etc/skel/.xinitrc"
     )
 

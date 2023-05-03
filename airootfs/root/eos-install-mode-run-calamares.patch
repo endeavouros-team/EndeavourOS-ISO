@@ -1,0 +1,11 @@
+--- eos-install-mode-run-calamares	2023-02-12 15:14:59.606426582 +0100
++++ eos-install-mode-run-calamares-patched	2023-02-12 14:53:52.166792912 +0100
+@@ -124,7 +124,7 @@
+ 
+ ### Starts calamares and runs it in the background. ###
+ Calamares_Start() {
+-    pkexec calamares -style kvantum -D8 >> $log &
++    pkexec calamares -D8 >> $log &
+ }
+ 
+ ### Dialog that asks for the online or offline edition. ###

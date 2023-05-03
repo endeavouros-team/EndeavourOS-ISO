@@ -48,9 +48,9 @@ useradd -m -p "" -g 'liveuser' -G 'sys,rfkill,wheel,uucp,nopasswdlogin,adm,tty' 
 pacman -Rns --noconfirm -- "endeavouros-skel-liveuser"
 rm -rf "/root/endeavouros-skel-liveuser"
 
-# Root qt style for Calamares
-mkdir "/root/.config"
-cp -Rf "/home/liveuser/.config/"{"Kvantum","qt5ct"} "/root/.config/"
+# patching calamares starter to not use kvantum
+patch /usr/bin/eos-install-mode-run-calamares /root/eos-install-mode-run-calamares.patch
+patch /etc/calamares/scripts/chrooted_cleaner_script.sh /root/chrooted_cleaner_script.patch
 
 # Add builddate to motd:
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
@@ -70,10 +70,6 @@ rm -rf "/root/packages/"
 mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
 mv "/root/livewall.png" "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png"
 chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
-#test to use the new xfce4-desktop.xml file
-#rm -rf "/usr/share/backgrounds/xfce/xfce-verticals.png"
-#ln -s "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png" "/usr/share/backgrounds/xfce/xfce-verticals.png"
-
 
 # TEMPORARY CUSTOM FIXES
 

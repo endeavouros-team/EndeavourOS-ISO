@@ -144,7 +144,7 @@ tldr
 unrar
 unzip
 wget
-xdg-user-dirs-gtk
+xdg-user-dirs
 xdg-utils
 xz
 
@@ -179,7 +179,6 @@ xl2tpd
 ## Bluetooth
 bluez
 bluez-utils
-blueman
 
 ## Firewall
 firewalld
@@ -192,6 +191,7 @@ python-capng
 arch-install-scripts
 memtest86+
 mkinitcpio-archiso
+mkinitcpio-nfs-utils
 pv
 syslinux
 
@@ -199,53 +199,49 @@ syslinux
 clonezilla
 gpart
 gparted
-grsync
 hdparm
 
 # DESKTOP
 
-## Display manager
-accountsservice
-lightdm-slick-greeter
-eos-lightdm-slick-theme
-
 ## Desktop environment
-libwnck3
-network-manager-applet
-thunar-archive-plugin
-thunar-media-tags-plugin
-xfce4
-xfce4-battery-plugin
-xfce4-datetime-plugin
-xfce4-mount-plugin
-xfce4-netload-plugin
-xfce4-notifyd
-xfce4-pulseaudio-plugin
-xfce4-screensaver
-xfce4-screenshooter
-xfce4-taskmanager
-xfce4-wavelan-plugin
-xfce4-weather-plugin
-xfce4-whiskermenu-plugin
-xfce4-xkb-plugin
+ark
+audiocd-kio
+bluedevil
+breeze-gtk
+dolphin
+eos-plasma-sddm-config
+eos-settings-plasma
+gwenview
+kdeconnect
+kde-gtk-config
+khotkeys
+kinfocenter
+kinit
+kio-fuse
+konsole
+kscreen
+kwallet-pam
+okular
+plasma-desktop
+plasma-disks
+plasma-nm
+plasma-pa
+powerdevil
+sddm-kcm
+solid
+spectacle
+xsettingsd
 
 ## Editor
-xed
+kate
 
 ## Archive
 file-roller
-
-## Image viewer
-ristretto
-
-## Video player
-parole
 
 ## Browser
 firefox
 
 ## System
-galculator
 meld
 neofetch
 
@@ -263,15 +259,12 @@ ttf-opensans
 # ENDEAVOUROS REPO
 
 ## General
-arc-gtk-theme-eos
 endeavouros-theming
-endeavouros-xfce4-terminal-colors
 eos-apps-info
 eos-hooks
 eos-log-tool
 eos-packagelist
 eos-quickstart
-eos-qogir-icons
 eos-rankmirrors
 eos-update-notifier
 nvidia-inst
@@ -283,8 +276,6 @@ yay
 ## Calamares EndeavourOS
 calamares
 ckbcomp
-kvantum
-qt5ct
 
 # VM SUPPORT
 
