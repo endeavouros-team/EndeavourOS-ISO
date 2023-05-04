@@ -5,7 +5,7 @@
  ### Starts calamares and runs it in the background. ###
  Calamares_Start() {
 -    pkexec calamares -style kvantum -D8 >> $log &
-+    pkexec calamares -D8 >> $log &
++    kdesu -c "calamares -D8" >> $log &
  }
  
  ### Dialog that asks for the online or offline edition. ###

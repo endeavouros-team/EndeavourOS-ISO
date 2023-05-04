@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=EndeavourOS log tool
+Comment=Log tool to send selected system logs to the internet
+Comment[fi]=Jaa valitsemasi järjestelmälokit internetiin muiden nähtäväksi
+Exec=/usr/bin/eos-log-tool
+Icon=utilities-log-viewer.svg
+Hidden=false
+X-GNOME-Autostart-enabled=true
+X-KDE-autostart-after=panel
+Categories=System

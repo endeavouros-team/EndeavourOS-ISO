@@ -48,9 +48,8 @@ useradd -m -p "" -g 'liveuser' -G 'sys,rfkill,wheel,uucp,nopasswdlogin,adm,tty' 
 pacman -Rns --noconfirm -- "endeavouros-skel-liveuser"
 rm -rf "/root/endeavouros-skel-liveuser"
 
-# patching calamares starter to not use kvantum
-patch /usr/bin/eos-install-mode-run-calamares /root/eos-install-mode-run-calamares.patch
-patch /etc/calamares/scripts/chrooted_cleaner_script.sh /root/chrooted_cleaner_script.patch
+# setup theming for root user
+cp -a "/root/root-theme" "/root/.config"
 
 # Add builddate to motd:
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
@@ -65,6 +64,12 @@ systemctl enable intel.service
 # Install locally builded packages on ISO (place packages under airootfs/root/packages)
 pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
+
+# patching calamares starter to not use kvantum
+patch /usr/bin/eos-install-mode-run-calamares /root/eos-install-mode-run-calamares.patch
+patch /etc/calamares/scripts/chrooted_cleaner_script.sh /root/chrooted_cleaner_script.patch
+rm "/root/chrooted_cleaner_script.patch"
+rm "/root/eos-install-mode-run-calamares.patch"
 
 # Set wallpaper for live-session and original for installed system
 mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
