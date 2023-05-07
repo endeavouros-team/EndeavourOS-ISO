@@ -1,9 +1,0 @@
-powersettings handling:
-
-qdbus org.kde.kded /kded loadedModules | grep -q powerdevil 
-
-qdbus org.kde.kded /kded unloadModule powerdevil
-
-xset dpms 360 480 480
-
-qdbus org.kde.kded /kded loadModule powerdevil
