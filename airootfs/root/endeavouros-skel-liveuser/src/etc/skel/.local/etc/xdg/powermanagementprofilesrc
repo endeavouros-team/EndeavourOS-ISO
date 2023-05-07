@@ -4,15 +4,15 @@ icon=battery-charging
 [AC][DimDisplay]
 idleTime=300000
 
-[Activities][29fc353f-ba6a-4828-b6d5-e8085abc553f]
+[Activities]
 mode=SpecialBehavior
 
-[Activities][29fc353f-ba6a-4828-b6d5-e8085abc553f][SpecialBehavior]
+[Activities][SpecialBehavior]
 noScreenManagement=true
 noSuspend=true
 performAction=false
 
-[Activities][29fc353f-ba6a-4828-b6d5-e8085abc553f][SpecialBehavior][ActionConfig]
+[Activities][SpecialBehavior][ActionConfig]
 idleTime=60000
 suspendType=1
 
