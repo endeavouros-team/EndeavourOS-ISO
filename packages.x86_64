@@ -16,6 +16,7 @@ inetutils
 less
 linux
 linux-firmware
+linux-firmware-marvell
 linux-headers
 logrotate
 lsb-release

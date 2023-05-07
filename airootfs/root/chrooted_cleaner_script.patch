@@ -1,21 +1,19 @@
---- chrooted_cleaner_script.sh	2023-02-12 14:04:38.011281202 +0100
-+++ chrooted_cleaner_script_patched.sh	2023-02-12 14:48:24.839686841 +0100
+--- chrooted_cleaner_script.sh
++++ chrooted_cleaner_script.sh.patched
 @@ -204,7 +204,6 @@
          clonezilla
          gpart
          gparted
 -        grsync
          hdparm
- 
+
          # ENDEAVOUROS REPO
-@@ -214,10 +213,7 @@
- 
+@@ -215,8 +214,6 @@
          ## Calamares EndeavourOS
-         calamares
--	calamares-git
+         $(pacman -Qq | grep calamares)        # finds calamares related packages
          ckbcomp
 -        kvantum
 -        qt5ct
- 
+
          # arm qemu dependency
          qemu-arm-aarch64-static-bin
