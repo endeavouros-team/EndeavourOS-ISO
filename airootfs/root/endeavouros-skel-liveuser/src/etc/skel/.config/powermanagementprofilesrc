@@ -4,6 +4,16 @@ icon=battery-charging
 [AC][DimDisplay]
 idleTime=300000
 
+[AC][HandleButtonEvents]
+lidAction=1
+powerButtonAction=0
+powerDownAction=16
+
+[AC][WirelessPowerSaving]
+btOption=2
+wifiOption=2
+wwanOption=1
+
 [Activities]
 mode=SpecialBehavior
 

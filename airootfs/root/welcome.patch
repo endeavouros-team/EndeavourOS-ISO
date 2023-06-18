@@ -1,0 +1,2 @@
+296d295
+<       --field=" $(ltr install_community)!$WELCOME_ICON_INSTALL_COMMUNITY!$(ltr install_community_tip)":fbtn "eos-install-mode-run-calamares '$lang' community"

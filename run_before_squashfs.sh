@@ -66,10 +66,16 @@ pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
 
 # patching calamares starter to not use kvantum
-patch /usr/bin/eos-install-mode-run-calamares /root/eos-install-mode-run-calamares.patch
-patch /etc/calamares/scripts/chrooted_cleaner_script.sh /root/chrooted_cleaner_script.patch
+patch "/usr/bin/eos-install-mode-run-calamares" "/root/eos-install-mode-run-calamares.patch"
+patch "/etc/calamares/scripts/chrooted_cleaner_script.sh" "/root/chrooted_cleaner_script.patch"
 rm "/root/chrooted_cleaner_script.patch"
 rm "/root/eos-install-mode-run-calamares.patch"
+
+# patching welcome to not show community editions
+patch "/usr/share/endeavouros/scripts/welcome" "/root/welcome.patch"
+patch "/usr/bin/arm-eos-welcome-installer" "/root/arm-eos-welcome-installer.patch"
+rm "/root/welcome.patch"
+rm "/root/arm-eos-welcome-installer.patch"
 
 # Set wallpaper for live-session and original for installed system
 mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"

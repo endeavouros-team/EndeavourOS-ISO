@@ -192,7 +192,7 @@ syslinux
 ## Live iso tools
 clonezilla
 gpart
-gparted
+partitionmanager
 hdparm
 
 # DESKTOP
@@ -205,6 +205,8 @@ breeze-gtk
 dolphin
 eos-plasma-sddm-config
 gwenview
+qt5-imageformats
+kimageformats
 kdeconnect
 kde-gtk-config
 khotkeys
