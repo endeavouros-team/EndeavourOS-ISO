@@ -269,8 +269,9 @@ welcome
 yay
 
 ## Calamares EndeavourOS
-#calamares
+calamares-git
 ckbcomp
+os-prober
 
 # VM SUPPORT
 

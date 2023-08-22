@@ -43,6 +43,8 @@ usermod -s /usr/bin/bash root
 
 # Create liveuser
 useradd -m -p "" -g 'liveuser' -G 'sys,rfkill,wheel,uucp,nopasswdlogin,adm,tty' -s /bin/bash liveuser
+cp "/root/liveuser.png" "/var/lib/AccountsService/icons/liveuser"
+rm "/root/liveuser.png"
 
 # Remove liveuser skel to then install user skel
 pacman -Rns --noconfirm -- "endeavouros-skel-liveuser"
@@ -50,6 +52,7 @@ rm -rf "/root/endeavouros-skel-liveuser"
 
 # setup theming for root user
 cp -a "/root/root-theme" "/root/.config"
+rm -R "/root/root-theme"
 
 # Add builddate to motd:
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
@@ -71,11 +74,13 @@ patch "/etc/calamares/scripts/chrooted_cleaner_script.sh" "/root/chrooted_cleane
 rm "/root/chrooted_cleaner_script.patch"
 rm "/root/eos-install-mode-run-calamares.patch"
 
-# patching welcome to not show community editions
+# patching welcome to not show community editions and icon fix test
 patch "/usr/share/endeavouros/scripts/welcome" "/root/welcome.patch"
-patch "/usr/bin/arm-eos-welcome-installer" "/root/arm-eos-welcome-installer.patch"
 rm "/root/welcome.patch"
+patch "/usr/bin/arm-eos-welcome-installer" "/root/arm-eos-welcome-installer.patch"
 rm "/root/arm-eos-welcome-installer.patch"
+cp "/root/calamares.svg" "/usr/share/icons/Qogir/scalable/apps/calamares.svg"
+rm "/root/calamares.svg"
 
 # Set wallpaper for live-session and original for installed system
 mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"

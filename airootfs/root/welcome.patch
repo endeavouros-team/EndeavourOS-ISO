@@ -1,2 +1,20 @@
-296d295
-<       --field=" $(ltr install_community)!$WELCOME_ICON_INSTALL_COMMUNITY!$(ltr install_community_tip)":fbtn "eos-install-mode-run-calamares '$lang' community"
+50a51,52
+> export ICO_BLUETOOTH=/usr/share/icons/Qogir/scalable/devices/bluetooth.svg
+> 
+295,296c297
+<       --field=" $(ltr ins_start)!$ICO_INSTALL!$(ltr ins_starttip)":fbtn                   "eos-install-mode-run-calamares '$lang' ''"
+<       --field=" $(ltr install_community)!$ICO_INSTALL!$(ltr install_community_tip)":fbtn "eos-install-mode-run-calamares '$lang' community"
+---
+>       --field=" $(ltr ins_start)!$ICO_CALAMARES!$(ltr ins_starttip)":fbtn                   "eos-install-mode-run-calamares '$lang' ''"
+304c305
+<       --field=" $(ltr ins_pm)!$ICO_GPARTED!$(ltr ins_pmtip)":fbtn                  'gparted'
+---
+>       --field=" $(ltr ins_pm)!$ICO_GPARTED!$(ltr ins_pmtip)":fbtn                  'partitionmanager'
+309c310
+<           --field=" $(ltr ins_blue_notes)!$ICO_TIPS!$(ltr ins_blue_notes_tip)":fbtn    "$INSTALLER_BROWSER '$btdoc'"
+---
+>           --field=" $(ltr ins_blue_notes)!$ICO_BLUETOOTH!$(ltr ins_blue_notes_tip)":fbtn    "$INSTALLER_BROWSER '$btdoc'"
+670c671
+<       --field=" $(ltr after_install_bt)!$ICO_INFO_WEB!$(ltr after_install_bttip)":fbtn     "WelcomeBrowser 'https://discovery.endeavouros.com/bluetooth/bluetooth/2021/03'"  # 'https://discovery.endeavouros.com/bluetooth'
+---
+>       --field=" $(ltr after_install_bt)!$ICO_BLUETOOTH!$(ltr after_install_bttip)":fbtn     "WelcomeBrowser 'https://discovery.endeavouros.com/bluetooth/bluetooth/2021/03'"  # 'https://discovery.endeavouros.com/bluetooth'
