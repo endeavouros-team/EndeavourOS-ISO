@@ -1,4 +1,0 @@
-37c37
-<             xfce4-terminal --maximize -e "sudo ./image-install-calamares.sh"
----
->             konsole --fullscreen -e "sudo ./image-install-calamares.sh"
