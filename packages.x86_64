@@ -192,6 +192,7 @@ syslinux
 ## Live iso tools
 clonezilla
 gpart
+grsync
 partitionmanager
 hdparm
 
@@ -199,17 +200,19 @@ hdparm
 
 ## Desktop environment
 ark
-audiocd-kio
 bluedevil
 breeze-gtk
 dolphin
 eos-plasma-sddm-config
 gwenview
-qt5-imageformats
-kimageformats
+haruna
+kcalc
+kate
 kdeconnect
 kde-gtk-config
+kgamma5
 khotkeys
+kimageformats
 kinfocenter
 kinit
 kio-fuse
@@ -221,9 +224,10 @@ plasma-desktop
 plasma-disks
 plasma-nm
 plasma-pa
+plasma-systemmonitor
 powerdevil
+qt5-imageformats
 sddm-kcm
-solid
 spectacle
 xsettingsd
 
@@ -269,7 +273,7 @@ welcome
 yay
 
 ## Calamares EndeavourOS
-calamares-git
+#calamares-git
 ckbcomp
 os-prober
 
