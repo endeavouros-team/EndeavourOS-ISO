@@ -43,14 +43,16 @@ usermod -s /usr/bin/bash root
 
 # Create liveuser
 useradd -m -p "" -g 'liveuser' -G 'sys,rfkill,wheel,uucp,nopasswdlogin,adm,tty' -s /bin/bash liveuser
+cp "/root/liveuser.png" "/var/lib/AccountsService/icons/liveuser"
+rm "/root/liveuser.png"
 
 # Remove liveuser skel to then install user skel
 pacman -Rns --noconfirm -- "endeavouros-skel-liveuser"
 rm -rf "/root/endeavouros-skel-liveuser"
 
-# Root qt style for Calamares
-mkdir "/root/.config"
-cp -Rf "/home/liveuser/.config/"{"Kvantum","qt5ct"} "/root/.config/"
+# setup theming for root user
+cp -a "/root/root-theme" "/root/.config"
+rm -R "/root/root-theme"
 
 # Add builddate to motd:
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
@@ -66,14 +68,24 @@ systemctl enable intel.service
 pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
 
+# patching calamares starter to not use kvantum
+patch "/usr/bin/eos-install-mode-run-calamares" "/root/eos-install-mode-run-calamares.patch"
+patch "/etc/calamares/scripts/chrooted_cleaner_script.sh" "/root/chrooted_cleaner_script.patch"
+rm "/root/chrooted_cleaner_script.patch"
+rm "/root/eos-install-mode-run-calamares.patch"
+
+# patching welcome to not show community editions and icon fix test
+patch "/usr/share/endeavouros/scripts/welcome" "/root/welcome.patch"
+rm "/root/welcome.patch"
+patch "/usr/bin/arm-eos-welcome-installer" "/root/arm-eos-welcome-installer.patch"
+rm "/root/arm-eos-welcome-installer.patch"
+cp "/root/calamares.svg" "/usr/share/icons/Qogir/scalable/apps/calamares.svg"
+rm "/root/calamares.svg"
+
 # Set wallpaper for live-session and original for installed system
 mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
 mv "/root/livewall.png" "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png"
 chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
-#test to use the new xfce4-desktop.xml file
-#rm -rf "/usr/share/backgrounds/xfce/xfce-verticals.png"
-#ln -s "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png" "/usr/share/backgrounds/xfce/xfce-verticals.png"
-
 
 # TEMPORARY CUSTOM FIXES
 
@@ -91,7 +103,7 @@ pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
 
 # install packages
 mkdir -p "/usr/share/packages"
-pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut refind os-prober xf86-video-intel
+pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut os-prober xf86-video-intel
 
 # Clean pacman log and package cache
 rm "/var/log/pacman.log"

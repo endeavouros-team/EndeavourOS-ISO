@@ -1,2 +1,3 @@
 #!/bin/sh
-dbus-launch xfce4-session
+export DESKTOP_SESSION=plasma && 
+exec startplasma-x11

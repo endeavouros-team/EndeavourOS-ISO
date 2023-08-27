@@ -3,7 +3,7 @@
 pkgname='endeavouros-skel-liveuser'
 pkgver=1.0
 pkgrel=1
-pkgdesc='Liveuser specific skel setup for EndeavourOS'
+pkgdesc='Liveuser specific skel setup for KDE EndeavourOS'
 arch=('any')
 url='https://www.endeavouros.com'
 license=('GPL3')
@@ -17,7 +17,6 @@ package() {
     # Find all scripts
     readarray -d '' scripts < <(find "${pkgdir}/etc/skel" -type f \( -iname "*.sh" -o -iname "*.bash" \) -print0)
     scripts+=(
-        "${pkgdir}/etc/skel/.xprofile"
         "${pkgdir}/etc/skel/.xinitrc"
     )
 
