@@ -20,13 +20,12 @@ More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io
 
 ## Resources:
 
-<img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/Cassini/cassini_neo_livesession.png" alt="Installer LiveSession" width="600"/>
+<img src="https://raw.githubusercontent.com/endeavouros-team/screenshots/master/KDE-LiveSession.png" alt="Installer LiveSession" width="600"/>
 
 - https://endeavouros.com
 - [Getting help at the forum](https://forum.endeavouros.com)
 - [Bug report](https://forum.endeavouros.com/c/Arch-based-related-questions/bug-reports)
 - [Telegram help-chat](https://t.me/Endeavouros)
-- [Reddit news](https://www.reddit.com/r/EndeavourOS)
 - [Twitter news](https://twitter.com/OsEndeavour)
 
 Our journey wouldn't be made possible without the generosity of our [Open Collective community](https://opencollective.com/endeavouros)!
@@ -34,7 +33,7 @@ Our journey wouldn't be made possible without the generosity of our [Open Collec
 
 ### Development source
 
-- [EndeavourOS-ISO source](https://github.com/endeavouros-team/EndeavourOS-ISO) (Live environment with XFCE4-Desktop)
+- [EndeavourOS-ISO source](https://github.com/endeavouros-team/EndeavourOS-ISO) (Live environment with KDE-Desktop)
 - [Calamares {EndeavourOS fork}](https://github.com/endeavouros-team/calamares) (installer framework)
 
 
