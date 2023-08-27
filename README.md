@@ -65,7 +65,7 @@ General information:
 
 https://endeavouros-team.github.io/EndeavourOS-Development/
 
-And read the changelog before starting to know about latest changes:
+Read the changelog before starting to learn about latest changes:
 
 https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/CHANGELOG.md
 
@@ -74,18 +74,18 @@ https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/CHANGELOG.md
 ```
 sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
 ```
-Recommended to reboot after this changes.
+It is recommended to reboot after these changes.
 
 ### Build
 
 ##### 1. Prepare
 
-If you want the last release state to rebuild ISO you need to use specific tag tarball.
+If you want the last release state to rebuild the ISO, you need to use a specifically tagged tarball from here:
 https://github.com/endeavouros-team/EndeavourOS-ISO/tags
 
-If not you will use latest "unstable" development state.
+If not, it will default to using the latest "unstable" development state.
 
-use last stable release (exemple for 22.12.2 Cassini nova Release)
+example using latest **stable** release (22.12.2 Cassini nova Release)
 
 ```
 wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/22.12.2.tar.gz
@@ -93,7 +93,7 @@ tar -xvf 22.12.2.tar.gz
 cd "EndeavourOS-ISO-22.12.2"
 ./prepare.sh
 ```
-### Or use latest **unstable** debvelopment (git) by clone this repo:
+### Or use latest **unstable** development branch using by cloning this repo using git:
 
 ```
 git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
@@ -113,15 +113,15 @@ sudo ./mkarchiso -v "."
 sudo ./mkarchiso -v "." 2>&1 | tee "eosiso_$(date -u +'%Y.%m.%d-%H:%M').log"
 ~~~
 
-##### 3. The .iso appears in `out` directory
+##### 3. The .iso file appears in the `out` directory...
 
 
 ## Advanced
 
-To install locally builded packages on ISO put the packages inside directory:
+To install locally built packages on ISO, put the packages inside the following directory:
 
 ~~~
 airootfs/root/packages
 ~~~
 
-Packages will get installed and directory will be cleaned up after that.
+Packages will be installed and the directory will be cleaned up after that.
