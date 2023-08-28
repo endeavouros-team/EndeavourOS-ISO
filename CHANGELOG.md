@@ -1,9 +1,13 @@
 ## Changelog holding milestones and major changes to the code
 
 ---
+# Development start for Galileo Release (2023)
+* replacing xfce4 Live Session with KDE
+
 # Development starts for Cassini Release (September 2022)
 * changing format in modules to work with calamares 3.3 changes.
 * main branch is now the development branch it will include latest test and changes and is not for production. Use branch far the last release instead to reproduce current stable ISO.
+* adding systemd service to detect intel legacy GPUs and install xf86-video-intel in case for them.
 
 # For Artemis NOVA (September 2022)
 * using latest stabel 3.2 calamares version again 3.2.61 (locales are fixed)
