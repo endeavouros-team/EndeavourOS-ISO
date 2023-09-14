@@ -241,7 +241,6 @@ firefox
 
 ## System
 meld
-neofetch
 
 ## Fonts
 adobe-source-han-sans-cn-fonts
@@ -272,7 +271,7 @@ welcome
 yay
 
 ## Calamares EndeavourOS
-#calamares-git
+calamares
 ckbcomp
 os-prober
 
