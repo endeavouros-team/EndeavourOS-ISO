@@ -3,6 +3,5 @@
 #
 # Syntax: simple "KEY=VAL" pairs on separate lines
 #
-QT_QPA_PLATFORMTHEME=qt5ct
 BROWSER=firefox
 EDITOR=nano
