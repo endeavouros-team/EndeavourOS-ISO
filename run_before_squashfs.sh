@@ -59,10 +59,11 @@ cat "/usr/lib/endeavouros-release" >> "/etc/motd"
 echo "------------------" >> "/etc/motd"
 
 # Enable systemd services
-systemctl enable NetworkManager.service systemd-timesyncd.service bluetooth.service firewalld.service
-systemctl enable vboxservice.service vmtoolsd.service vmware-vmblock-fuse.service
+# --> now in airootfs/etc/systemd/system/multi-user.target.wants
+#systemctl enable NetworkManager.service systemd-timesyncd.service bluetooth.service firewalld.service
+#systemctl enable vboxservice.service vmtoolsd.service vmware-vmblock-fuse.service
+#systemctl enable intel.service
 systemctl set-default multi-user.target
-systemctl enable intel.service
 
 # Install locally builded packages on ISO (place packages under airootfs/root/packages)
 pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"

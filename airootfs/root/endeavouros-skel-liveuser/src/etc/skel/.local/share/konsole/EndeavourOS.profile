@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=Breeze
+ColorScheme=eos-live
 
 [General]
 Name=EndeavourOS

@@ -1,100 +1,100 @@
 [Background]
-Color=30,19,40
+Color=0,0,54
 
 [BackgroundFaint]
-Color=49,54,59
+Color=0,0,0
 
 [BackgroundIntense]
 Color=0,0,0
 
 [Color0]
-Color=35,38,39
+Color=0,0,0
 
 [Color0Faint]
-Color=49,54,59
+Color=192,192,192
 
 [Color0Intense]
-Color=127,140,141
+Color=104,104,104
 
 [Color1]
-Color=237,21,21
+Color=250,0,0
 
 [Color1Faint]
-Color=120,50,40
+Color=250,0,0
 
 [Color1Intense]
-Color=192,57,43
+Color=75,93,255
 
 [Color2]
-Color=0,85,255
+Color=52,127,178
 
 [Color2Faint]
-Color=23,162,98
+Color=142,224,142
 
 [Color2Intense]
-Color=28,220,154
+Color=84,255,84
 
 [Color3]
-Color=246,116,0
+Color=178,104,24
 
 [Color3Faint]
-Color=182,86,25
+Color=224,224,142
 
 [Color3Intense]
-Color=253,188,75
+Color=255,255,84
 
 [Color4]
-Color=29,153,243
+Color=150,142,152
 
 [Color4Faint]
-Color=27,102,143
+Color=125,152,35
 
 [Color4Intense]
-Color=61,174,233
+Color=84,84,255
 
 [Color5]
-Color=155,89,182
+Color=225,30,225
 
 [Color5Faint]
-Color=97,74,115
+Color=175,29,175
 
 [Color5Intense]
-Color=142,68,173
+Color=255,84,255
 
 [Color6]
-Color=26,188,156
+Color=0,134,223
 
 [Color6Faint]
-Color=24,108,96
+Color=0,98,173
 
 [Color6Intense]
-Color=22,160,133
+Color=0,68,255
 
 [Color7]
-Color=252,252,252
+Color=255,255,255
 
 [Color7Faint]
-Color=99,104,109
+Color=200,200,200
 
 [Color7Intense]
-Color=255,255,255
+Color=50,50,50
 
 [Foreground]
-Color=252,252,252
+Color=255,255,255
 
 [ForegroundFaint]
-Color=239,240,241
+Color=0,90,195
 
 [ForegroundIntense]
-Color=255,255,255
+Color=23,74,240
 
 [General]
 Anchor=0.5,0.5
 Blur=false
 ColorRandomization=false
-Description=Breeze
+Description=eos-live
 FillStyle=Tile
-Opacity=0.9
+Opacity=0.88
 Wallpaper=
 WallpaperFlipType=NoFlip
 WallpaperOpacity=1
