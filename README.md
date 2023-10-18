@@ -87,7 +87,7 @@ If not, it will default to using the latest "unstable" development state.
 example using latest **stable** release (23.10.1 Galileo KDE Release)
 
 ```
-wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/22.12.2.tar.gz
+wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/23.10.1.tar.gz
 tar -xvf 23.10.1.tar.gz
 cd "EndeavourOS-ISO-23.10.1"
 ./prepare.sh
@@ -99,6 +99,25 @@ git clone https://github.com/endeavouros-team/EndeavourOS-ISO.git
 cd EndeavourOS-ISO
 ./prepare.sh
 ```
+### In case you want to build pre Galileo Releases:
+
+If  that you can use older tags like:
+```
+wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/22.12.2.tar.gz
+tar -xvf 22.12.2.tar.gz
+cd "EndeavourOS-ISO-22.12.2"
+./prepare.sh
+```
+But caused by the change to KDE these iso will use XFCE4 LiveSession and you will need to build calamares manually:
+
+using this PKGBUILD: 
+https://raw.githubusercontent.com/endeavouros-team/PKGBUILDS/18e3f580abb68486091492168956619bb0f32abe/calamares/PKGBUILD
+
+And put the resulting package into ISO structure to get installed withnbISO build procedure:
+
+`EndeavourOS-ISO/airootfs/root/packages/`
+
+To get this working you need to remove `calamares` from `EndeavourOS-ISO/packages.x86_64` befor estarting ISO build.
 
 ##### 2. Build
 
