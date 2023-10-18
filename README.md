@@ -84,12 +84,12 @@ https://github.com/endeavouros-team/EndeavourOS-ISO/tags
 
 If not, it will default to using the latest "unstable" development state.
 
-example using latest **stable** release (22.12.2 Cassini nova Release)
+example using latest **stable** release (23.10.1 Galileo KDE Release)
 
 ```
 wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/22.12.2.tar.gz
-tar -xvf 22.12.2.tar.gz
-cd "EndeavourOS-ISO-22.12.2"
+tar -xvf 23.10.1.tar.gz
+cd "EndeavourOS-ISO-23.10.1"
 ./prepare.sh
 ```
 ### Or use latest **unstable** development branch using by cloning this repo using git:
