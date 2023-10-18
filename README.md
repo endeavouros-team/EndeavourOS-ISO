@@ -113,11 +113,11 @@ But caused by the change to KDE these iso will use XFCE4 LiveSession and you wil
 using this PKGBUILD: 
 https://raw.githubusercontent.com/endeavouros-team/PKGBUILDS/18e3f580abb68486091492168956619bb0f32abe/calamares/PKGBUILD
 
-And put the resulting package into ISO structure to get installed withnbISO build procedure:
+And put the resulting package into ISO structure to get installed with the ISO build procedure:
 
-`EndeavourOS-ISO/airootfs/root/packages/`
+`airootfs/root/packages/`
 
-To get this working you need to remove `calamares` from `EndeavourOS-ISO/packages.x86_64` befor estarting ISO build.
+To get this working you need to remove `calamares` from `packages.x86_64` before starting ISO build.
 
 ##### 2. Build
 
