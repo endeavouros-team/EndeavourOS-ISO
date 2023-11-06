@@ -245,11 +245,11 @@ firefox
 meld
 
 ## Fonts
-adobe-source-han-sans-cn-fonts
-adobe-source-han-sans-jp-fonts
-adobe-source-han-sans-kr-fonts
 cantarell-fonts
 noto-fonts
+noto-fonts-emoji
+noto-fonts-cjk
+noto-fonts-extra
 ttf-bitstream-vera
 ttf-dejavu
 ttf-liberation
