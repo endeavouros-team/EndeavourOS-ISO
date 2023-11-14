@@ -1,0 +1,21 @@
+[Default Applications]
+video/dv=org.kde.haruna.desktop;
+video/mp4=org.kde.haruna.desktop;
+video/x-matroska=org.kde.haruna.desktop;
+video/vnd.avi=org.kde.haruna.desktop;
+video/3gpp=org.kde.haruna.desktop;
+video/AV1=org.kde.haruna.desktop;
+video/H264=org.kde.haruna.desktop;
+video/H265=org.kde.haruna.desktop;
+video/H266=org.kde.haruna.desktop;
+video/matroska=org.kde.haruna.desktop;
+video/matroska-3d=org.kde.haruna.desktop;
+video/mp4=org.kde.haruna.desktop;
+video/MPV=org.kde.haruna.desktop;
+video/mpeg=org.kde.haruna.desktop;
+video/mpeg4-generic=org.kde.haruna.desktop;
+video/ogg=org.kde.haruna.desktop;
+video/quicktime=org.kde.haruna.desktop;
+video/VP8=org.kde.haruna.desktop;
+video/VP9=org.kde.haruna.desktop;
+video/x-ms-wmv=org.kde.haruna.desktop;
