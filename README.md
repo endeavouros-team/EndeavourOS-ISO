@@ -84,10 +84,11 @@ https://github.com/endeavouros-team/EndeavourOS-ISO/tags
 
 If not, it will default to using the latest "unstable" development state.
 
-example using latest **stable** release (23.11.1.2 Galileo KDE Release)
+example using latest **stable** release (23.11.1.2 Galileo KDE Release) 
+**Warning:** do **not** use the zip tarball, in case this causes issues with symlinks.
 
 ```
-wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/23.10.1.tar.gz
+wget https://github.com/endeavouros-team/EndeavourOS-ISO/archive/refs/tags/23.11.1.2.tar.gz
 tar -xvf 23.11.1.2.tar.gz
 cd "EndeavourOS-ISO-23.11.1.2"
 ./prepare.sh
