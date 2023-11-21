@@ -110,7 +110,7 @@ tar -xvf 22.12.2.tar.gz
 cd "EndeavourOS-ISO-22.12.2"
 ./prepare.sh
 ```
-But caused by the change to KDE these iso will use XFCE4 LiveSession and you will need to build calamares manually:
+But caused by the change to KDE these iso will use XFCE4 LiveSession and you will need to build calamares manually to get old style theming that is setup for the XFCE4 LiveSession:
 
 using this PKGBUILD: 
 https://raw.githubusercontent.com/endeavouros-team/PKGBUILDS/18e3f580abb68486091492168956619bb0f32abe/calamares/PKGBUILD
