@@ -55,6 +55,6 @@ Remove legacy code from `run_before_squashfs.sh`
 
 New merged repository structure (october 2021) by joekamprad. 
 Now live-user-desktop-settings are included under /airootfs/root/liveuser-desktop-settings
-First step on clean up the natrurally grown ISO structure..
+First step on clean up the naturally grown ISO structure..
 
 Adding [mkarchiso-changes.md](https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/mkarchiso-changes.md) to keep track of changes on the mkarchiso script for updating it to the latest version from time to time.
