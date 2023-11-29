@@ -71,7 +71,7 @@ https://github.com/endeavouros-team/EndeavourOS-ISO/blob/main/CHANGELOG.md
 ### Install build dependencies
 
 ```
-sudo pacman -S archiso mkinitcpio-archiso git squashfs-tools --needed
+sudo pacman -S archiso git squashfs-tools --needed
 ```
 It is recommended to reboot after these changes.
 
