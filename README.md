@@ -1,6 +1,6 @@
 # EndeavourOS-ISO
 
-[![Maintenance](https://img.shields.io/maintenance/yes/2023.svg)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2024.svg)]()
 
 **main** branch is development latest (unstable)
 
