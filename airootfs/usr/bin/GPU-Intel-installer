@@ -9,7 +9,7 @@
 
 DIE() {
     echo "$progname: error: $1" >&2
-    exit 0
+    exit 1
 }
 
 IsIntelGeneration_1_to_3() {
