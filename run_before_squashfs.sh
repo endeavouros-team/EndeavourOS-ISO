@@ -30,6 +30,9 @@ pacman-key --init
 pacman-key --populate archlinux endeavouros
 pacman -Syy
 
+# backup bash_profile for offline installs
+cp "/etc/skel/bash_profile" "/tmp/"
+
 # Install liveuser skel (in case of conflicts use overwrite)
 pacman -U --noconfirm --overwrite "/etc/skel/.bash_profile","/etc/skel/.bashrc" -- "/root/endeavouros-skel-liveuser/"*".pkg.tar.zst"
 
@@ -46,7 +49,7 @@ useradd -m -p "" -g 'liveuser' -G 'sys,rfkill,wheel,uucp,nopasswdlogin,adm,tty' 
 cp "/root/liveuser.png" "/var/lib/AccountsService/icons/liveuser"
 rm "/root/liveuser.png"
 
-# Remove liveuser skel to then install user skel
+# Remove liveuser skel to clean for target skel
 pacman -Rns --noconfirm -- "endeavouros-skel-liveuser"
 rm -rf "/root/endeavouros-skel-liveuser"
 
@@ -79,6 +82,9 @@ chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
 # Fix for getting bash configs installed
 # reviewing the way we implement custom bashrc (9.1.2023)
 # cp -af "/home/liveuser/bashrc" "/etc/skel/"
+
+# place bash_profile in calamares/files (offline)
+cp "/tmp/bash_profile" "/etc/calamares/files/"
 
 # Move blacklisting nouveau out of ISO (copy back to target for offline installs)
 mv "/usr/lib/modprobe.d/nvidia-utils.conf" "/etc/calamares/files/nv-modprobe"
