@@ -77,7 +77,7 @@ chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
 # TEMPORARY CUSTOM FIXES
 
 # Fix for getting bash configs installed
-cp -af "/home/liveuser/"{".bashrc",".bash_profile"} "/etc/skel/"
+cp -af "/home/liveuser/bashrc" "/etc/skel/"
 
 # Move blacklisting nouveau out of ISO (copy back to target for offline installs)
 mv "/usr/lib/modprobe.d/nvidia-utils.conf" "/etc/calamares/files/nv-modprobe"
