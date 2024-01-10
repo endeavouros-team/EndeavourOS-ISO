@@ -62,6 +62,10 @@ echo "------------------" >> "/etc/motd"
 pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
 
+# Fix for getting target bash configs installed
+# implement custom .bashrc (9.1.2023)
+cp -af "/etc/calamares/files/"{".bashrc",".bash_profile"} "/etc/skel/"
+
 # Enable systemd services
 # --> now in airootfs/etc/systemd/system/multi-user.target.wants
 #systemctl enable NetworkManager.service systemd-timesyncd.service bluetooth.service firewalld.service
@@ -75,10 +79,6 @@ mv "/root/livewall.png" "/usr/share/endeavouros/backgrounds/endeavouros-wallpape
 chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
 
 # TEMPORARY CUSTOM FIXES
-
-# Fix for getting bash configs installed
-# reviewing the way we implement custom bashrc (9.1.2023)
-# cp -af "/home/liveuser/bashrc" "/etc/skel/"
 
 # Move blacklisting nouveau out of ISO (copy back to target for offline installs)
 mv "/usr/lib/modprobe.d/nvidia-utils.conf" "/etc/calamares/files/nv-modprobe"
