@@ -55,6 +55,9 @@ Main() {
                     echo "==> $progname: found Intel graphics device with id $id, installing package $pkg"
                     local pkgs=(/usr/share/packages/{$pkg,libxvmc}-*.pkg.tar.zst)
                     sudo pacman -U --noconfirm "${pkgs[@]}"
+                    echo "==> disable compositor for legacy intel in KDE live session"
+                    mv /home/liveuser/.config/intel-kwinrc /home/liveuser/kwinrc
+                    chown liveuser:liveuser /home/liveuser/kwinrc
                     return 0
                 fi
             fi
