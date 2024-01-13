@@ -56,8 +56,8 @@ Main() {
                     local pkgs=(/usr/share/packages/{$pkg,libxvmc}-*.pkg.tar.zst)
                     sudo pacman -U --noconfirm "${pkgs[@]}"
                     echo "==> disable compositor for legacy intel in KDE live session"
-                    mv /home/liveuser/.config/intel-kwinrc /home/liveuser/kwinrc
-                    chown liveuser:liveuser /home/liveuser/kwinrc
+                    mv /home/liveuser/.config/intel-kwinrc /home/liveuser/.config/kwinrc
+                    chown liveuser:liveuser /home/liveuser/.config/kwinrc
                     return 0
                 fi
             fi
