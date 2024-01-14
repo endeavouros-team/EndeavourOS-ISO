@@ -89,7 +89,7 @@ mkdir "/opt/extra-drivers"
 pacman -Syy
 pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
 
-# install packages
+# get needed packages for offline installs
 mkdir -p "/usr/share/packages"
 pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut os-prober xf86-video-intel
 
