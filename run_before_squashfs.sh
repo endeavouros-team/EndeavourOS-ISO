@@ -30,6 +30,10 @@ pacman-key --init
 pacman-key --populate archlinux endeavouros
 pacman -Syy
 
+# backup bas configs from skel to replace after liveuser creation
+mkdir -p "/root/filebackups/"
+cp -af "/etc/skel/"{".bashrc",".bash_profile"} "/root/filebackups/"
+
 # Install liveuser skel (in case of conflicts use overwrite)
 pacman -U --noconfirm --overwrite "/etc/skel/.bash_profile","/etc/skel/.bashrc" -- "/root/endeavouros-skel-liveuser/"*".pkg.tar.zst"
 
@@ -62,10 +66,6 @@ echo "------------------" >> "/etc/motd"
 pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
 
-# Fix for getting target bash configs installed
-# implement custom .bashrc (9.1.2023)
-cp -af "/etc/calamares/files/"{".bashrc",".bash_profile"} "/etc/skel/"
-
 # Enable systemd services
 # --> now in airootfs/etc/systemd/system/multi-user.target.wants
 #systemctl enable NetworkManager.service systemd-timesyncd.service bluetooth.service firewalld.service
@@ -78,13 +78,16 @@ mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
 mv "/root/livewall.png" "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png"
 chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
 
-# TEMPORARY CUSTOM FIXES
+# CUSTOM FIXES
+
+# install bash configs back into /etc/skel for offline install target
+cp -af "/root/filebackups/"{".bashrc",".bash_profile"} "/etc/skel/"
 
 # Move blacklisting nouveau out of ISO (copy back to target for offline installs)
 mv "/usr/lib/modprobe.d/nvidia-utils.conf" "/etc/calamares/files/nv-modprobe"
 mv "/usr/lib/modules-load.d/nvidia-utils.conf" "/etc/calamares/files/nv-modules-load"
 
-# Get extra drivers!
+# Get extra drivers
 mkdir "/opt/extra-drivers"
 pacman -Syy
 pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
@@ -99,7 +102,7 @@ rm "/var/log/pacman.log"
 rm -rf "/var/cache/pacman/pkg/"
 
 #calamares BUG https://github.com/calamares/calamares/issues/2075
-rm -rf /home/build
+#rm -rf /home/build
 
 #create package versions file
 pacman -Qs | grep "/calamares " | cut -c7- > iso_package_versions
