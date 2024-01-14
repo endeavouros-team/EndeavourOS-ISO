@@ -22,7 +22,6 @@
 #   - etc.
 #
 # Example commands:
-#
 #     pacman -S --noconfirm --needed gufw geany chromium
 #     pacman -Rsn --noconfirm xed
 #     systemctl enable ufw
@@ -43,25 +42,8 @@
 #    Then you may write files under folder
 #        /home/$username
 #
-# For ISOs released before year 2022:
-#    Find your new username with command
-#        username=$(cat /tmp/new_username.txt)
-#
-# New installer feature at 2023-Feb-02:
-#    To help customizing calamares on the ISO, user_commands.bash will be called
-#    (as root) with 2 parameters:
-#        --iso-config
-#        "install_mode"     (one of: online, offline, community)
-#    before starting the calamares installer.
-#    For example:
-#        bash ~/user_commands.bash --iso-config online
-#
 #----------------------------------------------------------------------------------
-# Full example (to try it, remove the first '#' from the lines below):
-#
-# #!/bin/bash
-#
-# # Note: needs ISO since year 2022
+# Full but artificial example (to try it, remove the first '#' from the lines below):
 #
 # username="$1"
 # echo "# Hello world!" >> /home/$username/.bashrc
