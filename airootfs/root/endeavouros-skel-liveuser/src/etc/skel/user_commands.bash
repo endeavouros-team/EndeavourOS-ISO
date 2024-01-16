@@ -43,9 +43,32 @@
 #        /home/$username
 #
 #----------------------------------------------------------------------------------
-# Full but artificial example (to try it, remove the first '#' from the lines below):
 #
-# username="$1"
-# echo "# Hello world!" >> /home/$username/.bashrc
-# pacman -S --noconfirm --needed geany chromium libreoffice-fresh
+# Now *you* can add your commands into the two functions below.
+#
+#----------------------------------------------------------------------------------
 
+_IsoConfig() {
+    # ISO configurations here.
+    # This runs before calamares is started.
+
+    local -r install_mode="$1"          # 'online' or 'offline'
+    # ...
+    # ls /home/liveuser
+}
+
+_PostInstallCommands() {
+    # Post-install commands here.
+    # This runs near the end of calamares execution.
+
+    local -r username="$1"              # new user you created for the target
+    # ...
+    # echo "# Hello world!" >> /home/$username/.bashrc
+    # pacman -S --noconfirm --needed geany chromium libreoffice-fresh
+}
+
+case "$1" in
+    --iso-config)        _IsoConfig "$2" ;;
+    offline | online)    _IsoConfig "$1" ;;            # after Galileo neo!
+    *)                   _PostInstallCommands "$1" ;;
+esac
