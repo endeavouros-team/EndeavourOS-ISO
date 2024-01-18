@@ -183,6 +183,7 @@ python-capng
 ## Live iso specific
 arch-install-scripts
 memtest86+
+memtest86+-efi
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
 pv
