@@ -442,6 +442,10 @@ _make_bootmodes() {
     for bootmode in "${bootmodes[@]}"; do
         _run_once "_make_bootmode_${bootmode}"
     done
+
+    if [[ "${bootmodes[*]}" != *grub* ]]; then
+        _run_once _make_common_grubenv_and_loopbackcfg
+    fi
 }
 
 # Copy kernel and initramfs to ISO 9660
@@ -500,7 +504,7 @@ _make_bootmode_bios.syslinux.mbr() {
         install -d -m 0755 -- "${isofs_dir}/boot/memtest86+/"
         # rename for PXE: https://wiki.archlinux.org/title/Syslinux#Using_memtest
         install -m 0644 -- "${pacstrap_dir}/boot/memtest86+/memtest.bin" "${isofs_dir}/boot/memtest86+/memtest"
-        install -m 0644 -- "${pacstrap_dir}/usr/share/licenses/spdx/GPL-2.0-only.txt" "${isofs_dir}/boot/memtest86+/"
+        install -m 0644 -- "${pacstrap_dir}/usr/share/licenses/spdx/GPL-2.0-only.txt" "${isofs_dir}/boot/memtest86+/LICENSE"
     fi
     _msg_info "Done! SYSLINUX set up for BIOS booting from a disk successfully."
 }
@@ -660,6 +664,40 @@ EOF
         >"${work_dir}/grub/grubenv"
 }
 
+# Create GRUB specific configuration files when GRUB is not used as a boot loader
+_make_common_grubenv_and_loopbackcfg() {
+    local search_filename
+
+    install -d -m 0755 -- "${isofs_dir}/boot/grub"
+    # Create a /boot/grub/YYYY-mm-dd-HH-MM-SS-00.uuid file on ISO 9660. GRUB will search for it to find the ISO
+    # volume. This is similar to what grub-mkrescue does, except it places the file in /.disk/, but we opt to use a
+    # directory that does not start with a dot to avoid it being accidentally missed when copying the ISO's contents.
+    search_filename="/boot/grub/${iso_uuid}.uuid"
+    : >"${isofs_dir}/${search_filename}"
+
+    # Write grubenv
+    printf '%.1024s' \
+        "$(printf '# GRUB Environment Block\nNAME=%s\nVERSION=%s\nARCHISO_LABEL=%s\nINSTALL_DIR=%s\nARCH=%s\nARCHISO_SEARCH_FILENAME=%s\n%s' \
+            "${iso_name}" \
+            "${iso_version}" \
+            "${iso_label}" \
+            "${install_dir}" \
+            "${arch}" \
+            "${search_filename}" \
+            "$(printf '%0.1s' "#"{1..1024})")" \
+        >"${isofs_dir}/boot/grub/grubenv"
+
+    # Copy loopback.cfg to /boot/grub/ on ISO 9660
+    if [[ -e "${profile}/grub/loopback.cfg" ]]; then
+        sed "s|%ARCHISO_LABEL%|${iso_label}|g;
+             s|%ARCHISO_UUID%|${iso_uuid}|g;
+             s|%INSTALL_DIR%|${install_dir}|g;
+             s|%ARCH%|${arch}|g;
+             s|%ARCHISO_SEARCH_FILENAME%|${search_filename}|g" \
+            "${profile}/grub/loopback.cfg" >"${isofs_dir}/boot/grub/loopback.cfg"
+    fi
+}
+
 _make_bootmode_uefi-ia32.grub.esp() {
     local grubmodules=()
 
@@ -780,7 +818,7 @@ _make_bootmode_uefi-x64.grub.esp() {
     if [[ -e "${pacstrap_dir}/boot/memtest86+/memtest.efi" ]]; then
         install -d -m 0755 -- "${isofs_dir}/boot/memtest86+/"
         install -m 0644 -- "${pacstrap_dir}/boot/memtest86+/memtest.efi" "${isofs_dir}/boot/memtest86+/memtest.efi"
-        install -m 0644 -- "${pacstrap_dir}/usr/share/licenses/spdx/GPL-2.0-only.txt" "${isofs_dir}/boot/memtest86+/"
+        install -m 0644 -- "${pacstrap_dir}/usr/share/licenses/spdx/GPL-2.0-only.txt" "${isofs_dir}/boot/memtest86+/LICENSE"
     fi
 
     _msg_info "Done! GRUB set up for UEFI booting successfully."
@@ -815,11 +853,9 @@ _make_bootmode_uefi-x64.grub.eltorito() {
     _msg_info "Done!"
 }
 
-# Prepare systemd-boot for booting when written to a disk (isohybrid)
-_make_bootmode_uefi-x64.systemd-boot.esp() {
+_make_common_bootmode_systemd-boot() {
     local _file efiboot_imgsize
     local _available_ucodes=()
-    _msg_info "Setting up systemd-boot for UEFI booting..."
 
     for _file in "${ucodes[@]}"; do
         if [[ -e "${pacstrap_dir}/boot/${_file}" ]]; then
@@ -827,31 +863,66 @@ _make_bootmode_uefi-x64.systemd-boot.esp() {
         fi
     done
     # Calculate the required FAT image size in bytes
-    efiboot_files+=("${pacstrap_dir}/usr/lib/systemd/boot/efi/systemd-bootx64.efi"
-                    "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi"
-                    "${profile}/efiboot/"
+    # shellcheck disable=SC2076
+    if [[ " ${bootmodes[*]} " =~ ' uefi-x64.systemd-boot.esp ' || " ${bootmodes[*]} " =~ ' uefi-x64.systemd-boot.eltorito ' ]]; then
+        efiboot_files+=("${pacstrap_dir}/usr/lib/systemd/boot/efi/systemd-bootx64.efi"
+                        "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi")
+    fi
+    # shellcheck disable=SC2076
+    if [[ " ${bootmodes[*]} " =~ ' uefi-ia32.systemd-boot.esp ' || " ${bootmodes[*]} " =~ ' uefi-ia32.systemd-boot.eltorito ' ]]; then
+        efiboot_files+=("${pacstrap_dir}/usr/lib/systemd/boot/efi/systemd-bootia32.efi"
+                        "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi")
+    fi
+    efiboot_files+=("${work_dir}/loader/"
                     "${pacstrap_dir}/boot/vmlinuz-"*
                     "${pacstrap_dir}/boot/initramfs-"*".img"
                     "${_available_ucodes[@]}")
-    efiboot_imgsize="$(du -bcs -- "${efiboot_files[@]}" \
-        2>/dev/null | awk 'END { print $1 }')"
+    efiboot_imgsize="$(du -bcs -- "${efiboot_files[@]}" 2>/dev/null | awk 'END { print $1 }')"
     # Create a FAT image for the EFI system partition
     _make_efibootimg "$efiboot_imgsize"
+}
+
+_make_common_bootmode_systemd-boot_conf() {
+    local _conf
+
+    install -d -m 0755 -- "${work_dir}/loader" "${work_dir}/loader/entries"
+
+    install -m 0644 -- "${profile}/efiboot/loader/loader.conf" "${work_dir}/loader"
+    for _conf in "${profile}/efiboot/loader/entries/"*".conf"; do
+        sed "s|%ARCHISO_LABEL%|${iso_label}|g;
+             s|%ARCHISO_UUID%|${iso_uuid}|g;
+             s|%INSTALL_DIR%|${install_dir}|g;
+             s|%ARCH%|${arch}|g" \
+            "${_conf}" >"${work_dir}/loader/entries/${_conf##*/}"
+    done
+}
+
+# Copy systemd-boot configuration files to ISO 9660
+_make_common_bootmode_systemd-boot_conf.isofs() {
+    cp -r --remove-destination -- "${work_dir}/loader" "${isofs_dir}/"
+}
+
+# Copy systemd-boot configuration files to FAT image
+_make_common_bootmode_systemd-boot_conf.esp() {
+    mcopy -i "${efibootimg}" -s "${work_dir}/loader" ::/
+}
+
+# Prepare systemd-boot for booting when written to a disk (isohybrid)
+_make_bootmode_uefi-x64.systemd-boot.esp() {
+    _msg_info "Setting up systemd-boot for x64 UEFI booting..."
+
+    # Prepare configuration files
+    _run_once _make_common_bootmode_systemd-boot_conf
+
+    # Prepare a FAT image for the EFI system partition
+    _run_once _make_common_bootmode_systemd-boot
 
     # Copy systemd-boot EFI binary to the default/fallback boot path
     mcopy -i "${efibootimg}" \
         "${pacstrap_dir}/usr/lib/systemd/boot/efi/systemd-bootx64.efi" ::/EFI/BOOT/BOOTx64.EFI
 
     # Copy systemd-boot configuration files
-    mmd -i "${efibootimg}" ::/loader ::/loader/entries
-    mcopy -i "${efibootimg}" "${profile}/efiboot/loader/loader.conf" ::/loader/
-    for _conf in "${profile}/efiboot/loader/entries/"*".conf"; do
-        sed "s|%ARCHISO_LABEL%|${iso_label}|g;
-             s|%ARCHISO_UUID%|${iso_uuid}|g;
-             s|%INSTALL_DIR%|${install_dir}|g;
-             s|%ARCH%|${arch}|g" \
-            "${_conf}" | mcopy -i "${efibootimg}" - "::/loader/entries/${_conf##*/}"
-    done
+    _run_once _make_common_bootmode_systemd-boot_conf.esp
 
     # shellx64.efi is picked up automatically when on /
     if [[ -e "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi" ]]; then
@@ -861,13 +932,16 @@ _make_bootmode_uefi-x64.systemd-boot.esp() {
 
     # Copy kernel and initramfs to FAT image.
     # systemd-boot can only access files from the EFI system partition it was launched from.
-    _make_boot_on_fat
+    _run_once _make_boot_on_fat
 
-    _msg_info "Done! systemd-boot set up for UEFI booting successfully."
+    _msg_info "Done! systemd-boot set up for x64 UEFI booting successfully."
 }
 
 # Prepare systemd-boot for El Torito booting
 _make_bootmode_uefi-x64.systemd-boot.eltorito() {
+    # Prepare configuration files
+    _run_once _make_common_bootmode_systemd-boot_conf
+
     # El Torito UEFI boot requires an image containing the EFI system partition.
     # uefi-x64.systemd-boot.eltorito has the same requirements as uefi-x64.systemd-boot.esp
     _run_once _make_bootmode_uefi-x64.systemd-boot.esp
@@ -883,19 +957,71 @@ _make_bootmode_uefi-x64.systemd-boot.eltorito() {
         "${isofs_dir}/EFI/BOOT/BOOTx64.EFI"
 
     # Copy systemd-boot configuration files
-    install -d -m 0755 -- "${isofs_dir}/loader/entries"
-    install -m 0644 -- "${profile}/efiboot/loader/loader.conf" "${isofs_dir}/loader/"
-    for _conf in "${profile}/efiboot/loader/entries/"*".conf"; do
-        sed "s|%ARCHISO_LABEL%|${iso_label}|g;
-             s|%INSTALL_DIR%|${install_dir}|g;
-             s|%ARCH%|${arch}|g" \
-            "${_conf}" >"${isofs_dir}/loader/entries/${_conf##*/}"
-    done
+    _run_once _make_common_bootmode_systemd-boot_conf.isofs
 
     # edk2-shell based UEFI shell
     # shellx64.efi is picked up automatically when on /
     if [[ -e "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi" ]]; then
         install -m 0644 -- "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi" "${isofs_dir}/shellx64.efi"
+    fi
+
+    _msg_info "Done!"
+}
+
+_make_bootmode_uefi-ia32.systemd-boot.esp() {
+    _msg_info "Setting up systemd-boot for IA32 UEFI booting..."
+
+    # Prepare configuration files
+    _run_once _make_common_bootmode_systemd-boot_conf
+
+    # Prepare a FAT image for the EFI system partition
+    _run_once _make_common_bootmode_systemd-boot
+
+    # Copy systemd-boot EFI binary to the default/fallback boot path
+    mcopy -i "${efibootimg}" \
+        "${pacstrap_dir}/usr/lib/systemd/boot/efi/systemd-bootia32.efi" ::/EFI/BOOT/BOOTIA32.EFI
+
+    # Copy systemd-boot configuration files
+    _run_once _make_common_bootmode_systemd-boot_conf.esp
+
+    # shellia32.efi is picked up automatically when on /
+    if [[ -e "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi" ]]; then
+        mcopy -i "${efibootimg}" \
+            "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi" ::/shellia32.efi
+    fi
+
+    # Copy kernel and initramfs to FAT image.
+    # systemd-boot can only access files from the EFI system partition it was launched from.
+    _run_once _make_boot_on_fat
+
+    _msg_info "Done! systemd-boot set up for IA32 UEFI booting successfully."
+}
+
+_make_bootmode_uefi-ia32.systemd-boot.eltorito() {
+    # Prepare configuration files
+    _run_once _make_common_bootmode_systemd-boot_conf
+
+    # El Torito UEFI boot requires an image containing the EFI system partition.
+    # uefi-ia32.systemd-boot.eltorito has the same requirements as uefi-ia32.systemd-boot.esp
+    _run_once _make_bootmode_uefi-ia32.systemd-boot.esp
+
+    # Additionally set up systemd-boot in ISO 9660. This allows creating a medium for the live environment by using
+    # manual partitioning and simply copying the ISO 9660 file system contents.
+    # This is not related to El Torito booting and no firmware uses these files.
+    _msg_info "Preparing an /EFI directory for the ISO 9660 file system..."
+    install -d -m 0755 -- "${isofs_dir}/EFI/BOOT"
+
+    # Copy systemd-boot EFI binary to the default/fallback boot path
+    install -m 0644 -- "${pacstrap_dir}/usr/lib/systemd/boot/efi/systemd-bootia32.efi" \
+        "${isofs_dir}/EFI/BOOT/BOOTIA32.EFI"
+
+    # Copy systemd-boot configuration files
+    _run_once _make_common_bootmode_systemd-boot_conf.isofs
+
+    # edk2-shell based UEFI shell
+    # shellia32.efi is picked up automatically when on /
+    if [[ -e "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi" ]]; then
+        install -m 0644 -- "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi" "${isofs_dir}/shellia32.efi"
     fi
 
     _msg_info "Done!"
@@ -944,12 +1070,7 @@ _validate_requirements_bootmode_bios.syslinux.eltorito() {
     _validate_requirements_bootmode_bios.syslinux.mbr
 }
 
-_validate_requirements_bootmode_uefi-x64.systemd-boot.esp() {
-    # shellcheck disable=SC2076
-    if [[ " ${bootmodes[*]} " =~ ' uefi-x64.grub.esp ' ]]; then
-        _msg_error "Validating '${bootmode}': cannot be used with bootmode uefi-x64.grub.esp!" 0
-    fi
-
+_validate_requirements_common_systemd-boot() {
     # Check if mkfs.fat is available
     if ! command -v mkfs.fat &>/dev/null; then
         (( validation_error=validation_error+1 ))
@@ -989,6 +1110,14 @@ _validate_requirements_bootmode_uefi-x64.systemd-boot.esp() {
     fi
 }
 
+_validate_requirements_bootmode_uefi-x64.systemd-boot.esp() {
+    # shellcheck disable=SC2076
+    if [[ " ${bootmodes[*]} " =~ ' uefi-x64.grub.esp ' ]]; then
+        _msg_error "Validating '${bootmode}': cannot be used with bootmode uefi-x64.grub.esp!" 0
+    fi
+    _validate_requirements_common_systemd-boot
+}
+
 _validate_requirements_bootmode_uefi-x64.systemd-boot.eltorito() {
     # shellcheck disable=SC2076
     if [[ " ${bootmodes[*]} " =~ ' uefi-x64.grub.eltorito ' ]]; then
@@ -996,6 +1125,25 @@ _validate_requirements_bootmode_uefi-x64.systemd-boot.eltorito() {
     fi
 
     # uefi-x64.systemd-boot.eltorito has the exact same requirements as uefi-x64.systemd-boot.esp
+    _validate_requirements_bootmode_uefi-x64.systemd-boot.esp
+}
+
+_validate_requirements_bootmode_uefi-ia32.systemd-boot.esp() {
+    # shellcheck disable=SC2076
+    if [[ " ${bootmodes[*]} " =~ ' uefi-ia32.grub.esp ' ]]; then
+        _msg_error "Validating '${bootmode}': cannot be used with bootmode uefi-ia32.grub.esp!" 0
+    fi
+
+    _validate_requirements_common_systemd-boot
+}
+
+_validate_requirements_bootmode_uefi-ia32.systemd-boot.eltorito() {
+    # shellcheck disable=SC2076
+    if [[ " ${bootmodes[*]} " =~ ' uefi-ia32.grub.eltorito ' ]]; then
+        _msg_error "Validating '${bootmode}': cannot be used with bootmode uefi-ia32.grub.eltorito!" 0
+    fi
+
+    # uefi-ia32.systemd-boot.eltorito has the exact same requirements as uefi-ia32.systemd-boot.esp
     _validate_requirements_bootmode_uefi-x64.systemd-boot.esp
 }
 
@@ -1722,8 +1870,9 @@ _make_version() {
     fi
     if [[ "${buildmode}" == "iso" ]]; then
         # Write grubenv with version information to ISO 9660
-        # TODO: after sufficient time has passed, do not create this file anymore when GRUB boot modes are used.
-        #       _make_common_bootmode_grub_cfg already creates ${isofs_dir}/boot/grub/grubenv
+        # TODO: after sufficient time has passed, do not create this file anymore.
+        #       _make_common_bootmode_grub_cfg and _make_common_grubenv_and_loopbackcfg already create a
+        #       ${isofs_dir}/boot/grub/grubenv file
         rm -f -- "${isofs_dir}/${install_dir}/grubenv"
         printf '%.1024s' "$(printf '# GRUB Environment Block\nNAME=%s\nVERSION=%s\n%s' \
             "${iso_name}" "${iso_version}" "$(printf '%0.1s' "#"{1..1024})")" \

@@ -1,4 +1,14 @@
-re-merge upstream changes from 2023-08-29
+re-merge upstream changes from 2024.01.25
+```
+Version: archiso 75-1
+```
+
+Fixing issue with changed license package (path changes) [January 2024]
+```
+install -m 0644 -- "${pacstrap_dir}/usr/share/licenses/spdx/GPL-2.0-only.txt" "${isofs_dir}/boot/memtest86+/"
+```
+
+re-merge upstream changes from 2023.08.29
 ```
 Version: archiso 72-1
 ```

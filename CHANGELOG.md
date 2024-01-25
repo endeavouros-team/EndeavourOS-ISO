@@ -1,6 +1,11 @@
 ## Changelog holding milestones and major changes to the code
 
+
 ---
+# Galileo Neo (2024)
+* fixing issue with changed license package (path changes) in mkarchiso
+* adding legacy intel fix to disable compositor on LiveSession if legacy intel with xf86-video-intel ist in use to reduce graphical issues.
+
 # Development start for Galileo Release (2023)
 * replacing xfce4 Live Session with KDE
 
