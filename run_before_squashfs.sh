@@ -30,7 +30,7 @@ pacman-key --init
 pacman-key --populate archlinux endeavouros
 pacman -Syy
 
-# backup bas configs from skel to replace after liveuser creation
+# backup bash configs from skel to replace after liveuser creation
 mkdir -p "/root/filebackups/"
 cp -af "/etc/skel/"{".bashrc",".bash_profile"} "/root/filebackups/"
 
