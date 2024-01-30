@@ -64,7 +64,7 @@ echo "------------------" >> "/etc/motd"
 
 # Install locally builded packages on ISO (place packages under airootfs/root/packages)
 ls "/root/packages/"
-pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
+pacman -U --noconfirm --needed -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
 
 # Enable systemd services
