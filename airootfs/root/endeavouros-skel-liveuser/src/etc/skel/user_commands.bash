@@ -68,7 +68,6 @@ _PostInstallCommands() {
 ## Execute the commands if the parameter list is valid:
 
 case "$1" in
-    --iso-config)        ;;  # not supported here!
-    offline | online)    ::  # not supported here!
-    *)                   _PostInstallCommands "$1" ;;
+    --iso-conf* | online | offline | community) ;;   # no more supported here
+    *) _PostInstallCommands "$1" ;;
 esac
