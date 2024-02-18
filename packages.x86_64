@@ -213,9 +213,9 @@ kdeconnect
 kde-gtk-config
 kgamma
 khotkeys
-kimageformats5
+kimageformats
 kinfocenter
-kinit
+#kinit
 kio-fuse
 konsole
 kscreen
@@ -266,7 +266,7 @@ welcome
 yay
 
 ## Calamares EndeavourOS
-calamares
+#calamares
 ckbcomp
 os-prober
 
