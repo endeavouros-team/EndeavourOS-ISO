@@ -198,15 +198,23 @@ hdparm
 # DESKTOP
 
 ## Desktop environment
+plasma-desktop
 plasma-workspace
 plasma-pa
 plasma-nm
 plasma-systemmonitor
 plasma-firewall
 plasma-browser-integration
+plasma-disks
+powerdevil
 baloo-widgets
 dolphin-plugins
 ffmpegthumbs
+haruna
+kcalc
+kdeplasma-addons
+kdeconnect
+kde-gtk-config
 kde-inotify-survey
 kdeconnect
 kdegraphics-thumbnailers
@@ -216,6 +224,10 @@ kio-admin
 kio-extras
 kio-fuse
 kio-gdrive
+kgamma
+kscreen
+khotkeys
+kinfocenter
 libappindicator-gtk3
 xwaylandvideobridge
 ark
