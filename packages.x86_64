@@ -88,7 +88,6 @@ usbutils
 alsa-firmware
 alsa-plugins
 alsa-utils
-ffmpegthumbnailer
 gst-libav
 gst-plugin-pipewire
 gst-plugins-bad
@@ -204,6 +203,7 @@ breeze-gtk
 dolphin
 dolphin-plugins
 eos-plasma-sddm-config
+ffmpegthumbs
 gwenview
 haruna
 kcalc
