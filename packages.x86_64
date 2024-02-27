@@ -142,7 +142,6 @@ xz
 
 ## Network
 bind
-dhclient
 dnsmasq
 ethtool
 iwd
