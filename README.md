@@ -1,4 +1,4 @@
-# EndeavourOS-ISO
+# EndeavourOS-ISO Plasma 6 testing Branch
 
 [![Maintenance](https://img.shields.io/maintenance/yes/2024.svg)]()
 
