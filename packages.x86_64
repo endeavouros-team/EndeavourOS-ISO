@@ -188,6 +188,7 @@ syslinux
 
 ## Live iso tools
 clonezilla
+efitools
 gpart
 grsync
 partitionmanager
@@ -197,38 +198,51 @@ hdparm
 
 ## Desktop environment
 ark
+baloo-widgets
 bluedevil
 breeze-gtk
 dolphin
 dolphin-plugins
 eos-plasma-sddm-config
 ffmpegthumbs
+fwupd
 gwenview
 haruna
-kcalc
 kate
-kdeplasma-addons
-kdeconnect
+kcalc
 kde-gtk-config
+kde-inotify-survey
+kdeconnect
+kdegraphics-thumbnailers
+kdenetwork-filesharing
+kdepim-addons
+kdeplasma-addons
 kgamma
-khotkeys
-kimageformats5
 kinfocenter
 kinit
+kio-admin
+kio-extras
 kio-fuse
 konsole
 kscreen
 kwallet-pam
+libappindicator-gtk3
+maliit-keyboard
 okular
+plasma-browser-integration
 plasma-desktop
 plasma-disks
+plasma-firewall
 plasma-nm
 plasma-pa
 plasma-systemmonitor
+plasma-workspace
 powerdevil
+print-manager
 sddm-kcm
 spectacle
 xsettingsd
+xwaylandvideobridge
 
 ## Browser
 firefox

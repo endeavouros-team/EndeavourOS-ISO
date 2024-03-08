@@ -24,8 +24,6 @@ if (panel.formFactor === "horizontal") {
 var kickoff = panel.addWidget("org.kde.plasma.kickoff")
 kickoff.currentConfigGroup = ["Shortcuts"]
 kickoff.writeConfig("global", "Alt+F1")
-kickoff.currentConfigGroup = ["General"]
-kickoff.writeConfig("favorites",[,"preferred://browser","preferred://filemanager","org.kde.konsole.desktop","calamares.desktop","org.kde.partitionmanager","eos-log-tool.desktop","org.kde.spectacle.desktop"])
 
 panel.addWidget("org.kde.plasma.pager")
 

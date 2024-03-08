@@ -1,0 +1,11 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Category": "",
+        "Description": "Breeze Dark EndeavourOS",
+        "Id": "com.endeavouros.breezedarkeos.desktop",
+        "License": "GPLv2+",
+        "Name": "Breeze Dark EndeavourOS",
+        "Website": "https://www.kde.org"
+    }
+}

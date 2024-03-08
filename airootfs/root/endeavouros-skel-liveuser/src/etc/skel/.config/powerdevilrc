@@ -1,2 +1,2 @@
-[BatteryManagement]
-BatteryCriticalAction=1
+[AC][Display]
+TurnOffDisplayWhenIdle=false
