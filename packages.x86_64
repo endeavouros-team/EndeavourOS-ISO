@@ -223,7 +223,7 @@ kio-fuse
 konsole
 kscreen
 kwallet-pam
-kwayland-integrations
+kwayland-integration
 libappindicator-gtk3
 maliit-keyboard
 okular
