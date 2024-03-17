@@ -190,6 +190,7 @@ syslinux
 clonezilla
 efitools
 gpart
+gparted
 grsync
 partitionmanager
 hdparm
