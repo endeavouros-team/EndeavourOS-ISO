@@ -10,6 +10,9 @@ widgetStyle=Breeze
 [kdeglobals][Icons]
 Theme=breeze-dark
 
+[kdeglobals][Mouse]
+cursorTheme=Breeze_Light
+
 [kwinrc][DesktopSwitcher]
 LayoutName=org.kde.breeze.desktop
 
