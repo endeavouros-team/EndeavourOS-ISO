@@ -1,0 +1,7 @@
+[TabBox]
+LayoutName=org.kde.breeze.desktop
+
+[org.kde.kdecoration2]
+NoPlugin=false
+library=org.kde.breeze
+theme=Breeze
