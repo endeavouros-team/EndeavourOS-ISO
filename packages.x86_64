@@ -300,6 +300,3 @@ open-vm-tools
 xf86-input-vmmouse
 xf86-video-vmware
 xf86-video-qxl
-
-# eos-arm needed packages for chroot into arm device
-qemu-arm-aarch64-static-bin

@@ -2,6 +2,10 @@
 
 
 ---
+# Gemini initial Release (2024)
+* removal of ARM install traces from the ISO
+* switching livesession to fit for plasma 6 update
+
 # Galileo Neo (2024)
 * fixing issue with changed license package (path changes) in mkarchiso
 * adding legacy intel fix to disable compositor on LiveSession if legacy intel with xf86-video-intel ist in use to reduce graphical issues.
