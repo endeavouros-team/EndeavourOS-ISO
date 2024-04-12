@@ -11,7 +11,7 @@ buildmodes=('iso')
 quiet="n"
 work_dir="work"
 out_dir="out"
-bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito' 'uefi-x64.systemd-boot.esp' 'uefi-x64.systemd-boot.eltorito' 'uefi-ia32.systemd-boot.eltorito' 'uefi-ia32.systemd-boot.esp')
+bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito' 'uefi-x64.systemd-boot.esp' 'uefi-x64.systemd-boot.eltorito')
 
 arch="x86_64"
 pacman_conf="airootfs/etc/pacman.conf"
