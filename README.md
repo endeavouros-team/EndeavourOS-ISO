@@ -155,7 +155,7 @@ Example:
 EndeavourOS_Galileo-Neo-2024.01.25.iso
 ~~~
 
-**EndeavourOS_RELEASENAME-REBUILD-YEAR.MONTH.DAY.iso**
+**EndeavourOS_RELEASENAMEREBUILD-YYYY.MM.DD.iso**
 
-* YEAR.MONTH.DAY: of the initial release 
-* REBUILD: 2=Neo, 3=Nova 
+* YYYY.MM.DD: of the release 
+* REBUILD: (empty), -Neo, -Nova 
