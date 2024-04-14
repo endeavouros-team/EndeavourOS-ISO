@@ -145,3 +145,19 @@ airootfs/root/packages
 ~~~
 
 Packages will be installed and the directory will be cleaned up after that.
+
+
+## General new ISO naming:
+
+Example:
+
+~~~
+EndeavourOS_Gemini-2024.04-1.iso
+~~~
+
+General:
+
+**EndeavourOS_RELEASENAME-YEAR.MONTH-REBUILDNR.iso**
+
+* YEAR.MONTH: of the initial release 
+* REBUILDNR: 1=initial, 2=Neo, 3=Nova 
