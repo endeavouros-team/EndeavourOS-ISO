@@ -152,12 +152,12 @@ Packages will be installed and the directory will be cleaned up after that.
 Example:
 
 ~~~
-EndeavourOS_Gemini-2024.04-1.iso
+EndeavourOS_Galileo-Neo-2024.01.25.iso
 ~~~
 
 General:
 
-**EndeavourOS_RELEASENAME-YEAR.MONTH-REBUILDNR.iso**
+**EndeavourOS_RELEASENAME-REBUILD-YEAR.MONTH.DAY.iso**
 
-* YEAR.MONTH: of the initial release 
-* REBUILDNR: 1=initial, 2=Neo, 3=Nova 
+* YEAR.MONTH.DAY: of the initial release 
+* REBUILD: 2=Neo, 3=Nova 
