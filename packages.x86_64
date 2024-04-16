@@ -272,7 +272,6 @@ eos-log-tool
 eos-packagelist
 eos-quickstart
 eos-rankmirrors
-eos-update-notifier
 nvidia-inst
 rate-mirrors
 reflector-simple
