@@ -147,7 +147,7 @@ airootfs/root/packages
 Packages will be installed and the directory will be cleaned up after that.
 
 
-## General new ISO naming:
+## General  ISO naming:
 
 Example:
 
