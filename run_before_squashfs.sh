@@ -91,7 +91,7 @@ mv "/usr/lib/modules-load.d/nvidia-utils.conf" "/etc/calamares/files/nv-modules-
 # Get extra drivers
 mkdir "/opt/extra-drivers"
 pacman -Syy
-pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
+# pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
 
 # get needed packages for offline installs
 mkdir -p "/usr/share/packages"
