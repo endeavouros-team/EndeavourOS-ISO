@@ -109,7 +109,7 @@ pacman -Qs | grep "/firefox " | cut -c7- >> iso_package_versions
 pacman -Qs | grep "/linux " | cut -c7- >> iso_package_versions
 pacman -Qs | grep "/mesa " | cut -c7- >> iso_package_versions
 pacman -Qs | grep "/xorg-server " | cut -c7- >> iso_package_versions
-pacman -Qs | grep "/nvidia-dkms " | cut -c7- >> iso_package_versions
+pacman -Qs | grep "/nvidia " | cut -c7- >> iso_package_versions
 mv "iso_package_versions" "/home/liveuser/"
 
 echo "############################"
