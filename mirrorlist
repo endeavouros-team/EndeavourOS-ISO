@@ -6,8 +6,8 @@
 
 ## Germany & United States
 
-Server = http://mirror.f4st.host/archlinux/$repo/os/$arch
-Server = https://mirror.f4st.host/archlinux/$repo/os/$arch
+Server = http://mirror.moson.org/arch/$repo/os/$arch
+Server = https://mirror.moson.org/arch/$repo/os/$arch
 
 Server = http://arch.mirror.constant.com/$repo/os/$arch
 Server = https://arch.mirror.constant.com/$repo/os/$arch
