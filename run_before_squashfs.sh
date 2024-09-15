@@ -88,13 +88,9 @@ cp -af "/root/filebackups/"{".bashrc",".bash_profile"} "/etc/skel/"
 mv "/usr/lib/modprobe.d/nvidia-utils.conf" "/etc/calamares/files/nv-modprobe"
 mv "/usr/lib/modules-load.d/nvidia-utils.conf" "/etc/calamares/files/nv-modules-load"
 
-# Get extra drivers
-mkdir "/opt/extra-drivers"
-pacman -Syy
-# pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
-
 # get needed packages for offline installs
 mkdir -p "/usr/share/packages"
+pacman -Syy
 pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut os-prober xf86-video-intel
 
 # Clean pacman log and package cache
