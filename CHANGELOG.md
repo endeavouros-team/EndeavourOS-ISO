@@ -2,6 +2,15 @@
 
 
 ---
+
+# Post Endeavour Development start (2024)
+* adding Memtest for EFI (systemd-boot)
+* kpmcore is downgraded on neo release as of latest causes issues with automatic partition options.
+
+# Endeavour Release + Neo (2024)
+* Basically a rebuild
+* kpmcore is downgraded on neo release as of latest causes issues with automatic partition options.
+
 # Gemini initial Release (2024)
 * removal of ARM install traces from the ISO
 * switching livesession to fit for plasma 6 update
