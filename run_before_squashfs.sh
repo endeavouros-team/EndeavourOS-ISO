@@ -63,7 +63,9 @@ cat "/usr/lib/endeavouros-release" >> "/etc/motd"
 echo "------------------" >> "/etc/motd"
 
 # Install locally builded packages on ISO (place packages under airootfs/root/packages)
+echo "----- content of /root/packages -----"
 ls "/root/packages/"
+echo "----- end of content of /root/packages -----"
 pacman -U --noconfirm --needed -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
 
