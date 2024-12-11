@@ -36,6 +36,9 @@ cp -af "/etc/skel/"{".bashrc",".bash_profile"} "/root/filebackups/"
 
 # Install liveuser skel (in case of conflicts use overwrite)
 pacman -U --noconfirm --overwrite "/etc/skel/.bash_profile","/etc/skel/.bashrc" -- "/root/endeavouros-skel-liveuser/"*".pkg.tar.zst"
+echo "--- start validate skel files ---"
+ls /etc/skel/
+echo "--- end validate skel files ---"
 
 # Prepare livesession settings and user
 sed -i 's/#\(en_US\.UTF-8\)/\1/' "/etc/locale.gen"
