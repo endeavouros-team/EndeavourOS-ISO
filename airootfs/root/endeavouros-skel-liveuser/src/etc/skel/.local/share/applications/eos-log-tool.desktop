@@ -3,6 +3,7 @@ Type=Application
 Encoding=UTF-8
 Name=EndeavourOS log tool
 Comment=Log tool to send selected system logs to the internet
+Comment[de]=Log-Tool zum Teilen ausgewählter Systemprotokolle über das Internet
 Comment[fi]=Jaa valitsemasi järjestelmälokit internetiin muiden nähtäväksi
 Comment[ko]=선택한 시스템 로그를 인터넷으로 전송하는 로그 도구
 Exec=/usr/bin/eos-log-tool
