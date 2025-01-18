@@ -205,7 +205,7 @@ bluedevil
 breeze-gtk
 dolphin
 dolphin-plugins
-eos-plasma-sddm-config
+eos-breeze-sddm
 ffmpegthumbs
 fwupd
 gwenview
@@ -267,7 +267,7 @@ ttf-opensans
 # ENDEAVOUROS REPO
 
 ## General
-endeavouros-theming
+endeavouros-branding
 eos-apps-info
 eos-hooks
 eos-log-tool
