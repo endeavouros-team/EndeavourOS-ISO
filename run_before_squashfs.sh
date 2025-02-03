@@ -72,9 +72,6 @@ echo "----- end of content of /root/packages -----"
 pacman -U --noconfirm --needed -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
 
-# reinstall eos-settings-plasma for offline installs:
-pacman -S --noconfirm eos-settings-plasma
-
 # Enable systemd services
 # --> now in airootfs/etc/systemd/system/multi-user.target.wants
 #systemctl enable NetworkManager.service systemd-timesyncd.service bluetooth.service firewalld.service
