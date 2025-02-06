@@ -46,7 +46,6 @@ mtools
 nfs-utils
 nilfs-utils
 ntfs-3g
-reiserfsprogs
 xfsprogs
 
 ## Boot
