@@ -1,17 +1,14 @@
-name: Gitlab Mirror
+name: Sync Repo to GitLab
 
-on: [push, delete]
+on:
+  push
 
 jobs:
-  to_gitlab:
+  sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: pixta-dev/repository-mirroring-action@v1
-        with:
-          target_repo_url:
-            git@gitlab.com:endeavouros-filemirror/EndeavourOS-ISO.git
-          ssh_private_key:
-            ${{ secrets.GITLAB_SYNC }}
+    - uses: keninkujovic/gitlab-sync@2.0.0
+      with:
+        gitlab_url: https://gitlab.com/endeavouros-filemirror/EndeavourOS-ISO.git
+        username: ${{ secrets.GITLAB_USR }}
+        gitlab_pat: ${{ secrets.GITLAB_PAT }}
