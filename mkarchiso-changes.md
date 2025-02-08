@@ -1,3 +1,8 @@
+re-merge upstream changes from 2025.02.08
+```
+Version archiso 82-1
+
+```
 re-merge upstream changes from 2024.09.07
 ```
 Version archiso 79-1
