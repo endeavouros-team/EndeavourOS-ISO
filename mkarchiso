@@ -373,7 +373,7 @@ _make_packages() {
 
     # Unset TMPDIR to work around https://bugs.archlinux.org/task/70580
     if [[ "${quiet}" = "y" ]]; then
-        env -u TMPDIR pacstrap -C "${work_dir}/${buildmode}.pacman.conf" -c -G -M -- "${pacstrap_dir}" "${buildmode_pkg_list[@]}" &>/dev/null
+        env -u TMPDIR pacstrap -C "${work_dir}/${buildmode}.pacman.conf" -c -G -M -- "${pacstrap_dir}" "${buildmode_pkg_list[@]}" >/dev/null
     else
         env -u TMPDIR pacstrap -C "${work_dir}/${buildmode}.pacman.conf" -c -G -M -- "${pacstrap_dir}" "${buildmode_pkg_list[@]}"
     fi
@@ -1726,6 +1726,13 @@ _build_bootstrap_image() {
 
 # Build ISO
 _build_iso_image() {
+    # Remove the pacstrap directory early to lower the maximum size of the working directory.
+    # The creation of the airootfs image has already been completed.
+    if (( rm_work_dir )); then
+        _msg_info 'Removing pacstrap directory...'
+        rm -rf -- "${work_dir:?}/${arch}/airootfs"
+    fi
+
     local xorriso_options=() xorrisofs_options=()
     local bootmode
 
@@ -1960,7 +1967,7 @@ _make_version() {
     #    _msg_warning "os-release file '${_os_release}' is outside of valid path."
     #else
     #    [[ ! -e "${_os_release}" ]] || sed -i '/^IMAGE_ID=/d;/^IMAGE_VERSION=/d' "${_os_release}"
-    #    printf 'IMAGE_ID=%s\nIMAGE_VERSION=%s\n' "${iso_name}" "${iso_version}" >> "${_os_release}"
+    #    printf 'IMAGE_ID=%s\nIMAGE_VERSION=%s\n' "${iso_name}" "${iso_version}" >>"${_os_release}"
     #fi
 
 # change for EndeavourOS end

@@ -1,3 +1,9 @@
+re-merge upstream changes on 2025.05.03
+```
+Version archiso 83-1
+```
+Update boot entries for systemd and syslinux for usage of UUIDS (Labels)
+
 re-merge upstream changes from 2025.02.08
 ```
 Version archiso 82-1
