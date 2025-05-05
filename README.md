@@ -1,6 +1,6 @@
 # EndeavourOS-ISO NVIDIA-DUAL
 
-[![Maintenance](https://img.shields.io/maintenance/yes/2025.svg)]()*
+[![Maintenance](https://img.shields.io/maintenance/yes/2025.svg)]()
 
 **nvidia**  branch -- tesing for changes to nvidia Modules handling
 
