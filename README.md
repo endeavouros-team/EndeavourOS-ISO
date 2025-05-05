@@ -2,7 +2,7 @@
 
 [![Maintenance](https://img.shields.io/maintenance/yes/2025.svg)]()
 
-**nvidia**  branch -- tesing for changes to nvidia Modules handling
+**nvidia**  branch is for changes to nvidia Modules handling
 
 **main** branch is development latest (unstable)
 
