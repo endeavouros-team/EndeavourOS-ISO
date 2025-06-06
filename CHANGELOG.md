@@ -2,10 +2,23 @@
 
 
 ---
+# Post Mercury changes (2025)
+* adding nvidia.service and script to install Nvidia Modules packages open or closed source related to Model ranges.
+* updating mkarchiso to latest and merging changes to bootloader entry format from upstream.
+* changing boot entries to as of no need to blacklist Nvidia (as not installed on boot)
 
-# Post Endeavour Development start (2024)
+# Mercury Release + Neo (2025)
+* removing xwaylandvideobridge (package)
+* fix to rank Arch mirrors
 * adding Memtest for EFI (systemd-boot)
-* kpmcore is downgraded on neo release as of latest causes issues with automatic partition options.
+* kpmcore not downgraded anymore
+* Move fstab after lukskeyfile job so crypttab is correct
+* remove xsane (package)
+* fixing non working copy paste for vmware installs
+* exchange mlocate with plocate (change on repo)
+* adding changes to pacman.conf for pacman 7 update
+* adding changes to makepkg.conf and makepkg.conf.d/
+* reiserfsprogs removed (package)
 
 # Endeavour Release + Neo (2024)
 * Basically a rebuild
@@ -24,7 +37,7 @@
 
 # Development starts for Cassini Release (September 2022)
 * changing format in modules to work with calamares 3.3 changes.
-* main branch is now the development branch it will include latest test and changes and is not for production. Use branch far the last release instead to reproduce current stable ISO.
+* main branch is now the development branch it will include latest test and changes and is not for production. Use branch for the last release instead to reproduce current stable ISO.
 * adding systemd service to detect intel legacy GPUs and install xf86-video-intel in case for them.
 
 # For Artemis NOVA (September 2022)

@@ -1,0 +1,6 @@
+[Layout]
+DisplayNames=,,,,,,,
+LayoutList=us,es,de,cn,ru,jp,fr,it
+LayoutLoopCount=4
+Use=true
+VariantList=,,,,,bre,,ast

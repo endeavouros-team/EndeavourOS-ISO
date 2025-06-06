@@ -97,7 +97,7 @@ mv "/usr/lib/modules-load.d/nvidia-utils.conf" "/etc/calamares/files/nv-modules-
 # get needed packages for offline installs
 mkdir -p "/usr/share/packages"
 pacman -Syy
-pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut os-prober xf86-video-intel
+pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut os-prober xf86-video-intel nvidia-open nvidia nvidia-hook nvidia-inst nvidia-open-lts nvidia-lts
 
 # Clean pacman log and package cache
 rm "/var/log/pacman.log"

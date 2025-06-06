@@ -61,8 +61,9 @@ intel-ucode
 ## X system
 mesa
 mesa-utils
-nvidia
+#nvidia
 nvidia-utils
+vulkan-nouveau
 xf86-input-libinput
 xf86-video-amdgpu
 xf86-video-ati
