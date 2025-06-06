@@ -10,7 +10,7 @@ fi
 echo "Bootflag nvidia=1 found – detecting GPU driver type..."
 
 # Determine driver type
-driver_type="$(bash /usr/bin/nvidia-detect | awk '{print $1}')"
+driver_type="$(/usr/bin/nvidia-inst --recommended-driver)"
 
 shopt -s nullglob
 
@@ -22,7 +22,7 @@ case "$driver_type" in
         pkg_files=(/usr/share/packages/nvidia-open-*.pkg.tar.zst)
         ;;
     *)
-        echo "Unknown driver type from nvidia-detect: $driver_type – skipping."
+        echo "${0##*/}: unknown driver type '$driver_type' – skipping."
         exit 0
         ;;
 esac
