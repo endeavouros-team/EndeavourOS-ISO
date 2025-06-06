@@ -16,10 +16,10 @@ shopt -s nullglob
 
 case "$driver_type" in
     nvidia-dkms)
-        pkg_files=(/usr/share/packages/nvidia-[^o]*.pkg.tar.zst)
+        pkg_files=(/usr/share/packages/nvidia-[0-9]*.pkg.tar.zst)
         ;;
     nvidia-open-dkms)
-        pkg_files=(/usr/share/packages/nvidia-open-*.pkg.tar.zst)
+        pkg_files=(/usr/share/packages/nvidia-open-[0-9]*.pkg.tar.zst)
         ;;
     *)
         echo "${0##*/}: unknown driver type '$driver_type' – skipping."
