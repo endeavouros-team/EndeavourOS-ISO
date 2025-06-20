@@ -76,7 +76,7 @@ xorg-xrandr
 
 ## Network hardware
 b43-fwcutter
-broadcom-wl-dkms
+#broadcom-wl-dkms removal candidate handling on the livesession
 
 ## General hardware
 lsscsi
@@ -228,6 +228,7 @@ konsole
 kscreen
 kwallet-pam
 kwayland-integration
+kwin-x11
 libappindicator-gtk3
 maliit-keyboard
 okular
@@ -237,6 +238,7 @@ plasma-disks
 plasma-firewall
 plasma-nm
 plasma-pa
+plasma-x11-session
 plasma-systemmonitor
 plasma-workspace
 powerdevil
@@ -298,5 +300,4 @@ virtualbox-guest-utils
 ## VMware
 open-vm-tools
 xf86-input-vmmouse
-xf86-video-vmware
 xf86-video-qxl
