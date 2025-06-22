@@ -1,3 +1,6 @@
+change on 2025.06.22:
+removing architecture from iso name
+
 re-merge upstream changes on 2025.05.03
 ```
 Version archiso 83-1
