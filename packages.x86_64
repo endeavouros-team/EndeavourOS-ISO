@@ -196,6 +196,11 @@ gparted
 grsync
 partitionmanager
 hdparm
+# asian keymap support for auto-keymap.sh
+fcitx5
+fcitx5-configtool
+fcitx5-chinese-addons
+fcitx5-mozc
 
 # DESKTOP
 
