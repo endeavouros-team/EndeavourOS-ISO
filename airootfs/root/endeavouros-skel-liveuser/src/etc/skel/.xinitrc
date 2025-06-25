@@ -7,12 +7,6 @@ export XDG_SESSION_DESKTOP=KDE
 export KDE_FULL_SESSION=true
 export QT_QPA_PLATFORM=xcb
 
-# for asian keymaps
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export INPUT_METHOD=fcitx
-
 # Automatically detect country code via GeoIP and set keymap
 country="$(show-location-info -l country)"
 case "$country" in
