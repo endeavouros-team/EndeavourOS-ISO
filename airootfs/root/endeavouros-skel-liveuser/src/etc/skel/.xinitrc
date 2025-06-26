@@ -10,7 +10,7 @@ export QT_QPA_PLATFORM=xcb
 # Automatically detect country code via GeoIP and set keymap
 country="$(show-location-info -l country)"
 case "$country" in
-    us | gb | fr | it | es | de | fi | jp | cn) setxkbmap $country ;;
+    cn | de | es | fi | fr | gb | it | jp | se | us) setxkbmap $country ;;
     # others here...
     *) setxkbmap us ;;    # fallback
 esac
