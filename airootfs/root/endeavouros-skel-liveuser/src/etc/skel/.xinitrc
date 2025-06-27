@@ -1,19 +1,12 @@
 #!/bin/sh
 
 # needed for plasma x11 session
+export XDG_SESSION_TYPE=x11
 export DESKTOP_SESSION=plasma
 export XDG_CURRENT_DESKTOP=KDE
 export XDG_SESSION_DESKTOP=KDE
 export KDE_FULL_SESSION=true
 export QT_QPA_PLATFORM=xcb
-
-# Automatically detect country code via GeoIP and set keymap
-country="$(show-location-info -l country)"
-case "$country" in
-    cn | de | es | fi | fr | gb | it | jp | se | us) setxkbmap $country ;;
-    # others here...
-    *) setxkbmap us ;;    # fallback
-esac
 
 # Start Plasma session on X11
 exec startplasma-x11
