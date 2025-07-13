@@ -17,6 +17,7 @@ show_error() {
          --width=500 \
          --height=150 \
          --text="[!] $MSG\n\nSee log: $LOG_FILE" \
+         --button=OK:0 \
          --text-align=center
     exit 1
 }
