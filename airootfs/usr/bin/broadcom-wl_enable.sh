@@ -12,9 +12,9 @@ YAD=(yad --center --window-icon="$WICON")
 show_error() {
     local MSG="$1"
     echo "[!] $MSG"
-    "${YAD[@]}" --title="Broadcom-wl-WiFi failed to enable device" \
+    "${YAD[@]}" --title="Broadcom-wl-WiFi failed to enable device [!]" \
          --image=network-wireless-disconnected \
-         --width=400 \
+         --width=500 \
          --height=150 \
          --text="[!] $MSG\n\nSee log: $LOG_FILE" \
          --text-align=center
@@ -39,9 +39,9 @@ echo "[✓] Broadcom-wl-Wifi activated."
 
 "${YAD[@]}" --title="Broadcom-wl-WiFi" \
      --image=network-wireless \
-     --width=300 \
-     --height=120 \
-     --text="[✓] Broadcom-Wifi activated.\n\nSee log: $LOG_FILE" \
+     --width=500 \
+     --height=150 \
+     --text="Broadcom-Wifi activated. [✓]\n\nlog written: $LOG_FILE" \
      --button=OK:0 \
      --timeout=10 \
      --text-align=center
