@@ -23,9 +23,9 @@ wifi_devices=$(lspci -nn | grep -iP 'network|wireless' | grep 'Broadcom')
 if [[ -z "$wifi_devices" ]]; then
     # No devices, just log and silently exit
     log "No Broadcom WLAN device found, nothing changed."
-    log "==== inxi -Naz output start ===="
-    inxi -Naz | tee -a "$LOG_FILE"
-    log "==== inxi -Naz output end ===="
+    log "==== lspci -nn network devices start ===="
+    lspci -nn | grep -iP 'network|wireless' | tee -a "$LOG_FILE"
+    log "==== lspci -nn network devices end ===="
     exit 1
 fi
 
@@ -83,8 +83,8 @@ if [[ $supported_found -eq 1 ]]; then
 else
     # No supported device, just log, no yad window
     log "No compatible device found, nothing changed."
-    log "==== inxi -Naz output start ===="
-    inxi -Naz | tee -a "$LOG_FILE"
-    log "==== inxi -Naz output end ===="
+    log "==== lspci -nn network devices start ===="
+    lspci -nn | grep -iP 'network|wireless' | tee -a "$LOG_FILE"
+    log "==== lspci -nn network devices end ===="
     exit 1
 fi
