@@ -16,7 +16,8 @@ show_error() {
          --image=network-wireless-disconnected \
          --width=400 \
          --height=150 \
-         --text="[!] $MSG\n\nSee log: $LOG_FILE"
+         --text="[!] $MSG\n\nSee log: $LOG_FILE" \
+         --text-align=center
     exit 1
 }
 
