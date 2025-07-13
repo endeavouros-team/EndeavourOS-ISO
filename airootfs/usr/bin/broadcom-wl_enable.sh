@@ -40,4 +40,7 @@ echo "[✓] Broadcom-wl-Wifi activated."
      --image=network-wireless \
      --width=300 \
      --height=120 \
-     --text="[✓] Broadcom-Wifi activated.\n\nSee log: $LOG_FILE"
+     --text="[✓] Broadcom-Wifi activated.\n\nSee log: $LOG_FILE" \
+     --button=OK:0 \
+     --timeout=10 \
+     --text-align=center
