@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec='/usr/bin/broadcom-wl_detect.sh'
+GenericName[en_US]=
+GenericName=
+Icon=application-x-shellscript
+MimeType=
+Name[en_US]=broadcom-wl
+Name=broadcom-wl
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-AutostartScript=true
+X-KDE-SubstituteUID=false
+X-KDE-Username=

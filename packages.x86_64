@@ -76,7 +76,6 @@ xorg-xrandr
 
 ## Network hardware
 b43-fwcutter
-#broadcom-wl-dkms removal candidate handling on the livesession
 
 ## General hardware
 lsscsi
