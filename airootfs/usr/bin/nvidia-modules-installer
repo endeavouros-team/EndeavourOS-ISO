@@ -15,10 +15,10 @@ driver_type="$(/usr/bin/nvidia-inst --recommended-driver)"
 shopt -s nullglob
 
 case "$driver_type" in
-    nvidia-dkms)
+    nvidia)
         pkg_files=(/usr/share/packages/nvidia-[0-9]*.pkg.tar.zst)
         ;;
-    nvidia-open-dkms)
+    nvidia-open)
         pkg_files=(/usr/share/packages/nvidia-open-[0-9]*.pkg.tar.zst)
         ;;
     *)
