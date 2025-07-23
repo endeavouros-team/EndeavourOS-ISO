@@ -81,7 +81,7 @@ rm -rf "/root/packages/"
 systemctl set-default multi-user.target
 
 # Set wallpaper for live-session and original for installed system
-mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
+mv "/root/endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
 mv "/root/livewall.png" "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png"
 chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
 
