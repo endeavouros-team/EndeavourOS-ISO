@@ -73,7 +73,7 @@ if [[ $supported_found -eq 1 ]]; then
     YAD=(yad --window-icon="$WICON" --center --title='Broadcom wireless device management')
     if "${YAD[@]}" --image=dialog-question --text="Broadcom-wl compatible device [$id] found.\nDo you want to run the install script?\n"; then
         log "User confirmed. Running install script..."
-        /home/liveuser/.local/bin/broadcom-wl_enable.sh >>"$LOG_FILE" 2>&1
+        /usr/bin/broadcom-wl_enable.sh >>"$LOG_FILE" 2>&1
         "${YAD[@]}" --image=dialog-information --text="Script executed successfully (check $LOG_FILE for details)."
         log "Install script finished."
     else
