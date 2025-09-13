@@ -6,6 +6,7 @@
 * adding nvidia.service and script to install Nvidia Modules packages open or closed source related to Model ranges.
 * updating mkarchiso to latest and merging changes to bootloader entry format from upstream.
 * changing boot entries to as of no need to blacklist Nvidia (as not installed on boot)
+* updating preview pictures in liveuser skel settings to show properly on live session.
 
 # Mercury Release + Neo (2025)
 * removing xwaylandvideobridge (package)
