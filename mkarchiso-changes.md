@@ -1,3 +1,9 @@
+change on 2025.09.15:
+remerge changes, no code changes
+```
+Version archiso 85-1
+```
+
 change on 2025.06.22:
 removing architecture from iso name
 
