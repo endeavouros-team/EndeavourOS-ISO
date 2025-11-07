@@ -227,8 +227,7 @@ kscreen
 kwallet-pam
 kwayland-integration
 kwin-x11
-libappindicator-gtk3
-maliit-keyboard
+libappindicator
 okular
 plasma-browser-integration
 plasma-desktop
