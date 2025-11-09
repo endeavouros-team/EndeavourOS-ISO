@@ -1,3 +1,10 @@
+change on 2025.11.09:
+remerge changes [bootmode changes, some config changed (updated), adds support for IA32-UEFI boots (forcingly)]
+```
+Version archiso 87-1
+```
+
+
 change on 2025.09.15:
 remerge changes, no code changes
 ```
