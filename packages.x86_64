@@ -113,6 +113,7 @@ freetype2
 git
 glances
 python-packaging
+python-jinja
 gpm
 gptfdisk
 haveged
