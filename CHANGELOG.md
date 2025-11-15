@@ -6,8 +6,9 @@
 * adding nvidia.service and script to install Nvidia Modules packages open or closed source related to Model ranges.
 * Broadcom-WL handling is now using a service too, and it will popup request to change driver on the livesession asking user to proceed.
 * updating mkarchiso to latest and merging changes to bootloader entry format from upstream.
-* changing boot entries to as of no need to blacklist Nvidia (as not installed on boot)
+* changing boot entries to as of no need to blacklist Nvidia (not installed on boot)
 * updating preview pictures in liveuser skel settings to show properly on live session.
+* changed comments in run_before_squashfs to echo lines to show in logs
 
 # Mercury Release + Neo (2025)
 * removing xwaylandvideobridge (package)
