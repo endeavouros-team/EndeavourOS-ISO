@@ -64,7 +64,7 @@ rm -R "/root/root-theme"
 
 echo "---> Add builddate to motd --->"
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
-echo "--->---------------" >> "/etc/motd"
+echo "------------------" >> "/etc/motd"
 
 echo "---> Install locally builded packages on ISO (place packages under airootfs/root/packages) --->"
 echo "--> content of /root/packages:"
