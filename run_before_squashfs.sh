@@ -9,7 +9,7 @@ script_path=$(readlink -f "${0%/*}")
 work_dir="work"
 
 # Adapted from AIS. An excellent bit of code!
-# all pathes must be in quotation marks "path/to/file/or/folder" for now.
+# all paths must be in quotation marks "path/to/file/or/folder" for now.
 
 arch_chroot() {
     arch-chroot "${script_path}/${work_dir}/x86_64/airootfs" /bin/bash -c "${1}"
@@ -66,7 +66,7 @@ echo "---> Add builddate to motd --->"
 cat "/usr/lib/endeavouros-release" >> "/etc/motd"
 echo "------------------" >> "/etc/motd"
 
-echo "---> Install locally builded packages on ISO (place packages under airootfs/root/packages) --->"
+echo "---> Install locally built packages on ISO (place packages under airootfs/root/packages) --->"
 echo "--> content of /root/packages:"
 ls "/root/packages/"
 echo "end of content of /root/packages. <---"

@@ -501,7 +501,7 @@ _make_bootmode_bios.syslinux() {
             "${isofs_dir}/boot/syslinux/hdt/modalias.gz"
     fi
 
-    # Add other aditional/extra files to ${install_dir}/boot/
+    # Add other additional/extra files to ${install_dir}/boot/
     if [[ -e "${pacstrap_dir}/boot/memtest86+/memtest.bin" ]]; then
         install -d -m 0755 -- "${isofs_dir}/boot/memtest86+/"
         # rename for PXE: https://wiki.archlinux.org/title/Syslinux#Using_memtest
@@ -955,7 +955,7 @@ _validate_requirements_bootmode_bios.syslinux() {
     # Check for optional packages
     # shellcheck disable=SC2076
     if [[ ! " ${pkg_list[*]} " =~ ' memtest86+ ' ]]; then
-        _msg_info "Validating '${bootmode}': 'memtest86+' is not in the package list. Memmory testing will not be available from syslinux."
+        _msg_info "Validating '${bootmode}': 'memtest86+' is not in the package list. Memory testing will not be available from syslinux."
     fi
 }
 
