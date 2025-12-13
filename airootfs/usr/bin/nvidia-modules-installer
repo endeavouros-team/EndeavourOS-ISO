@@ -49,4 +49,8 @@ modprobe nvidia_uvm
 modprobe nvidia_modeset
 modprobe nvidia
 
+echo "setting Nvidia GL to be used for the live session"
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export GBM_BACKEND=nvidia-drm
+
 echo "NVIDIA setup done."
