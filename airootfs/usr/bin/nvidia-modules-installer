@@ -27,7 +27,9 @@ case "$driver_type" in
         ;;
 esac
 
-if (( ${#pkg_files[@]} == 0 )); then
+# if (( ${#pkg_files[@]} == 0 )); then   # this test may fail !
+
+if [ "${pkg_files/\*}" != "${pkgfiles}" ]; then
     echo "Error: No matching packages found under /usr/share/packages/ for $driver_type"
     exit 1
 fi
