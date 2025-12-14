@@ -37,9 +37,7 @@ fi
 echo "unloading NVIDIA-Module..."
 mod_list=(nvidia_drm nvidia_uvm nvidia_modeset nvidia)
 for mod in "${mod_list[@]}"; do
-    if lsmod | grep -q "$mod"; then
-        rmmod "$mod" || echo "Warning: unable to remove $mod module/s"
-    fi
+    modprobe -r "$mod" 2>/dev/null || true
 done
 
 echo "Installing NVIDIA packages for driver type: $driver_type"
