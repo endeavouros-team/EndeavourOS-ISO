@@ -22,15 +22,13 @@ case "$driver_type" in
         pkg_files=(/usr/share/packages/nvidia-open-[0-9]*.pkg.tar.zst)
         ;;
     *)
-        echo "${0##*/}: unknown driver type '$driver_type' – skipping."
+        echo "${0##*/}: unsupported or unknown driver type '$driver_type' – skipping."
         exit 0
         ;;
 esac
 
-# if (( ${#pkg_files[@]} == 0 )); then   # this test may fail !
-
-if [ "${pkg_files/\*}" != "${pkgfiles}" ]; then
-    echo "Error: No matching packages found under /usr/share/packages/ for $driver_type"
+if (( ${#pkg_files[@]} == 0 )); then
+    echo "Error: no packages found for $driver_type"
     exit 1
 fi
 
