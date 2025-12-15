@@ -12,14 +12,14 @@ echo "Bootflag nvidia=1 found – detecting GPU driver type..."
 # Determine driver type
 driver_type="$(/usr/bin/nvidia-inst --recommended-driver)"
 
-shopt -s nullglob
+# shopt -s nullglob   # enabling this causes premature exit !
 
 case "$driver_type" in
     nvidia)
-        pkg_files=(/usr/share/packages/nvidia-[0-9]*.pkg.tar.zst)
+        pkg_pattern="/usr/share/packages/nvidia-[0-9]*.pkg.tar.zst"
         ;;
     nvidia-open)
-        pkg_files=(/usr/share/packages/nvidia-open-[0-9]*.pkg.tar.zst)
+        pkg_pattern="/usr/share/packages/nvidia-open-[0-9]*.pkg.tar.zst"
         ;;
     *)
         echo "${0##*/}: unsupported or unknown driver type '$driver_type' – skipping."
@@ -27,7 +27,9 @@ case "$driver_type" in
         ;;
 esac
 
-if (( ${#pkg_files[@]} == 0 )); then
+pkg_files=($pkg_pattern)
+
+if [ "$pkg_files" = "$pkg_pattern" ]; then
     echo "Error: no packages found for $driver_type"
     exit 1
 fi
