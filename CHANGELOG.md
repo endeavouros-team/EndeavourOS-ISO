@@ -2,6 +2,10 @@
 
 
 ---
+# Ganymede Neo Release Fixes (2026)
+* changing nvidia.service to reflect upstream changes
+* change boot menu entry names to be easier to understand
+
 # Ganymede Release Changes (2025)
 * adding nvidia.service and script to install Nvidia Modules packages open or closed source related to Model ranges.
 * Broadcom-WL handling is now using a service too, and it will popup request to change driver on the livesession asking user to proceed.
