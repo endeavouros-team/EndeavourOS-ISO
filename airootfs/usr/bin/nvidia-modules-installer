@@ -7,50 +7,47 @@ if ! grep -qw "nvidia=1" /proc/cmdline; then
     exit 0
 fi
 
-echo "Bootflag nvidia=1 found – detecting GPU driver type..."
+echo "Bootflag nvidia=1 found – detecting NVIDIA driver support..."
 
-# Determine driver type
 driver_type="$(/usr/bin/nvidia-inst --recommended-driver)"
 
-# shopt -s nullglob   # enabling this causes premature exit !
+# We ONLY support nvidia-open.
+# If the GPU requires proprietary nvidia, fall back to nouveau (do nothing).
+if [ "$driver_type" != "nvidia-open" ]; then
+    echo "nvidia-open not supported on this GPU (detected: $driver_type) – keeping nouveau."
+    exit 0
+fi
 
-case "$driver_type" in
-    nvidia)
-        pkg_pattern="/usr/share/packages/nvidia-[0-9]*.pkg.tar.zst"
-        ;;
-    nvidia-open)
-        pkg_pattern="/usr/share/packages/nvidia-open-[0-9]*.pkg.tar.zst"
-        ;;
-    *)
-        echo "${0##*/}: unsupported or unknown driver type '$driver_type' – skipping."
-        exit 0
-        ;;
-esac
-
+pkg_pattern="/usr/share/packages/nvidia-open-[0-9]*.pkg.tar.zst"
 pkg_files=($pkg_pattern)
 
-if [ "$pkg_files" = "$pkg_pattern" ]; then
-    echo "Error: no packages found for $driver_type"
+if [ "${pkg_files[0]}" = "$pkg_pattern" ]; then
+    echo "Error: nvidia-open packages not found."
     exit 1
 fi
 
-echo "unloading NVIDIA-Module..."
+echo "Unloading NVIDIA modules (if any)..."
 mod_list=(nvidia_drm nvidia_uvm nvidia_modeset nvidia)
 for mod in "${mod_list[@]}"; do
     modprobe -r "$mod" 2>/dev/null || true
 done
 
-echo "Installing NVIDIA packages for driver type: $driver_type"
+echo "Unloading nouveau modules (if any)..."
+mod_list=(nouveau nouveau_drm)
+for mod in "${mod_list[@]}"; do
+    modprobe -r "$mod" 2>/dev/null || true
+done
+
+echo "Installing nvidia-open package..."
 pacman -U --noconfirm "${pkg_files[@]}"
 
 echo "Loading NVIDIA modules..."
-modprobe nvidia_drm
-modprobe nvidia_uvm
-modprobe nvidia_modeset
 modprobe nvidia
+modprobe nvidia_modeset
+modprobe nvidia_uvm
+modprobe nvidia_drm
 
 echo "setting Nvidia GL to be used for the live session"
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
-export GBM_BACKEND=nvidia-drm
 
 echo "NVIDIA setup done."

@@ -24,6 +24,17 @@ https://opencollective.com/endeavouros
 
 Thank you for donating your trust in us!
 
+You can explore and test EndeavourOS on your hardware without installing anything.
+
+Please note the following about the Live environment:
+
+- The Live session runs entirely from the ISO, changes to packages or system settings cannot be saved.
+
+- Hardware or driver support in the Live session may be limited.
+
+- The Live ISO is not intended for daily use.
+
+
 Welcome to your endeavour
 
 ------------------
