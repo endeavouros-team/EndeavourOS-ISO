@@ -156,9 +156,6 @@ networkmanager-openvpn
 nss-mdns
 openconnect
 openvpn
-ppp
-pptpclient
-rp-pppoe
 usb_modeswitch
 vpnc
 whois
