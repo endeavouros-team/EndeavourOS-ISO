@@ -31,8 +31,9 @@ sudo
 sysfsutils
 systemd-sysvcompat
 texinfo
-which
 vi
+which
+xterm
 
 ## Filesystem
 btrfs-progs
