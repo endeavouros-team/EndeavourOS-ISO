@@ -146,8 +146,6 @@ dnsmasq
 ethtool
 iwd
 modemmanager
-nbd
-ndisc6
 net-tools
 netctl
 networkmanager
