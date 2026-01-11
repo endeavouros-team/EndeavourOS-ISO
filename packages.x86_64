@@ -129,6 +129,7 @@ pacman-contrib
 pkgfile
 poppler-glib
 power-profiles-daemon
+pv
 rebuild-detector
 reflector
 rsync
