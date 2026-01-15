@@ -60,19 +60,33 @@ amd-ucode
 intel-ucode
 
 ## X system
-mesa
-mesa-utils
-#nvidia
-nvidia-utils
 xf86-input-libinput
-xf86-video-amdgpu
-xf86-video-ati
 xorg-server
 xorg-xdpyinfo
 xorg-xinit
 xorg-xinput
 xorg-xkill
 xorg-xrandr
+
+## GPU/VM
+nvidia-utils
+mesa
+mesa-utils
+vulkan-intel
+intel-media-driver
+gst-plugin-va
+vpl-gpu-rt
+libva-intel-driver
+open-vm-tools
+xf86-input-vmmouse
+gtkmm3
+vulkan-swrast
+virtualbox-guest-utils
+spice-vdagent
+qemu-guest-agent
+vulkan-virtio
+vulkan-radeon
+eos-hwtool
 
 ## Network hardware
 b43-fwcutter
@@ -271,7 +285,6 @@ eos-log-tool
 eos-packagelist
 eos-quickstart
 eos-rankmirrors
-nvidia-inst
 rate-mirrors
 reflector-simple
 welcome
@@ -281,17 +294,3 @@ yay
 calamares
 ckbcomp
 
-# VM SUPPORT
-
-## Qemu
-qemu-guest-agent
-
-## Spice
-spice-vdagent
-
-## Virtual-box
-virtualbox-guest-utils
-
-## VMware
-open-vm-tools
-xf86-input-vmmouse
