@@ -9,7 +9,7 @@ fi
 
 echo "Bootflag nvidia=1 found – detecting NVIDIA driver support..."
 
-driver_type="$(/usr/bin/nvidia-inst --recommended-driver)"
+driver_type="$(/usr/bin/eos-hwtool --check-nvidia)"
 
 # We ONLY support nvidia-open.
 # If the GPU requires proprietary nvidia, fall back to nouveau (do nothing).
