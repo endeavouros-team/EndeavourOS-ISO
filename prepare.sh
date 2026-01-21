@@ -24,7 +24,9 @@ wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/
 chmod +x "./"{"mkarchiso","run_before_squashfs.sh"}
 
 get_pkg() {
-    sudo pacman -Syw "$1" --noconfirm --cachedir "airootfs/root/packages" \
+    sudo mkdir /tmp/pkg-cache \
+    && sudo pacman -Syw "$1" --cachedir /tmp/pkg-cache --noconfirm \
+    && sudo cp /tmp/pkg-cache/*.pkg.tar.zst airootfs/root/packages/ \
     && sudo chown $USER:$USER "airootfs/root/packages/"*".pkg.tar"*
 }
 
