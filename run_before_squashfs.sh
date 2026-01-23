@@ -103,10 +103,6 @@ rm "/var/log/pacman.log"
 # pacman -Scc seem to fail so:
 rm -rf "/var/cache/pacman/pkg/"
 
-echo "---> Get mirrorlist for offline installs --->"
-wget -qN --show-progress -P "/etc/pacman.d/" "https://raw.githubusercontent.com/endeavouros-team/EndeavourOS-ISO/main/mirrorlist"
-
-
 echo "---> create package versions file --->"
 pacman -Qs | grep "/calamares " | cut -c7- > iso_package_versions
 pacman -Qs | grep "/firefox " | cut -c7- >> iso_package_versions
