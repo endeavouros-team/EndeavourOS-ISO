@@ -189,6 +189,7 @@ python-capng
 
 ## Live iso specific
 arch-install-scripts
+iso-create-ml
 memtest86+
 memtest86+-efi
 mkinitcpio-archiso
