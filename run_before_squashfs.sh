@@ -70,6 +70,12 @@ echo "---> Install locally built packages on ISO (place packages under airootfs/
 echo "--> content of /root/packages:"
 ls "/root/packages/"
 echo "end of content of /root/packages. <---"
+
+echo "---> generating actual ranked mirrorlist to fetch packages for offline install / back up original to repace later---> "
+cp "/etc/pacman.d/mirrorlist" "/etc/pacman.d/mirrorlist.later"
+mkdir -p "/etc/pacman.d/"
+reflector --country "$(curl -s https://ipapi.co/country_name/)" --protocol https --sort rate --latest 10 --save /etc/pacman.d/mirrorlist
+
 pacman -Sy
 pacman -U --noconfirm --needed -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
@@ -102,6 +108,8 @@ echo "---> Clean pacman log and package cache --->"
 rm "/var/log/pacman.log"
 # pacman -Scc seem to fail so:
 rm -rf "/var/cache/pacman/pkg/"
+echo "---> replace mirrorlist with original again --->"
+mv /etc/pacman.d/mirrorlist.later /etc/pacman.d/mirrorlist
 
 echo "---> create package versions file --->"
 pacman -Qs | grep "/calamares " | cut -c7- > iso_package_versions

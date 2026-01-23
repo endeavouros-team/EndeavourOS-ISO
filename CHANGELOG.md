@@ -2,6 +2,9 @@
 
 
 ---
+# Titan changes (2026)
+* moving mirrorlist generation from prepare.sh to run_before_squashfs.sh, tro not interfere with new mirrolist handling
+
 # Ganymede Neo Release Fixes (2026)
 * changing nvidia.service to reflect upstream changes
 * change boot menu entry names to be easier to understand
