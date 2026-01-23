@@ -11,11 +11,6 @@ magick airootfs/root/livewall.png \
   -annotate +10+10 "$(date '+%Y-%m-%d')" \
   airootfs/root/livewall.png
 
-# generating actual ranked mirrorlist to fetch packages for offline install in run_before_squashfs later
-mkdir -p "airootfs/etc/pacman.d/"
-reflector --country "$(curl -s https://ipapi.co/country_name/)" --protocol https --sort rate --latest 10 --save airootfs/etc/pacman.d/mirrorlist
-
-
 # Get wallpaper for installed system
 wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/endeavouros-team/Branding/master/backgrounds/endeavouros-wallpaper.png"
 
