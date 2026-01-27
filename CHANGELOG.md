@@ -3,7 +3,9 @@
 
 ---
 # Titan changes (2026)
-* moving mirrorlist generation from prepare.sh to run_before_squashfs.sh, tro not interfere with new mirrolist handling
+* moving mirrorlist generation from prepare.sh to run_before_squashfs.sh, to not interfere with new mirrolist handling
+* removing ucode lines from bootloader, and including with mkinitcpio.
+* Rephrasing info and entry names for Boot menu.
 
 # Ganymede Neo Release Fixes (2026)
 * changing nvidia.service to reflect upstream changes
