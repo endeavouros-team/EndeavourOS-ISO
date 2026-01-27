@@ -95,9 +95,9 @@ chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
 echo "---> install bash configs back into /etc/skel for offline install target --->"
 cp -af "/root/filebackups/"{".bashrc",".bash_profile"} "/etc/skel/"
 
-echo "---> Move blacklisting nouveau out of ISO (copy back to target for offline installs) --->"
-mv "/usr/lib/modprobe.d/nvidia-utils.conf" "/etc/calamares/files/nv-modprobe"
-mv "/usr/lib/modules-load.d/nvidia-utils.conf" "/etc/calamares/files/nv-modules-load"
+echo "---> remove blacklisting nouveau out of ISO (nvidia-utls blacklist configs) --->"
+rm "/usr/lib/modprobe.d/nvidia-utils.conf"
+rm "/usr/lib/modules-load.d/nvidia-utils.conf"
 
 echo "---> get needed packages for offline installs --->"
 mkdir -p "/usr/share/packages"
