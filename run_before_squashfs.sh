@@ -71,10 +71,40 @@ echo "--> content of /root/packages:"
 ls "/root/packages/"
 echo "end of content of /root/packages. <---"
 
-echo "---> generating actual ranked mirrorlist to fetch packages for offline install / back up original to repace later---> "
+echo "---> generating actual ranked mirrorlist to fetch packages for offline install---> "
+echo "---> back up original to replace later---> "
 cp "/etc/pacman.d/mirrorlist" "/etc/pacman.d/mirrorlist.later"
 mkdir -p "/etc/pacman.d/"
-reflector --country "$(curl -s https://ipapi.co/country_name/)" --protocol https --sort rate --latest 10 --save /etc/pacman.d/mirrorlist
+echo "---> generate mirrorlist safely ---> "
+get_country() {
+  for url in \
+    "https://ipapi.co/country_code" \
+    "https://ifconfig.co/country-iso" \
+    "https://ipinfo.io/country"; do
+
+    code="$(curl -fs "$url" 2>/dev/null | grep -oE '^[A-Z]{2}$')"
+    [[ -n "$code" ]] && echo "$code" && return
+  done
+}
+
+COUNTRY="$(get_country)"
+
+if [[ -n "$COUNTRY" ]]; then
+  reflector \
+    --country "$COUNTRY" \
+    --protocol "https" \
+    --sort "rate" \
+    --latest "10" \
+    --save "/etc/pacman.d/mirrorlist"
+else
+  reflector \
+    --protocol "https" \
+    --sort "rate" \
+    --latest "20" \
+    --save "/etc/pacman.d/mirrorlist"
+fi
+
+echo "---> generate mirrorlist done ---> "
 
 pacman -Sy
 pacman -U --noconfirm --needed -- "/root/packages/"*".pkg.tar.zst"
