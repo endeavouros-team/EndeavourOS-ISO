@@ -182,8 +182,7 @@ bluez-utils
 
 ## Firewall
 firewalld
-python-pyqt6
-python-capng
+firewall-applet
 
 # ISO
 
@@ -245,7 +244,6 @@ okular
 plasma-browser-integration
 plasma-desktop
 plasma-disks
-plasma-firewall
 plasma-keyboard
 plasma-nm
 plasma-pa
