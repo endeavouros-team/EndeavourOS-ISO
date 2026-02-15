@@ -15,8 +15,6 @@
   <img src="https://contrib.rocks/image?repo=endeavouros-team/EndeavourOS-ISO" />
 </a>
 
-<sub>Made with [contrib.rocks](https://contrib.rocks)</sub>
-
 ..and our beloved community
 
 This ISO is based on hugely modified Arch-ISO to provide Installation Environment for EndeavourOS.  
