@@ -14,6 +14,7 @@
 <a href="https://github.com/endeavouros-team/Branding/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=endeavouros-team/Branding" />
 </a>
+
 <sub>Made with [contrib.rocks](https://contrib.rocks)</sub>
 
 ..and our beloved community
