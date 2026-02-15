@@ -11,8 +11,8 @@
 
 ### Our contributors
 
-<a href="https://github.com/endeavouros-team/Branding/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=endeavouros-team/Branding" />
+<a href="https://github.com/endeavouros-team/EndeavourOS-ISO/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=endeavouros-team/EndeavourOS-ISO" />
 </a>
 
 <sub>Made with [contrib.rocks](https://contrib.rocks)</sub>
