@@ -9,8 +9,12 @@
 - [manuel](https://github.com/manuel-192)
 - [fernandomaroto](https://github.com/Portergos) (initial developer)
 
-### Contributors:
-- [keybreak](https://github.com/keybreak)
+### Our contributors
+
+<a href="https://github.com/endeavouros-team/Branding/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=endeavouros-team/Branding" />
+</a>
+<sub>Made with [contrib.rocks](https://contrib.rocks)</sub>
 
 ..and our beloved community
 
