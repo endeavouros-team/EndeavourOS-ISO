@@ -9,7 +9,7 @@
 - [manuel](https://github.com/manuel-192)
 - [fernandomaroto](https://github.com/Portergos) (initial developer)
 
-### Our contributors
+### contributors
 
 <a href="https://github.com/endeavouros-team/EndeavourOS-ISO/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=endeavouros-team/EndeavourOS-ISO" />
