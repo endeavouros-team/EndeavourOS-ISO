@@ -43,7 +43,7 @@ Our journey wouldn't be made possible without the generosity of our [Open Collec
 ### Base source
 
 - [Arch-ISO](https://gitlab.archlinux.org/archlinux/archiso)
-- [Calamares](https://github.com/calamares/calamares)
+- [Calamares](https://codeberg.org/Calamares/calamares)
 
 
 
