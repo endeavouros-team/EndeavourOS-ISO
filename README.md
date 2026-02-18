@@ -27,7 +27,7 @@ More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io
 
 - https://endeavouros.com
 - [Getting help at the forum](https://forum.endeavouros.com)
-- [Bug report](https://forum.endeavouros.com/c/Arch-based-related-questions/bug-reports)
+- [Bug report](https://forum.endeavouros.com/c/general-system/endeavouros-installation)
 - [Telegram help-chat](https://t.me/Endeavouros)
 - [Twitter news](https://twitter.com/OsEndeavour)
 
