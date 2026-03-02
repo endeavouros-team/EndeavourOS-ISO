@@ -32,6 +32,3 @@ get_pkg() {
 
 get_pkg "eos-settings-plasma"
 
-# Build liveuser skel
-cd "airootfs/root/endeavouros-skel-liveuser"
-makepkg -s --noconfirm
