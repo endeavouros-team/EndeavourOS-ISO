@@ -34,4 +34,4 @@ get_pkg "eos-settings-plasma"
 
 # Build liveuser skel
 cd "airootfs/root/endeavouros-skel-liveuser"
-runuser -u "$BUILD_USER" -- makepkg -s --noconfirm
+sudo -u "$BUILD_USER" -- makepkg -s --noconfirm
