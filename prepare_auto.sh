@@ -20,7 +20,7 @@ wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/
 chmod +x "./"{"mkarchiso","run_before_squashfs.sh"}
 
 # uncomment to comment calamares package in packages.x86_64 in case you use local build of it
-#[ -n "$(ls airootfs/root/packages/*calamares* 2>/dev/null)" ] && sed -i '/calamares/ s/^/#/' packages.x86_64
+[ -n "$(ls airootfs/root/packages/*calamares* 2>/dev/null)" ] && sed -i '/calamares/ s/^/#/' packages.x86_64
 
 
 get_pkg() {
