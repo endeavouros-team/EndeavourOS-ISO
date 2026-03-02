@@ -55,6 +55,7 @@ cp "/root/liveuser.png" "/var/lib/AccountsService/icons/liveuser"
 rm "/root/liveuser.png"
 
 echo "---> Remove liveuser skel to clean for target skel --"
+pacman -Sy
 pacman -Rns --noconfirm -- "endeavouros-skel-liveuser"
 rm -rf "/root/endeavouros-skel-liveuser"
 

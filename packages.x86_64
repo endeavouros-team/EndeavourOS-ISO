@@ -69,6 +69,7 @@ xorg-xkill
 xorg-xrandr
 
 ## GPU/VM
+nvidia-open
 nvidia-utils
 mesa
 mesa-utils
