@@ -128,6 +128,7 @@ fakeroot
 freetype2
 git
 glances
+neovim
 python-packaging
 python-jinja
 gpm
