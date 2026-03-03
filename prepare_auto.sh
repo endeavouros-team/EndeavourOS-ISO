@@ -23,12 +23,12 @@ chmod +x "./"{"mkarchiso","run_before_squashfs.sh"}
 [ -n "$(ls airootfs/root/packages/*calamares* 2>/dev/null)" ] && sed -i '/calamares/ s/^/#/' packages.x86_64
 
 
-get_pkg() {
-    mkdir -p /tmp/pkg-cache \
-    && pacman -Syw "$1" --cachedir /tmp/pkg-cache --noconfirm \
-    && cp /tmp/pkg-cache/*.pkg.tar.zst airootfs/root/packages/ \
-    && chown $BUILD_USER:$BUILD_USER "airootfs/root/packages/"*".pkg.tar"*
-}
-
-get_pkg "eos-settings-plasma"
+#get_pkg() {
+#    mkdir -p /tmp/pkg-cache \
+#    && pacman -Syw "$1" --cachedir /tmp/pkg-cache --noconfirm \
+#    && cp /tmp/pkg-cache/*.pkg.tar.zst airootfs/root/packages/ \
+#    && chown $BUILD_USER:$BUILD_USER "airootfs/root/packages/"*".pkg.tar"*
+#}
+#
+#get_pkg "eos-settings-plasma"
 
