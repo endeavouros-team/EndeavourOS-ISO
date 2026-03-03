@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 BUILD_USER="iso-builder-temp"
 
-# add date to wallpaper
+echo "---> add date to wallpaper ---> "
 cp airootfs/root/livewall.png airootfs/root/livewall-original.png
 
 magick airootfs/root/livewall.png \
@@ -11,14 +11,16 @@ magick airootfs/root/livewall.png \
   -font "DejaVu-Sans" \
   -annotate +10+10 "$(date '+%Y-%m-%d')" \
   airootfs/root/livewall.png
+  
+echo "<--- add date to wallpaper done <--- "
 
-# Get wallpaper for installed system
+echo "---> Get wallpaper for installed system ---> "
 wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/endeavouros-team/Branding/master/backgrounds/endeavouros-wallpaper.png"
 
-# Make sure build scripts are executable
+echo "---> Make sure build scripts are executable ---> "
 chmod +x "./"{"mkarchiso","run_before_squashfs.sh"}
 
-# uncomment to comment calamares package in packages.x86_64 in case you use local build of it
+echo "---> uncomment to comment calamares package in packages.x86_64 in case you use local build of it ---> "
 [ -n "$(ls airootfs/root/packages/*calamares* 2>/dev/null)" ] && sed -i '/calamares/ s/^/#/' packages.x86_64
 
 echo "---> generate mirrorlist safely ---> "
@@ -50,7 +52,7 @@ else
     --save "/mirrorlist"
 fi
 
-echo "---> generate mirrorlist done ---> "
+echo "<--- generate mirrorlist done <--- "
 
 #get_pkg() {
 #    mkdir -p /tmp/pkg-cache \
