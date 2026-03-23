@@ -46,13 +46,13 @@ if [[ -n "$COUNTRY" ]]; then
     --protocol "https" \
     --sort "rate" \
     --latest "10" \
-    --save "mirrorlist"
+    --save "/etc/pacman.d/mirrorlist"
 else
   reflector \
     --protocol "https" \
     --sort "rate" \
     --latest "20" \
-    --save "mirrorlist"
+    --save "/etc/pacman.d/mirrorlist"
 fi
 
 echo "<--- generate mirrorlist done <--- "

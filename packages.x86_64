@@ -208,7 +208,6 @@ syslinux
 
 ## Live iso tools
 clonezilla
-efitools
 fsarchiver
 gpart
 gparted

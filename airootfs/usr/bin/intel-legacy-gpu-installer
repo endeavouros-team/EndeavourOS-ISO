@@ -139,7 +139,11 @@ Main() {
                 else
                     log_info "Installing $pkg..."
                     local pkgs
+                    local _old_nullglob
+                    _old_nullglob=$(shopt -p nullglob || true)
+                    shopt -s nullglob
                     pkgs=(/usr/share/packages/{$pkg,libxvmc}-*.pkg.tar.zst)
+                    eval "$_old_nullglob"
                     if [[ ${#pkgs[@]} -eq 0 ]]; then
                         DIE "Package files for $pkg not found under /usr/share/packages/."
                     fi

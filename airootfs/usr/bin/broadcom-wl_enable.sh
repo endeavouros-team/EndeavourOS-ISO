@@ -28,7 +28,13 @@ echo "[*] Activate Broadcom-Wifi..."
 
 if ! pacman -Q broadcom-wl &>/dev/null; then
     echo "[*] Installing broadcom-wl ..."
-    sudo pacman -U --noconfirm /usr/share/packages/broadcom-wl-[0-9]*-x86_64.pkg.tar.zst || \
+    shopt -s nullglob
+    _bwl_pkgs=(/usr/share/packages/broadcom-wl-[0-9]*-x86_64.pkg.tar.zst)
+    shopt -u nullglob
+    if [[ ${#_bwl_pkgs[@]} -eq 0 ]]; then
+        show_error "broadcom-wl package file not found under /usr/share/packages/."
+    fi
+    sudo pacman -U --noconfirm "${_bwl_pkgs[@]}" || \
         show_error "Failed to install broadcom-wl package."
 fi
 
@@ -37,7 +43,7 @@ if lsmod | grep -q '^wl '; then
     echo "[*] wl module is already loaded; skipping rmmod/modprobe cycle."
 else
     # Modules that conflict with broadcom-wl; unload them before loading wl
-    conflicting_mods=(b43 b43legacy bcm43xx bcma brcm80211 brcmfmac brcmsmac ssb tg3 wl)
+    conflicting_mods=(b43 b43legacy bcm43xx bcma brcm80211 brcmfmac brcmsmac ssb tg3)
     for _mod in "${conflicting_mods[@]}"; do
         if lsmod | grep -q "^${_mod} "; then
             echo "[*] Unloading conflicting module: $_mod"
