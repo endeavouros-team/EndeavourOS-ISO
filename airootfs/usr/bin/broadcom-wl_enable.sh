@@ -32,10 +32,34 @@ if ! pacman -Q broadcom-wl &>/dev/null; then
         show_error "Failed to install broadcom-wl package."
 fi
 
-sudo rmmod b43 b43legacy bcm43xx bcma brcm80211 brcmfmac brcmsmac ssb tg3 wl 2>/dev/null || true
-sudo depmod -a
+# Check if wl is already loaded; skip module juggling if so
+if lsmod | grep -q '^wl '; then
+    echo "[*] wl module is already loaded; skipping rmmod/modprobe cycle."
+else
+    # Modules that conflict with broadcom-wl; unload them before loading wl
+    conflicting_mods=(b43 b43legacy bcm43xx bcma brcm80211 brcmfmac brcmsmac ssb tg3 wl)
+    for _mod in "${conflicting_mods[@]}"; do
+        if lsmod | grep -q "^${_mod} "; then
+            echo "[*] Unloading conflicting module: $_mod"
+            sudo rmmod "$_mod" 2>/dev/null || true
+        fi
+    done
 
-sudo modprobe wl                      || show_error "Failed to load wl module."
+    # Blacklist known conflicting modules so they don't reload after a NetworkManager restart
+    blacklist_file="/etc/modprobe.d/broadcom-wl-blacklist.conf"
+    if [[ ! -f "$blacklist_file" ]]; then
+        echo "[*] Writing blacklist to $blacklist_file ..."
+        printf 'blacklist b43\nblacklist b43legacy\nblacklist bcma\nblacklist brcmsmac\n' \
+            | sudo tee "$blacklist_file" > /dev/null
+    fi
+
+    sudo depmod -a
+
+    echo "[*] Loading wl module..."
+    sudo modprobe wl || show_error "Failed to load wl module."
+    echo "[*] wl module loaded successfully."
+fi
+
 sudo systemctl restart NetworkManager || show_error "Failed to restart NetworkManager."
 
 echo "[✓] Broadcom-wl-Wifi activated."
