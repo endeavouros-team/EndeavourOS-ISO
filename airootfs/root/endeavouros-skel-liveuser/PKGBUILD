@@ -2,11 +2,12 @@
 
 pkgname='endeavouros-skel-liveuser'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Liveuser specific skel setup for KDE EndeavourOS'
 arch=('any')
 url='https://www.endeavouros.com'
-license=('GPL3')
+license=('GPL-3.0-only')
+depends=('plasma-desktop' 'konsole')
 source=()
 
 package() {

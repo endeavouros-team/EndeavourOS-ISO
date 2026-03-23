@@ -121,6 +121,29 @@ echo " --> per default now in airootfs/etc/systemd/system/multi-user.target.want
 #systemctl enable intel.service
 systemctl set-default multi-user.target
 
+echo "---> Harden firewalld: set default zone to public with drop policy --->"
+if command -v firewall-cmd &>/dev/null; then
+    firewall-cmd --set-default-zone=public || true
+fi
+# Ensure firewalld default zone config is written for the live session
+mkdir -p "/etc/firewalld"
+# Only write if not already customised
+if [[ ! -f /etc/firewalld/firewalld.conf ]] || ! grep -q '^DefaultZone=public' /etc/firewalld/firewalld.conf 2>/dev/null; then
+    cat > /etc/firewalld/firewalld.conf << 'FWEOF'
+# firewalld configuration for EndeavourOS live session
+DefaultZone=public
+FWEOF
+fi
+
+echo "---> Enable AppArmor for MAC policy enforcement --->"
+# Enable AppArmor service if available (package may not be installed on all ISOs)
+if [[ -f /usr/lib/systemd/system/apparmor.service ]]; then
+    systemctl enable apparmor.service || true
+    echo "AppArmor service enabled."
+else
+    echo "AppArmor not present; skipping."
+fi
+
 echo "---> Set wallpaper for live-session and original for installed system --->"
 mv "/root/endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
 mv "/root/livewall.png" "/usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png"
