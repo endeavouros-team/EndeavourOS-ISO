@@ -1,14 +1,26 @@
-name: Sync Repo to GitLab
+name: Sync Repository to GitLab Mirror
 
 on:
-  push
+  push:
+    branches:
+      - main
+      - 'release/**'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual sync'
+        required: false
+        default: 'Manual trigger'
 
 jobs:
   sync:
+    name: Mirror to GitLab
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-    - uses: keninkujovic/gitlab-sync@2.0.0
-      with:
-        gitlab_url: https://gitlab.com/endeavouros-filemirror/EndeavourOS-ISO.git
-        username: ${{ secrets.GITLAB_USR }}
-        gitlab_pat: ${{ secrets.GITLAB_PAT }}
+      - name: Sync to GitLab mirror
+        uses: keninkujovic/gitlab-sync@2.0.0
+        with:
+          gitlab_url: https://gitlab.com/endeavouros-filemirror/EndeavourOS-ISO.git
+          username: ${{ secrets.GITLAB_USR }}
+          gitlab_pat: ${{ secrets.GITLAB_PAT }}

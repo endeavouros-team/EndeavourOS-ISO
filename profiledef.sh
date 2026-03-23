@@ -32,4 +32,9 @@ file_permissions=(
   ["/etc/calamares"]="0:0:755"
   ["/etc/calamares/files"]="0:0:755"
   ["/home/liveuser"]="1000:1000:750"
+  ["/etc/NetworkManager/conf.d/00-macrandomize.conf"]="0:0:644"
+  ["/etc/NetworkManager/conf.d/10-dns.conf"]="0:0:644"
+  ["/etc/systemd/resolved.conf.d/00-dnssec.conf"]="0:0:644"
+  ["/etc/sysctl.d/99-security.conf"]="0:0:644"
+  ["/etc/modprobe.d/security.conf"]="0:0:644"
 )

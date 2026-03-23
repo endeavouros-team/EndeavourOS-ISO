@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
+# SPDX-License-Identifier: GPL-3.0-or-later
 # script to install broadcom-wl package and enable modules needed
+set -euo pipefail
 
 LOG_FILE="${HOME}/broadcom-wl-wifi-activation.log"
 exec > >(tee -a "$LOG_FILE") 2>&1

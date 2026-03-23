@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
+# SPDX-License-Identifier: GPL-3.0-or-later
 # Detect Broadcom PCI WiFi chipset support for broadcom-wl and confirm before running install script
+set -euo pipefail
 
 LOG_FILE="${HOME}/broadcom-wl-check.log"
 touch "$LOG_FILE"
@@ -24,7 +25,7 @@ if [[ -z "$wifi_devices" ]]; then
     # No devices, just log and silently exit
     log "No Broadcom WLAN device found, nothing changed."
     log "==== lspci -nn network devices start ===="
-    lspci -nn | grep -iP 'network|wireless' | tee -a "$LOG_FILE"
+    lspci -nn | grep -iP 'network|wireless' | tee -a "$LOG_FILE" || true
     log "==== lspci -nn network devices end ===="
     exit 1
 fi
@@ -50,8 +51,8 @@ while read -r line; do
         log "=> No PCI ID detected, skipping ID check."
     fi
 
-    chip=$(echo "$line" | sed -E 's|.* (BCM[0-9]+) .*|\1|')
-    if printf "%s\n" "${chip_names[@]}" | grep -q "$chip" ; then
+    chip=$(echo "$line" | sed -E 's|.* (BCM[0-9]+) .*|\1|' || true)
+    if [[ -n "$chip" ]] && printf "%s\n" "${chip_names[@]}" | grep -qxF "$chip"; then
         log "=> Hint: Detected chip name \"$chip\" in device string."
     fi
 
