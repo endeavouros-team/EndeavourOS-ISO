@@ -1,1 +1,5 @@
-%wheel ALL=(ALL) NOPASSWD: ALL
+## Live session: wheel members may run specific system commands without password.
+## This is intentionally scoped to commands needed for hardware detection and
+## driver installation in the live ISO environment. For an installed system,
+## remove this file or replace with password-requiring rules.
+%wheel ALL=(ALL:ALL) NOPASSWD: /usr/bin/pacman, /usr/bin/modprobe, /usr/bin/rmmod, /usr/bin/depmod, /usr/bin/systemctl, /usr/bin/chown, /usr/bin/chmod, /usr/bin/mv, /usr/bin/cp, /usr/bin/mkdir

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-BUILD_USER="iso-builder-temp"
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+set -euo pipefail
 
 echo "---> add date to wallpaper ---> "
 cp airootfs/root/livewall.png airootfs/root/livewall-original.png
@@ -15,7 +17,8 @@ magick airootfs/root/livewall.png \
 echo "<--- add date to wallpaper done <--- "
 
 echo "---> Get wallpaper for installed system ---> "
-wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/endeavouros-team/Branding/master/backgrounds/endeavouros-wallpaper.png"
+wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/endeavouros-team/Branding/master/backgrounds/endeavouros-wallpaper.png" \
+    || { echo "prepare_auto.sh: error: failed to download endeavouros-wallpaper.png" >&2; exit 1; }
 
 echo "---> Make sure build scripts are executable ---> "
 chmod +x "./"{"mkarchiso","run_before_squashfs.sh"}
@@ -49,7 +52,7 @@ else
     --protocol "https" \
     --sort "rate" \
     --latest "20" \
-    --save "/mirrorlist"
+    --save "mirrorlist"
 fi
 
 echo "<--- generate mirrorlist done <--- "

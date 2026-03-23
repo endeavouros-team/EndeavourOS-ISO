@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # Detect Broadcom PCI WiFi chipset support for broadcom-wl and confirm before running install script
 
-LOG_FILE="$HOME/broadcom-wl-check.log"
+LOG_FILE="${HOME}/broadcom-wl-check.log"
 touch "$LOG_FILE"
 
 # Log function
 log() {
-    echo -e "$1" | tee -a "$LOG_FILE"
+    printf '%s\n' "$1" | tee -a "$LOG_FILE"
 }
 
 supported_ids=(

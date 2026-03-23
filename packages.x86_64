@@ -156,6 +156,14 @@ xdg-user-dirs
 xdg-utils
 xz
 
+## Modern CLI utilities
+bat
+btop
+eza
+fastfetch
+fd
+ripgrep
+
 ## Network
 bind
 dnsmasq
@@ -181,9 +189,11 @@ xl2tpd
 bluez
 bluez-utils
 
-## Firewall
+## Firewall & Security
 firewalld
 firewall-applet
+apparmor
+audit
 
 # ISO
 
@@ -194,7 +204,6 @@ memtest86+
 memtest86+-efi
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
-pv
 syslinux
 
 ## Live iso tools

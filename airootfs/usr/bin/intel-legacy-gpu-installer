@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # This app checks if an Intel graphics device in the system is of generation from 1 to 3.
 # If an old Intel device is detected, app installs the xf86-video-intel package.
@@ -26,7 +27,7 @@ IsIntelGeneration_1_to_3() {
 
     id="${id^^[a-f]}"                                # makes all letters uppercase in $id
 
-    [[ "${generation_1to3_ids[*]}" =~ "$id" ]]       # returns 0 if $id matches any of the listed values, returns 1 otherwise
+    [[ " ${generation_1to3_ids[*]} " == *" ${id} "* ]]  # returns 0 if $id matches any of the listed values, returns 1 otherwise
 }
 
 Main() {
@@ -44,9 +45,9 @@ Main() {
     local intel_vid=8086
     local pkg=xf86-video-intel
 
-    for item in ${input_items//|/ } ; do
-        if [ -n "$(echo "$data" | grep -w "$item")" ] ; then
-            vendor_and_id=$(echo "$data" | grep "$item" | sed -E 's|.*\[([0-9a-f]+:[0-9a-f]+)\].*|\1|')   # "xxxx:yyyy"
+    for item in ${input_items//|/ }; do
+        if echo "$data" | grep -qw "$item"; then
+            vendor_and_id=$(echo "$data" | grep -w "$item" | sed -E 's|.*\[([0-9a-f]+:[0-9a-f]+)\].*|\1|')   # "xxxx:yyyy"
             [ -n "$vendor_and_id" ] || DIE "failed finding $item info"
             vendor=${vendor_and_id%:*}
             if [ "$vendor" = "$intel_vid" ] ; then
