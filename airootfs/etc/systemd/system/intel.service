@@ -1,12 +1,15 @@
 [Unit]
 Description=detect intel legacy gpu and install xf86-video-intel
 DefaultDependencies=no
-After=local-fs.target
+After=local-fs.target network.target
 Before=multi-user.target graphical.target
 
 [Service]
-Type=simple
+Type=oneshot
+RemainAfterExit=yes
 ExecStart=/bin/bash /usr/bin/intel-legacy-gpu-installer
+StandardOutput=journal
+MemoryMax=256M
 
 [Install]
 WantedBy=multi-user.target

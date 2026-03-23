@@ -1,0 +1,13 @@
+[Unit]
+Description=EndeavourOS first-boot welcome screen
+After=network.target display-manager.service graphical.target
+Wants=graphical.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/eos-first-boot
+StandardOutput=journal
+
+[Install]
+WantedBy=graphical.target
