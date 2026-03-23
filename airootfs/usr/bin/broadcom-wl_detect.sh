@@ -18,8 +18,7 @@ chip_names=(
     "BCM4311" "BCM4312" "BCM4313" "BCM4321" "BCM4322" "BCM43222" "BCM43224" "BCM43225" "BCM43227" "BCM43228" "BCM43229" "BCM43231" "BCM43236" "BCM43241" "BCM43242" "BCM4330" "BCM4331" "BCM4334" "BCM4335" "BCM4339" "BCM4345" "BCM43421" "BCM43430" "BCM43455" "BCM4350" "BCM4352" "BCM4354" "BCM4356" "BCM4358" "BCM4359" "BCM4360" "BCM43602" "BCM4365" "BCM4366" "BCM4716" "BCM4717" "BCM4718"
 )
 
-wifi_devices=$(lspci -nn | grep -iP 'network|wireless' | grep 'Broadcom')
-[ -e broadcom.txt ] && wifi_devices=$(< broadcom.txt)   # TESTING!!!
+wifi_devices=$(lspci -nn | grep -iP 'network|wireless' | grep 'Broadcom' || true)
 
 if [[ -z "$wifi_devices" ]]; then
     # No devices, just log and silently exit
@@ -37,7 +36,7 @@ log ""
 supported_found=0
 
 while read -r line; do
-    id=$(echo "$line" | grep -oP '[K[0-9a-f]{4}:[0-9a-f]{4}(?=])')
+    id=$(echo "$line" | grep -oP '\[[0-9a-f]{4}:[0-9a-f]{4}\]' | tr -d '[]' || true)
     log "Detected PCI ID: $id"
 
     if [[ -n "$id" ]]; then
@@ -70,7 +69,7 @@ if [[ $supported_found -eq 1 ]]; then
 
     # Ask user with YAD dialog
     WICON="/usr/share/endeavouros/EndeavourOS-icon.png"
-    [ -e $WICON ] || WICON="dialog-information"  # fallback
+    [ -e "$WICON" ] || WICON="dialog-information"  # fallback
     YAD=(yad --window-icon="$WICON" --center --title='Broadcom wireless device management')
     if "${YAD[@]}" --image=dialog-question --text="Broadcom-wl compatible device [$id] found.\nDo you want to run the install script?\n"; then
         log "User confirmed. Running install script..."

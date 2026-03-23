@@ -1,4 +1,9 @@
 [Compositing]
-Enabled=false
+Enabled=true
+AnimationSpeed=3
 HiddenPreviews=4
 LatencyPolicy=ExtremelyLow
+
+[Desktops]
+Number=1
+Rows=1

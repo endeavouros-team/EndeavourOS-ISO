@@ -1,3 +1,11 @@
+[Compositing]
+Enabled=true
+AnimationSpeed=3
+
+[Desktops]
+Number=1
+Rows=1
+
 [TabBox]
 LayoutName=org.kde.breeze.desktop
 

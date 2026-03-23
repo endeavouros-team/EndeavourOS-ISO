@@ -139,3 +139,10 @@ activeForeground=252,252,252
 inactiveBackground=42,46,50
 inactiveBlend=161,169,177
 inactiveForeground=161,169,177
+
+[General]
+SingleClick=true
+ScrollbarButtonsType=3
+XftAntialias=true
+XftHintStyle=hintslight
+XftSubPixel=rgb

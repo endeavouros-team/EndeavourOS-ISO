@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 # Made by Fernando "maroto"
 # Run anything in the filesystem right before being "mksquashed"
 # ISO-NEXT specific cleanup removals and additions (08-2021 + 10-2021) @killajoe and @manuel
 # refining and changes november 2021 @killajoe and @manuel
 
+set -euo pipefail
+
 script_path=$(readlink -f "${0%/*}")
-work_dir="work"
+readonly work_dir="work"
 
 # Adapted from AIS. An excellent bit of code!
 # all path must be in quotation marks "path/to/file/or/folder" for now.
@@ -17,7 +20,7 @@ arch_chroot() {
 
 do_merge() {
 
-arch_chroot "$(cat << EOF
+arch_chroot "$(cat << 'EOF'
 
 echo "##############################"
 echo "# start chrooted commandlist #"
@@ -50,7 +53,7 @@ echo "---> Set root permission and shell --->"
 usermod -s /usr/bin/bash root
 
 echo "---> Create liveuser --->"
-useradd -m -p "" -g 'liveuser' -G 'sys,rfkill,wheel,uucp,nopasswdlogin,adm,tty' -s /bin/bash liveuser
+useradd -m -p '*' -g 'liveuser' -G 'sys,rfkill,wheel,uucp,nopasswdlogin,adm,tty' -s /bin/bash liveuser
 cp "/root/liveuser.png" "/var/lib/AccountsService/icons/liveuser"
 rm "/root/liveuser.png"
 

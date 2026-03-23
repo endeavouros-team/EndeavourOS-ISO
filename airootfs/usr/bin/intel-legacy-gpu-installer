@@ -1,71 +1,176 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-or-later
 set -euo pipefail
 
-# This app checks if an Intel graphics device in the system is of generation from 1 to 3.
+# This app checks if an Intel graphics device in the system is of generation from 1 to 4.
 # If an old Intel device is detected, app installs the xf86-video-intel package.
 # This app is meant to install the package into the ISO only.
 # Returns 0 (=true) if a match is found.
 # Returns 1 (=false) otherwise.
 # Also displays the found matching Intel device id, or a simple message if not found.
 
+LOG_FILE="/tmp/eos-intel-gpu.log"
+DRY_RUN=0
+
+# Color helpers (fall back gracefully if tput is unavailable)
+if command -v tput &>/dev/null && tput colors &>/dev/null; then
+    C_GREEN=$(tput setaf 2)
+    C_YELLOW=$(tput setaf 3)
+    C_RED=$(tput setaf 1)
+    C_BOLD=$(tput bold)
+    C_RESET=$(tput sgr0)
+else
+    C_GREEN="\033[0;32m"
+    C_YELLOW="\033[1;33m"
+    C_RED="\033[0;31m"
+    C_BOLD="\033[1m"
+    C_RESET="\033[0m"
+fi
+
+log() {
+    local msg="$1"
+    echo -e "$msg" | tee -a "$LOG_FILE"
+}
+
+log_info()    { log "${C_GREEN}[INFO]${C_RESET}  $*"; }
+log_warn()    { log "${C_YELLOW}[WARN]${C_RESET}  $*"; }
+log_error()   { log "${C_RED}[ERROR]${C_RESET} $*" >&2; }
+
 DIE() {
-    echo "$progname: error: $1" >&2
+    log_error "$1"
     exit 1
 }
 
-IsIntelGeneration_1_to_3() {
+usage() {
+    cat <<EOF
+${C_BOLD}Usage:${C_RESET} $(basename "$0") [OPTIONS]
+
+Detects legacy Intel GPU (Gen 1-4) and installs xf86-video-intel if needed.
+
+${C_BOLD}Options:${C_RESET}
+  --dry-run    Detect GPU and report what would be done, without making changes
+  --help       Show this help message
+
+${C_BOLD}Exit codes:${C_RESET}
+  0  Legacy Intel GPU found (and package installed / would be installed in dry-run)
+  1  No legacy Intel GPU found
+EOF
+}
+
+IsIntelLegacyGpu() {
     # See https://en.m.wikipedia.org/wiki/List_of_Intel_graphics_processing_units.
 
     local id="$1"
 
-    local generation_1to3_ids=(
-        7800 1240 7121 7123 7125 1132                                      # gen 1
-        2562 3577 2572 3582 358E                                           # gen 2     (table had duplicate 3582)
-        2582 258A 2592 2772 27A2 27AE 29D2 29B2 29C2 A001 A011             # gen 3
-        # 2972 2992 29A2 2982 2A02 2A12 2E42 2E92 2E12 2E32 2E22 2A42      # gen 4     (commented out but here if needed)
+    local legacy_ids=(
+        # Gen 1
+        7800 1240 7121 7123 7125 1132
+        # Gen 2
+        2562 3577 2572 3582 358E
+        # Gen 3
+        2582 258A 2592 2772 27A2 27AE 29D2 29B2 29C2 A001 A011
+        # Gen 4 (GMA 4500 series)
+        2972 2992 29A2 2982 2A02 2A12 2A22 2A42 2E42 2E92 2E12 2E32 2E22
     )
 
-    id="${id^^[a-f]}"                                # makes all letters uppercase in $id
+    # Uppercase the id for comparison
+    id="${id^^}"
 
-    [[ " ${generation_1to3_ids[*]} " == *" ${id} "* ]]  # returns 0 if $id matches any of the listed values, returns 1 otherwise
+    [[ " ${legacy_ids[*]} " == *" ${id} "* ]]
 }
 
 Main() {
-    local progname="$(basename "$0")"
+    local progname
+    progname="$(basename "$0")"
 
-    # User may give graphics item(s) to search (VGA, Display, 3D).
-    # By default VGA, Display, and 3D are searched.
+    # Parse arguments
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --dry-run)  DRY_RUN=1 ;;
+            --help|-h)  usage; exit 0 ;;
+            *)          DIE "Unknown option: $1. Use --help for usage." ;;
+        esac
+        shift
+    done
+
+    # Initialise log file
+    : > "$LOG_FILE"
+    log_info "$(date '+%Y-%m-%d %H:%M:%S') - $progname started (dry-run=$DRY_RUN)"
+
+    # Sanity check
+    if ! command -v pacman &>/dev/null; then
+        DIE "pacman not found. This script requires an Arch-based system."
+    fi
+
+    if ! command -v lspci &>/dev/null; then
+        DIE "lspci not found. Please install pciutils."
+    fi
 
     local input_items="VGA|Display|3D"
-    local data=$(lspci -nn | grep -P "$input_items")    # data = info about graphics devices
-    local vendor_and_id
-    local vendor
-    local id
-    local item
-    local intel_vid=8086
-    local pkg=xf86-video-intel
+    local data
+    data=$(lspci -nn | grep -P "$input_items") || true
 
-    for item in ${input_items//|/ }; do
-        if echo "$data" | grep -qw "$item"; then
-            vendor_and_id=$(echo "$data" | grep -w "$item" | sed -E 's|.*\[([0-9a-f]+:[0-9a-f]+)\].*|\1|')   # "xxxx:yyyy"
-            [ -n "$vendor_and_id" ] || DIE "failed finding $item info"
-            vendor=${vendor_and_id%:*}
-            if [ "$vendor" = "$intel_vid" ] ; then
-                id=${vendor_and_id#*:}
-                if IsIntelGeneration_1_to_3 "$id" ; then
-                    echo "==> $progname: found Intel graphics device with id $id, installing package $pkg"
-                    local pkgs=(/usr/share/packages/{$pkg,libxvmc}-*.pkg.tar.zst)
-                    sudo pacman -U --noconfirm "${pkgs[@]}"
-                    echo "==> $progname: disable compositor for legacy intel in KDE live session"
-                    mv /home/liveuser/.config/intel-kwinrc /home/liveuser/.config/kwinrc
-                    chown liveuser:liveuser /home/liveuser/.config/kwinrc
-                    return 0
+    if [[ -z "$data" ]]; then
+        log_warn "No VGA/Display/3D graphics device found by lspci."
+        return 1
+    fi
+
+    local intel_vid="8086"
+    local pkg="xf86-video-intel"
+    local found=0
+
+    while IFS= read -r line; do
+        # Extract "vendor:id" from the last bracketed field, e.g. [8086:2a42]
+        local vendor_and_id
+        vendor_and_id=$(echo "$line" | grep -oP '\[\K[0-9a-f]{4}:[0-9a-f]{4}(?=\])' | tail -1) || true
+
+        [[ -n "$vendor_and_id" ]] || continue
+
+        local vendor="${vendor_and_id%:*}"
+        local id="${vendor_and_id#*:}"
+
+        if [[ "$vendor" == "$intel_vid" ]]; then
+            if IsIntelLegacyGpu "$id"; then
+                log_info "Found legacy Intel GPU: ${C_BOLD}$line${C_RESET}"
+                log_info "PCI ID: ${id^^}, package to install: $pkg"
+
+                if [[ $DRY_RUN -eq 1 ]]; then
+                    log_warn "Dry-run mode: would install $pkg (and libxvmc) but making no changes."
+                else
+                    log_info "Installing $pkg..."
+                    local pkgs
+                    pkgs=(/usr/share/packages/{$pkg,libxvmc}-*.pkg.tar.zst)
+                    if [[ ${#pkgs[@]} -eq 0 ]]; then
+                        DIE "Package files for $pkg not found under /usr/share/packages/."
+                    fi
+                    sudo pacman -U --noconfirm "${pkgs[@]}" \
+                        || DIE "pacman failed to install ${pkgs[*]}"
+                    log_info "Package installed successfully."
+
+                    log_info "Disabling compositor for legacy Intel in KDE live session..."
+                    if [[ -f /home/liveuser/.config/intel-kwinrc ]]; then
+                        mv /home/liveuser/.config/intel-kwinrc /home/liveuser/.config/kwinrc
+                        chown liveuser:liveuser /home/liveuser/.config/kwinrc
+                        log_info "KDE compositor config applied."
+                    else
+                        log_warn "/home/liveuser/.config/intel-kwinrc not found; skipping compositor step."
+                    fi
                 fi
+
+                found=1
+                break
             fi
         fi
-    done
-    echo "==> $progname: No gen1..gen3 Intel graphics device was found."
-    return 1  # Intel graphics device not found
+    done <<< "$data"
+
+    if [[ $found -eq 0 ]]; then
+        log_info "No Gen1..Gen4 legacy Intel GPU detected."
+        log_info "Log written to $LOG_FILE"
+        return 1
+    fi
+
+    log_info "Done. Log written to $LOG_FILE"
+    return 0
 }
 
 Main "$@"

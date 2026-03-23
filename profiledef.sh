@@ -27,5 +27,9 @@ file_permissions=(
   ["/usr/bin/nvidia-modules-installer"]="0:0:755"
   ["/usr/bin/broadcom-wl_detect.sh"]="0:0:755"
   ["/usr/bin/broadcom-wl_enable.sh"]="0:0:755"
-
+  ["/usr/bin/gpu-detect.sh"]="0:0:755"
+  ["/usr/bin/wifi-detect.sh"]="0:0:755"
+  ["/etc/calamares"]="0:0:755"
+  ["/etc/calamares/files"]="0:0:755"
+  ["/home/liveuser"]="1000:1000:750"
 )

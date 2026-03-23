@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # script to install broadcom-wl package and enable modules needed
 
-LOG_FILE="$HOME/broadcom-wl-wifi-activation.log"
+LOG_FILE="${HOME}/broadcom-wl-wifi-activation.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 WICON="/usr/share/endeavouros/EndeavourOS-icon.png"
-[ -e $WICON ] || WICON="dialog-information"    # fallback
+[ -e "$WICON" ] || WICON="dialog-information"    # fallback
 
 YAD=(yad --center --window-icon="$WICON")
 
@@ -30,7 +31,7 @@ if ! pacman -Q broadcom-wl &>/dev/null; then
         show_error "Failed to install broadcom-wl package."
 fi
 
-sudo rmmod b43 b43legacy bcm43xx bcma brcm80211 brcmfmac brcmsmac ssb tg3 wl 2>/dev/null
+sudo rmmod b43 b43legacy bcm43xx bcma brcm80211 brcmfmac brcmsmac ssb tg3 wl 2>/dev/null || true
 sudo depmod -a
 
 sudo modprobe wl                      || show_error "Failed to load wl module."

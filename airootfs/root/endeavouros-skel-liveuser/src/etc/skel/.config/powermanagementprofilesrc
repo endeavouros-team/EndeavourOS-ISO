@@ -2,12 +2,21 @@
 icon=battery-charging
 
 [AC][DimDisplay]
-idleTime=300000
+idleTime=1500000
+
+[AC][Display]
+idleTime=1800000
+turnOffDisplayWhenIdle=true
 
 [AC][HandleButtonEvents]
 lidAction=1
 powerButtonAction=0
 powerDownAction=16
+
+[AC][SuspendSession]
+idleTime=0
+suspendThenHibernate=false
+suspendType=0
 
 [AC][WirelessPowerSaving]
 btOption=2

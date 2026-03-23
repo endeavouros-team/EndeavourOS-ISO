@@ -1,2 +1,11 @@
 [AC][Display]
-TurnOffDisplayWhenIdle=false
+TurnOffDisplayWhenIdle=true
+idleTime=1800000
+
+[AC][DimDisplay]
+idleTime=1500000
+
+[AC][SuspendSession]
+idleTime=0
+suspendThenHibernate=false
+suspendType=0
