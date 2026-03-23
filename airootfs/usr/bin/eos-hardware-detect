@@ -162,15 +162,14 @@ fi
 log_section "Broadcom WiFi Detection"
 
 if [[ -x /usr/bin/broadcom-wl_detect.sh ]]; then
-    if /usr/bin/broadcom-wl_detect.sh >> "$LOG_FILE" 2>&1; then
+    _exit=0
+    /usr/bin/broadcom-wl_detect.sh >> "$LOG_FILE" 2>&1 || _exit=$?
+    if [[ $_exit -eq 0 ]]; then
         log_warn "Broadcom WiFi device found — broadcom-wl_detect.sh handled it."
+    elif [[ $_exit -eq 1 ]]; then
+        log_info "No Broadcom WiFi device requiring broadcom-wl was found."
     else
-        _exit=$?
-        if [[ $_exit -eq 1 ]]; then
-            log_info "No Broadcom WiFi device requiring broadcom-wl was found."
-        else
-            log_error "broadcom-wl_detect.sh returned an error (exit $_exit)."
-        fi
+        log_error "broadcom-wl_detect.sh returned an error (exit $_exit)."
     fi
 else
     log_warn "broadcom-wl_detect.sh not found; skipping Broadcom WiFi check."

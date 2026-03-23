@@ -22,6 +22,8 @@ do_merge() {
 
 arch_chroot "$(cat << 'EOF'
 
+set -euo pipefail
+
 echo "##############################"
 echo "# start chrooted commandlist #"
 echo "##############################"
