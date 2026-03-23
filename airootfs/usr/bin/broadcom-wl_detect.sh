@@ -85,7 +85,7 @@ else
     # No supported device, just log, no yad window
     log "No compatible device found, nothing changed."
     log "==== lspci -nn network devices start ===="
-    lspci -nn | grep -iP 'network|wireless' | tee -a "$LOG_FILE"
+    lspci -nn | grep -iP 'network|wireless' | tee -a "$LOG_FILE" || true
     log "==== lspci -nn network devices end ===="
     exit 1
 fi

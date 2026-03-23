@@ -34,6 +34,15 @@ ShowInstallerIsoInfo() {
 alias ls='ls --color=auto'
 alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
 alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles except "."
+alias la='ls -A --color=auto'
+if command -v eza &>/dev/null ; then
+    alias ll='eza -la --group-directories-first'
+fi
+
+# History settings
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTCONTROL=ignoreboth
 
 [[ "$(whoami)" = "root" ]] && return
 

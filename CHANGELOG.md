@@ -2,6 +2,27 @@
 
 
 ---
+# Upcoming / Development (in progress)
+* Security: Hardened sudoers configuration
+* Security: Added script strict mode (set -euo pipefail) across build scripts
+* Boot: Added safe graphics mode boot entry
+* Boot: Optimized kernel parameters for live session
+* Hardware: Improved GPU and WiFi detection scripts
+* Packages: Added modern CLI utilities (btop, fastfetch, eza, ripgrep)
+* KDE: Improved live user desktop configuration
+* Systemd: Optimized journal and logind for live session
+* Build: Added dependency checking at start of prepare.sh
+* Build: Added build lock file (/tmp/eos-build.lock) to prevent concurrent builds
+* Build: Added timing and progress output to prepare.sh
+* Build: Added trap cleanup on EXIT for prepare.sh
+* Build: Added non-root validation to prepare.sh (makepkg requires non-root)
+* Build: Added --force and --dry-run options to reset.sh with confirmation prompt
+* Build: Added file permission entries for gpu-detect.sh, wifi-detect.sh, calamares dirs, liveuser home
+* CI: Added workflow_dispatch trigger and branch filters to GitLab sync workflow
+* CI: Added timeout-minutes to GitLab sync job to prevent hung jobs
+* CI: Improved job name and descriptions in CI workflow
+
+---
 # Titan changes (2026)
 * moving mirrorlist generation from prepare.sh to run_before_squashfs.sh, to not interfere with new mirrolist handling
 * removing ucode lines from bootloader, and including with mkinitcpio.
