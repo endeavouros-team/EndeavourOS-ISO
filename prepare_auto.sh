@@ -24,6 +24,7 @@ echo "---> uncomment to comment calamares package in packages.x86_64 in case you
 [ -n "$(ls airootfs/root/packages/*calamares* 2>/dev/null)" ] && sed -i '/calamares/ s/^/#/' packages.x86_64
 
 echo "---> generate mirrorlist safely ---> "
+
 get_country() {
   for url in \
     "https://ipapi.co/country_code" \
@@ -37,19 +38,23 @@ get_country() {
 
 COUNTRY="$(get_country)"
 
+TARGET="airootfs/etc/pacman.d/mirrorlist"
+
+mkdir -p "$(dirname "$TARGET")"
+
 if [[ -n "$COUNTRY" ]]; then
   reflector \
     --country "$COUNTRY" \
-    --protocol "https" \
-    --sort "rate" \
-    --latest "10" \
-    --save "mirrorlist"
+    --protocol https \
+    --sort rate \
+    --latest 10 \
+    --save "$TARGET"
 else
   reflector \
-    --protocol "https" \
-    --sort "rate" \
-    --latest "20" \
-    --save "/mirrorlist"
+    --protocol https \
+    --sort rate \
+    --latest 20 \
+    --save "$TARGET"
 fi
 
 echo "<--- generate mirrorlist done <--- "
