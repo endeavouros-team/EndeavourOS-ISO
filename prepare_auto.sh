@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 BUILD_USER="iso-builder-temp"
 
+# devel_ISO naming in case
+mv profiledef.sh_auto profiledef.sh
+
 # use different wallpaper in case (uncomment aand edit url to do so)
 wget -qN --show-progress -O "airootfs/root/livewall.png" "https://raw.githubusercontent.com/UncleSpellbinder/EndeavourOS-HD-Wallpaper/refs/heads/main/EndeavourOS_ArtemisII_1A2__3840x2160.png"
 
