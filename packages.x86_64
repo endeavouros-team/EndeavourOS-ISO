@@ -216,7 +216,6 @@ breeze-gtk
 dolphin
 dolphin-plugins
 endeavouros-konsole-colors
-eos-breeze-sddm
 ffmpegthumbs
 fwupd
 gwenview
@@ -246,6 +245,7 @@ plasma-browser-integration
 plasma-desktop
 plasma-disks
 plasma-keyboard
+plasma-login-manager
 plasma-nm
 plasma-pa
 plasma-x11-session
@@ -253,7 +253,6 @@ plasma-systemmonitor
 plasma-workspace
 powerdevil
 print-manager
-sddm-kcm
 spectacle
 xdg-desktop-portal-kde
 xsettingsd
