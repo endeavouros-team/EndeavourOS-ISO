@@ -5,7 +5,7 @@ BUILD_USER="iso-builder-temp"
 mv profiledef.sh_auto profiledef.sh
 
 # use different wallpaper in case (uncomment aand edit url to do so)
-wget -qN --show-progress -O "airootfs/root/livewall.png" "https://raw.githubusercontent.com/UncleSpellbinder/EndeavourOS-HD-Wallpaper/refs/heads/main/EndeavourOS_ArtemisII_1A2__3840x2160.png"
+#wget -qN --show-progress -O "airootfs/root/livewall.png" "https://raw.githubusercontent.com/UncleSpellbinder/EndeavourOS-HD-Wallpaper/refs/heads/main/EndeavourOS_ArtemisII_1A2__3840x2160.png"
 
 echo "---> add date to wallpaper ---> "
 cp airootfs/root/livewall.png airootfs/root/livewall-original.png
