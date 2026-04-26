@@ -1,7 +1,7 @@
 # BASE
 
 ## Base system
-iptables-nft
+iptables
 base
 base-devel
 archlinux-keyring
@@ -68,7 +68,7 @@ xorg-xinput
 xorg-xkill
 xorg-xrandr
 
-## GPU/VM
+## GPU-VM
 nvidia-open
 nvidia-utils
 mesa
@@ -194,6 +194,7 @@ memtest86+
 memtest86+-efi
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
+nbd
 pv
 syslinux
 
