@@ -146,8 +146,8 @@ echo "---> Clean pacman log and package cache --->"
 rm "/var/log/pacman.log"
 # pacman -Scc seem to fail so:
 rm -rf "/var/cache/pacman/pkg/"
-echo "---> remove ranked mirrorlist, used for fetching offline packages to cleanup --->"
-mv mirrorlist /etc/pacman.d/mirrorlist
+echo "---> remove ranked mirrorlist, used for fetching offline packages replacing it with generic one --->"
+wget -qN --show-progress -P "/etc/pacman.d/" "https://raw.githubusercontent.com/endeavouros-team/EndeavourOS-ISO/main/mirrorlist"
 
 echo "############################"
 echo "# end chrooted commandlist #"
