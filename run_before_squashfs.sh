@@ -73,8 +73,6 @@ ls "/root/packages/"
 echo "end of content of /root/packages. <---"
 
 echo "---> generating actual ranked mirrorlist to fetch packages for offline install---> "
-echo "---> back up original to replace later---> "
-cp "/etc/pacman.d/mirrorlist" "/etc/pacman.d/mirrorlist.later"
 mkdir -p "/etc/pacman.d/"
 echo "---> generate mirrorlist safely ---> "
 get_country() {
@@ -139,8 +137,8 @@ echo "---> Clean pacman log and package cache --->"
 rm "/var/log/pacman.log"
 # pacman -Scc seem to fail so:
 rm -rf "/var/cache/pacman/pkg/"
-echo "---> replace mirrorlist with original again --->"
-mv /etc/pacman.d/mirrorlist.later /etc/pacman.d/mirrorlist
+echo "---> remove mirrorlist to cleanup --->"
+rm /etc/pacman.d/mirrorlist
 
 echo "---> create package versions file --->"
 pacman -Qs | grep "/calamares " | cut -c7- > iso_package_versions
