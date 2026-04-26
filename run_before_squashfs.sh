@@ -147,7 +147,7 @@ rm "/var/log/pacman.log"
 # pacman -Scc seem to fail so:
 rm -rf "/var/cache/pacman/pkg/"
 echo "---> remove ranked mirrorlist, used for fetching offline packages to cleanup --->"
-rm /etc/pacman.d/mirrorlist
+mv mirrorlist /etc/pacman.d/mirrorlist
 
 echo "############################"
 echo "# end chrooted commandlist #"
