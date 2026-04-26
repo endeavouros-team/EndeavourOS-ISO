@@ -133,13 +133,6 @@ mkdir -p "/usr/share/packages"
 pacman -Syy
 pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut os-prober xf86-video-intel nvidia-open nvidia-hook nvidia-utils nvidia-inst broadcom-wl
 
-echo "---> Clean pacman log and package cache --->"
-rm "/var/log/pacman.log"
-# pacman -Scc seem to fail so:
-rm -rf "/var/cache/pacman/pkg/"
-echo "---> remove ranked mirrorlist, used for fetching offline packages to cleanup --->"
-rm /etc/pacman.d/mirrorlist
-
 echo "---> create package versions file --->"
 pacman -Qs | grep "/calamares " | cut -c7- > iso_package_versions
 pacman -Qs | grep "/firefox " | cut -c7- >> iso_package_versions
@@ -148,6 +141,13 @@ pacman -Qs | grep "/mesa " | cut -c7- >> iso_package_versions
 pacman -Qs | grep "/xorg-server " | cut -c7- >> iso_package_versions
 pacman -Qs | grep "/nvidia-utils " | cut -c7- >> iso_package_versions
 mv "iso_package_versions" "/home/liveuser/"
+
+echo "---> Clean pacman log and package cache --->"
+rm "/var/log/pacman.log"
+# pacman -Scc seem to fail so:
+rm -rf "/var/cache/pacman/pkg/"
+echo "---> remove ranked mirrorlist, used for fetching offline packages to cleanup --->"
+rm /etc/pacman.d/mirrorlist
 
 echo "############################"
 echo "# end chrooted commandlist #"
