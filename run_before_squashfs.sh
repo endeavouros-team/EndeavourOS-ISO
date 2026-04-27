@@ -73,6 +73,7 @@ ls "/root/packages/"
 echo "end of content of /root/packages. <---"
 
 echo "---> generating actual ranked mirrorlist to fetch packages for offline install---> "
+cp -a "/etc/pacman.d/mirrorlist" "/etc/pacman.d/mirrorlist-from-package"
 mkdir -p "/etc/pacman.d/"
 echo "---> generate mirrorlist safely ---> "
 get_country() {
@@ -146,8 +147,8 @@ echo "---> Clean pacman log and package cache --->"
 rm "/var/log/pacman.log"
 # pacman -Scc seem to fail so:
 rm -rf "/var/cache/pacman/pkg/"
-echo "---> remove ranked mirrorlist, used for fetching offline packages replacing it with generic one --->"
-wget -qN --show-progress -P "/etc/pacman.d/" "https://raw.githubusercontent.com/endeavouros-team/EndeavourOS-ISO/main/mirrorlist"
+echo "---> remove ranked mirrorlist, used for fetching offline packages replacing it with original from package --->"
+mv "/etc/pacman.d/mirrorlist-from-package" "/etc/pacman.d/mirrorlist"
 
 echo "############################"
 echo "# end chrooted commandlist #"
