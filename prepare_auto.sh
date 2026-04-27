@@ -65,12 +65,12 @@ fi
 
 echo "<--- generate mirrorlist done <--- "
 
-#get_pkg() {
-#    mkdir -p /tmp/pkg-cache \
-#    && pacman -Syw "$1" --cachedir /tmp/pkg-cache --noconfirm \
-#    && cp /tmp/pkg-cache/*.pkg.tar.zst airootfs/root/packages/ \
-#    && chown $BUILD_USER:$BUILD_USER "airootfs/root/packages/"*".pkg.tar"*
-#}
-#
-#get_pkg "eos-settings-plasma"
+get_pkg() {
+    mkdir -p /tmp/pkg-cache \
+    && pacman -Syw "$1" --cachedir /tmp/pkg-cache --noconfirm \
+    && cp /tmp/pkg-cache/*.pkg.tar.zst airootfs/root/packages/ \
+    && chown $BUILD_USER:$BUILD_USER "airootfs/root/packages/"*".pkg.tar"*
+}
+
+get_pkg "eos-settings-plasma"
 
