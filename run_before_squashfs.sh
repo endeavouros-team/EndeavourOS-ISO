@@ -43,7 +43,30 @@ cd "/root"
 echo "---> Init & Populate keys --->"
 pacman-key --init
 pacman-key --populate archlinux endeavouros
+echo "---> generating actual ranked mirrorlist to fetch packages for offline install---> "
+cp -a "/etc/pacman.d/mirrorlist" "/etc/pacman.d/mirrorlist-from-package"
+mkdir -p "/etc/pacman.d/"
+
+echo "---> generate mirrorlist safely ---> "
+
+if [[ -n "$COUNTRY" ]]; then
+  reflector \
+    --country "$COUNTRY" \
+    --protocol "https" \
+    --sort "rate" \
+    --latest "10" \
+    --save "/etc/pacman.d/mirrorlist"
+else
+  reflector \
+    --protocol "https" \
+    --sort "rate" \
+    --latest "20" \
+    --save "/etc/pacman.d/mirrorlist"
+fi
+
+echo "---> generate mirrorlist done ---> "
 pacman -Syy
+echo "---> updating package db done ---> "
 
 echo "---> backup bash configs from skel to replace after liveuser creation --->"
 mkdir -p "/root/filebackups/"
@@ -86,29 +109,6 @@ echo "---> Install locally built packages on ISO (place packages under airootfs/
 echo "--> content of /root/packages:"
 ls "/root/packages/"
 echo "end of content of /root/packages. <---"
-
-echo "---> generating actual ranked mirrorlist to fetch packages for offline install---> "
-cp -a "/etc/pacman.d/mirrorlist" "/etc/pacman.d/mirrorlist-from-package"
-mkdir -p "/etc/pacman.d/"
-
-echo "---> generate mirrorlist safely ---> "
-
-if [[ -n "$COUNTRY" ]]; then
-  reflector \
-    --country "$COUNTRY" \
-    --protocol "https" \
-    --sort "rate" \
-    --latest "10" \
-    --save "/etc/pacman.d/mirrorlist"
-else
-  reflector \
-    --protocol "https" \
-    --sort "rate" \
-    --latest "20" \
-    --save "/etc/pacman.d/mirrorlist"
-fi
-
-echo "---> generate mirrorlist done ---> "
 
 pacman -Sy
 pacman -U --noconfirm --needed -- "/root/packages/"*".pkg.tar.zst"
