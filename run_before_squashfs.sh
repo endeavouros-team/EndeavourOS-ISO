@@ -8,6 +8,21 @@
 script_path=$(readlink -f "${0%/*}")
 work_dir="work"
 
+# needed for ranking mirrors inside the chroot start
+get_country() {
+  for url in \
+    "https://ipapi.co/country_code" \
+    "https://ifconfig.co/country-iso" \
+    "https://ipinfo.io/country"; do
+
+    code="$(curl -fs "$url" 2>/dev/null | grep -oE '^[A-Z]{2}$')"
+    [[ -n "$code" ]] && echo "$code" && return
+  done
+}
+
+COUNTRY="$(get_country)"
+# needed for ranking mirrors inside the chroot end
+
 # Adapted from AIS. An excellent bit of code!
 # all path must be in quotation marks "path/to/file/or/folder" for now.
 
@@ -75,19 +90,8 @@ echo "end of content of /root/packages. <---"
 echo "---> generating actual ranked mirrorlist to fetch packages for offline install---> "
 cp -a "/etc/pacman.d/mirrorlist" "/etc/pacman.d/mirrorlist-from-package"
 mkdir -p "/etc/pacman.d/"
+
 echo "---> generate mirrorlist safely ---> "
-get_country() {
-  for url in \
-    "https://ipapi.co/country_code" \
-    "https://ifconfig.co/country-iso" \
-    "https://ipinfo.io/country"; do
-
-    code="$(curl -fs "$url" 2>/dev/null | grep -oE '^[A-Z]{2}$')"
-    [[ -n "$code" ]] && echo "$code" && return
-  done
-}
-
-COUNTRY="$(get_country)"
 
 if [[ -n "$COUNTRY" ]]; then
   reflector \
