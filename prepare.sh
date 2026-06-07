@@ -5,7 +5,7 @@ cp airootfs/root/livewall.png airootfs/root/livewall-original.png
 
 magick airootfs/root/livewall.png \
   -gravity NorthEast \
-  -pointsize 24 \
+  -pointsize 20 \
   -fill white \
   -font "DejaVu-Sans" \
   -annotate +10+10 "$(date '+%Y-%m-%d')" \
