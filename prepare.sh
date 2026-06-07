@@ -3,11 +3,11 @@
 # add date to wallpaper
 cp airootfs/root/livewall.png airootfs/root/livewall-original.png
 
-magick airootfs/root/livewall.png \
-  -gravity NorthEast \
-  -pointsize 20 \
-  -fill white \
+magick airootfs/root/livewall-original.png \
   -font "DejaVu-Sans" \
+  -pointsize 20px \
+  -fill white \
+  -gravity NorthEast \
   -annotate +10+10 "$(date '+%Y-%m-%d')" \
   airootfs/root/livewall.png
 
