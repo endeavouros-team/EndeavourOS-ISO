@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="EndeavourOS_Titan"
+iso_name="EndeavourOS_Wayland_DVL"
 iso_label="EOS_$(date +%Y%m)"
 iso_publisher="EndeavourOS <https://endeavouros.com>"
 iso_application="EndeavourOS Live/Rescue CD"
@@ -23,7 +23,6 @@ file_permissions=(
   ["/root/.automated_script.sh"]="0:0:755"
   ["/etc/sudoers.d"]="0:0:750"
   ["/etc/sudoers.d/g_wheel"]="0:0:440"
-  ["/usr/bin/intel-legacy-gpu-installer"]="0:0:755"
   ["/usr/bin/broadcom-wl_detect.sh"]="0:0:755"
   ["/usr/bin/broadcom-wl_enable.sh"]="0:0:755"
 

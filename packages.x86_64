@@ -59,15 +59,6 @@ efitools
 amd-ucode
 intel-ucode
 
-## X system
-xf86-input-libinput
-xorg-server
-xorg-xdpyinfo
-xorg-xinit
-xorg-xinput
-xorg-xkill
-xorg-xrandr
-
 ## GPU-VM
 nvidia-open
 nvidia-utils
@@ -207,6 +198,8 @@ gparted
 grsync
 partitionmanager
 hdparm
+wl-clipboard
+xclip
 
 # DESKTOP
 
@@ -291,6 +284,6 @@ welcome
 yay
 
 ## Calamares EndeavourOS
-calamares
+#calamares
 ckbcomp
 

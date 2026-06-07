@@ -2,6 +2,18 @@
 
 
 ---
+# Triton changes - wayland transition (2026)
+* exchanging start x (.xinitrc) with bash_profile to start plasma-wayland session now
+* Cleanup and change packages.x86_64
+* Cleanup intel legacy support (removal)
+* adding keyboardlaout widget using LabelOverFlag to panel on the LiveSession
+* adding airootfs/etc/conf.d/spice-vdagentd to enable spice-vdagentd to run using -X options
+
+# Titan Neo changes (2026)
+* Resolved a problem where eos-settings packages utilising skel were being installed post user creation
+* Refining Nvidia ISO boot implementation
+* xfce4-datetime-plugin splix packages removed (not in repos anymore)
+
 # Titan changes (2026)
 * moving mirrorlist generation from prepare.sh to run_before_squashfs.sh, to not interfere with new mirrolist handling
 * removing ucode lines from bootloader, and including with mkinitcpio.
