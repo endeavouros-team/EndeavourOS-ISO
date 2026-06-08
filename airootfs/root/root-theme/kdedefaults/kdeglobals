@@ -1,2 +1,5 @@
 [General]
 ColorScheme=BreezeDark
+
+[Icons]
+Theme=breeze-dark

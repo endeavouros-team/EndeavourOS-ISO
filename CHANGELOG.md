@@ -8,6 +8,7 @@
 * Cleanup intel legacy support (removal)
 * adding keyboardlaout widget using LabelOverFlag to panel on the LiveSession
 * adding airootfs/etc/conf.d/spice-vdagentd to enable spice-vdagentd to run using -X options
+* fixing theme settings for gtk and iconset
 
 # Titan Neo changes (2026)
 * Resolved a problem where eos-settings packages utilising skel were being installed post user creation
