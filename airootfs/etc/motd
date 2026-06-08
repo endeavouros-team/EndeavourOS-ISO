@@ -8,7 +8,7 @@ Arch-ISO Source:
 https://gitlab.archlinux.org/archlinux/archiso
 
 Calamares as our installer:
-https://github.com/calamares/calamares
+https://calamares.codeberg.page
 
 Live environment will start now and let you install EndeavourOS to disk, or tryout KDE-Desktop from Live-Session.
 
@@ -17,7 +17,7 @@ https://forum.endeavouros.com/c/general-system/endeavouros-installation
 
 Getting help at the forum: https://forum.endeavouros.com
 Help-Chat is available on telegram: https://t.me/Endeavouros/
-News at twitter: https://twitter.com/OsEndeavour
+News: https://mastodon.social/@EndeavourOS
 
 Our journey wouldn't be made possible without the generosity of our open collective community:
 https://opencollective.com/endeavouros
