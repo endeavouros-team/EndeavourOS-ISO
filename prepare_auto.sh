@@ -11,8 +11,9 @@ echo "---> add date to wallpaper ---> "
 cp airootfs/root/livewall.png airootfs/root/livewall-original.png
 
 magick airootfs/root/livewall-original.png \
+  -density 72 \
   -font "DejaVu-Sans" \
-  -pointsize 20px \
+  -pointsize 12 \
   -fill white \
   -gravity NorthEast \
   -annotate +10+10 "$(date '+%Y-%m-%d')" \
