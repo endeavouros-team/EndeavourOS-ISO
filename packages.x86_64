@@ -196,6 +196,7 @@ fsarchiver
 gpart
 gparted
 grsync
+hardinfo2
 partitionmanager
 hdparm
 wl-clipboard
