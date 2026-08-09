@@ -3,12 +3,17 @@
 
 ---
 # Triton changes - wayland transition (2026)
-* exchanging start x (.xinitrc) with bash_profile to start plasma-wayland session now
+* exchanging start x (.xinitrc) with .bash_profile to start plasma-wayland session now
 * Cleanup and change packages.x86_64
 * Cleanup intel legacy support (removal)
 * adding keyboardlaout widget using LabelOverFlag to panel on the LiveSession
 * adding airootfs/etc/conf.d/spice-vdagentd to enable spice-vdagentd to run using -X options
 * fixing theme settings for gtk and iconset
+* adding systemd Dynamic Nouveau/Nvidia load resolver used with `nouveau-boot` boot-option to get triggerd
+
+# Titan Nova changes (2026)
+* fixing keymapissue in SYSTEMD-LOCALED xkeyboard-config localecfg module (needs to get resolved on calamares properly with Triton release)
+* added Nouveau/Nvidia load resolver to fix issues booting on default option with nvidia GPUs
 
 # Titan Neo changes (2026)
 * Resolved a problem where eos-settings packages utilising skel were being installed post user creation

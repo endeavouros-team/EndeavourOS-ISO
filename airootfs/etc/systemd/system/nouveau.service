@@ -1,0 +1,13 @@
+[Unit]
+Description=Dynamic Nouveau/Nvidia load resolver
+DefaultDependencies=no
+After=local-fs.target
+Before=multi-user.target graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/bin/hide-nvidia
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
