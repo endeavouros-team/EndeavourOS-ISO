@@ -4,6 +4,7 @@
 # Run anything in the filesystem right before being "mksquashed"
 # ISO-NEXT specific cleanup removals and additions (08-2021 + 10-2021) @killajoe and @manuel
 # refining and changes november 2021 @killajoe and @manuel
+# adding echo for the logs @killajoe 2026
 
 script_path=$(readlink -f "${0%/*}")
 work_dir="work"
@@ -136,7 +137,7 @@ rm "/usr/lib/modules-load.d/nvidia-utils.conf"
 echo "---> get needed packages for offline installs --->"
 mkdir -p "/usr/share/packages"
 pacman -Syy
-pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut os-prober xf86-video-intel nvidia-open nvidia-hook nvidia-utils nvidia-inst broadcom-wl
+pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut os-prober nvidia-open nvidia-hook nvidia-utils nvidia-inst broadcom-wl
 
 echo "---> create package versions file --->"
 pacman -Qs | grep "/calamares " | cut -c7- > iso_package_versions

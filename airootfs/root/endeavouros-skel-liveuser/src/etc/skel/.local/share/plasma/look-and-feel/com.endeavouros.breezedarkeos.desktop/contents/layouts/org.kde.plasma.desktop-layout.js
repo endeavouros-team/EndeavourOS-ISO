@@ -76,7 +76,19 @@ if (langIds.indexOf(languageId) != -1) {
     panel.addWidget("org.kde.plasma.kimpanel");
 }
 
-panel.addWidget("org.kde.plasma.systemtray")
+// modification to create standalone keyboardlayout widget
+// using LabelOverFlag
+var kbdWidget = panel.addWidget("org.kde.plasma.keyboardlayout");
+kbdWidget.currentConfigGroup = ["General"];
+kbdWidget.writeConfig("displayStyle", "LabelOverFlag");
+
+// adding systemtray but hide generic keyboardlayout widget in there
+var systray = panel.addWidget("org.kde.plasma.systemtray");
+// Set the context to the General configuration group of the system tray
+systray.currentConfigGroup = ["General"];
+// Add the keyboard layout widget to the hidden items list
+systray.writeConfig("hiddenItems", "org.kde.plasma.keyboardlayout");
+
 panel.addWidget("org.kde.plasma.digitalclock")
 panel.addWidget("org.kde.plasma.showdesktop")
 

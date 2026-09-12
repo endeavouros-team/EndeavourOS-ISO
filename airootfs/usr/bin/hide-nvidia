@@ -1,0 +1,42 @@
+#!/bin/bash
+# Dynamic Nouveau/Nvidia load resolver
+
+# Only act if the user explicitly requested the default boot path
+if grep -qw "nouveau-boot" /proc/cmdline; then
+
+    # Safety check: Only touch anything if an Nvidia GPU is physically present
+    if lspci -qn | grep -q "0300: 10de"; then
+
+        # Dynamically bypass the built-in blacklist from nvidia-utils
+        mkdir -p /run/modprobe.d
+        echo "blacklist nvidia" > /run/modprobe.d/nvidia-utils.conf
+
+        cat << 'EOF' > /run/modprobe.d/block-nvidia.conf
+install nvidia /bin/false
+install nvidia_drm /bin/false
+install nvidia_modeset /bin/false
+install nvidia_uvm /bin/false
+EOF
+
+        # Force immediate loading of the nouveau driver
+        modprobe nouveau 2>/dev/null
+
+        # Remove Nvidia Driver files on the fly to prevent accidental loading
+        rm -f /etc/modules-load.d/nvidia-utils.conf
+        rm -f /etc/udev/rules.d/60-nvidia.rules
+        rm -f /etc/glvnd/egl_vendor.d/10_nvidia.json
+        rm -f /etc/egl/egl_external_platform.d/15_nvidia_gbm.json
+        rm -f /etc/vulkan/icd.d/nvidia_icd.json
+
+        # Export global environment variables for login shells (TTY/startx)
+        # Includes explicit Vulkan driver selection for Mesa (NVK)
+        mkdir -p /etc/profile.d
+        cat << 'EOF' > /etc/profile.d/nouveau-glvnd.sh
+export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
+export __GLX_VENDOR_LIBRARY_NAME=mesa
+export VK_DRIVER_FILES=/usr/share/vulkan/icd.d/nouveau_icd.json
+EOF
+        chmod +x /etc/profile.d/nouveau-glvnd.sh
+
+    fi
+fi

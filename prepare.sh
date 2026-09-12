@@ -3,11 +3,12 @@
 # add date to wallpaper
 cp airootfs/root/livewall.png airootfs/root/livewall-original.png
 
-magick airootfs/root/livewall.png \
-  -gravity NorthEast \
-  -pointsize 24 \
-  -fill white \
+magick airootfs/root/livewall-original.png \
+  -density 72 \
   -font "DejaVu-Sans" \
+  -pointsize 12 \
+  -fill white \
+  -gravity NorthEast \
   -annotate +10+10 "$(date '+%Y-%m-%d')" \
   airootfs/root/livewall.png
 
@@ -19,7 +20,7 @@ wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/
 chmod +x "./"{"mkarchiso","run_before_squashfs.sh"}
 
 # uncomment to comment calamares package in packages.x86_64 in case you use local build of it
-#[ -n "$(ls airootfs/root/packages/*calamares* 2>/dev/null)" ] && sed -i '/calamares/ s/^/#/' packages.x86_64
+[ -n "$(ls airootfs/root/packages/*calamares* 2>/dev/null)" ] && sed -i '/calamares/ s/^/#/' packages.x86_64
 
 
 get_pkg() {

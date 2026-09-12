@@ -1,12 +1,13 @@
 [Unit]
-Description=detect intel legacy gpu and install xf86-video-intel
+Description=Dynamic Nouveau/Nvidia load resolver
 DefaultDependencies=no
 After=local-fs.target
 Before=multi-user.target graphical.target
 
 [Service]
-Type=simple
-ExecStart=/bin/bash /usr/bin/intel-legacy-gpu-installer
+Type=oneshot
+ExecStart=/bin/bash /usr/bin/hide-nvidia
+RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target

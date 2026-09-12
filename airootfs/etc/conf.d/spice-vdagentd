@@ -1,0 +1,4 @@
+# /etc/conf.d/spice-vdagentd
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+SPICE_VDAGENTD_EXTRA_ARGS="-x -X"
