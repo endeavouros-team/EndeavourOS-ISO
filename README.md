@@ -29,7 +29,6 @@ More info at [EndeavourOS-GitHub-Development](https://endeavouros-team.github.io
 - [Getting help at the forum](https://forum.endeavouros.com)
 - [Bug report](https://forum.endeavouros.com/c/general-system/endeavouros-installation)
 - [Telegram help-chat](https://t.me/Endeavouros)
-- [Twitter news](https://twitter.com/OsEndeavour)
 
 Our journey wouldn't be made possible without the generosity of our [Open Collective community](https://opencollective.com/endeavouros)!
 
