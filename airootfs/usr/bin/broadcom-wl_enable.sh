@@ -24,7 +24,7 @@ show_error() {
 
 echo "[*] Activate Broadcom-Wifi..."
 
-if ! pacman -Q broadcom-wl &>/dev/null; then
+if ! pacman -Q broadcom-wl-dkms &>/dev/null; then
     echo "[*] Installing broadcom-wl ..."
     sudo pacman -U --noconfirm /usr/share/packages/broadcom-wl-dkms[0-9]*-x86_64.pkg.tar.zst || \
         show_error "Failed to install broadcom-wl-dkms package."
