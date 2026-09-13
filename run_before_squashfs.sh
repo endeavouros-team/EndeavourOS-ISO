@@ -130,14 +130,14 @@ chmod 644 "/usr/share/endeavouros/backgrounds/"*".png"
 echo "---> install bash configs back into /etc/skel for offline install target --->"
 cp -af "/root/filebackups/"{".bashrc",".bash_profile"} "/etc/skel/"
 
-echo "---> remove blacklisting nouveau out of ISO (nvidia-utils blacklist configs) --->"
-rm "/usr/lib/modprobe.d/nvidia-utils.conf"
-rm "/usr/lib/modules-load.d/nvidia-utils.conf"
+#echo "---> remove blacklisting nouveau out of ISO (nvidia-utils blacklist configs) --->"
+#rm "/usr/lib/modprobe.d/nvidia-utils.conf"
+#rm "/usr/lib/modules-load.d/nvidia-utils.conf"
 
 echo "---> get needed packages for offline installs --->"
 mkdir -p "/usr/share/packages"
 pacman -Syy
-pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut os-prober nvidia-open nvidia-hook nvidia-utils nvidia-inst broadcom-wl
+pacman -Sw --noconfirm --cachedir "/usr/share/packages" grub eos-dracut kernel-install-for-dracut os-prober nvidia-open nvidia-hook nvidia-utils nvidia-inst broadcom-wl-dkms
 
 echo "---> create package versions file --->"
 pacman -Qs | grep "/calamares " | cut -c7- > iso_package_versions

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# script to install broadcom-wl package and enable modules needed
+# script to install broadcom-wl-dkms package and enable modules needed
 
 LOG_FILE="$HOME/broadcom-wl-wifi-activation.log"
 exec > >(tee -a "$LOG_FILE") 2>&1
@@ -26,8 +26,8 @@ echo "[*] Activate Broadcom-Wifi..."
 
 if ! pacman -Q broadcom-wl &>/dev/null; then
     echo "[*] Installing broadcom-wl ..."
-    sudo pacman -U --noconfirm /usr/share/packages/broadcom-wl-[0-9]*-x86_64.pkg.tar.zst || \
-        show_error "Failed to install broadcom-wl package."
+    sudo pacman -U --noconfirm /usr/share/packages/broadcom-wl-dkms[0-9]*-x86_64.pkg.tar.zst || \
+        show_error "Failed to install broadcom-wl-dkms package."
 fi
 
 sudo rmmod b43 b43legacy bcm43xx bcma brcm80211 brcmfmac brcmsmac ssb tg3 wl 2>/dev/null

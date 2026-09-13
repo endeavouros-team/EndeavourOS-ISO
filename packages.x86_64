@@ -62,6 +62,7 @@ intel-ucode
 ## GPU-VM
 nvidia-open
 nvidia-utils
+vulkan-nouveau
 mesa
 mesa-utils
 vulkan-intel
