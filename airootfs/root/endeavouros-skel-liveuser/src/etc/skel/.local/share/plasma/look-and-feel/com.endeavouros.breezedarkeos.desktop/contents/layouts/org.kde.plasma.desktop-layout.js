@@ -29,7 +29,7 @@ panel.addWidget("org.kde.plasma.pager")
 
 let taskBar = panel.addWidget("org.kde.plasma.icontasks")
 taskBar.currentConfigGroup = ["General"]
-taskBar.writeConfig("launchers",[,"preferred://browser","preferred://filemanager","applications:org.kde.konsole.desktop","applications:eos-log-tool.desktop","applications:org.kde.spectacle.desktop","applications:calamares.desktop"])
+taskBar.writeConfig("launchers",["preferred://browser","preferred://filemanager","applications:org.kde.konsole.desktop","applications:eos-log-tool.desktop","applications:org.kde.spectacle.desktop","applications:calamares.desktop"])
 
 panel.addWidget("org.kde.plasma.marginsseparator")
 
