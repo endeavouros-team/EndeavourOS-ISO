@@ -189,6 +189,7 @@ mkinitcpio-nfs-utils
 nbd
 pv
 syslinux
+python-toml
 
 ## Live iso tools
 clonezilla
@@ -224,7 +225,6 @@ kdeconnect
 kdegraphics-thumbnailers
 kdenetwork-filesharing
 kdeplasma-addons
-kgamma
 kimageformats
 kinfocenter
 kio-admin
@@ -234,7 +234,6 @@ konsole
 kscreen
 kwallet-pam
 kwayland-integration
-kwin-x11
 libappindicator
 okular
 plasma-browser-integration
@@ -244,11 +243,11 @@ plasma-keyboard
 plasma-login-manager
 plasma-nm
 plasma-pa
-plasma-x11-session
 plasma-systemmonitor
 plasma-workspace
 powerdevil
 print-manager
+tesseract-data-eng
 spectacle
 xdg-desktop-portal-kde
 xsettingsd
