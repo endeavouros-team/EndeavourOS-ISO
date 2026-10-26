@@ -1,61 +1,85 @@
+change on 2026.10.26
+
+```
+Version archiso 91-1
+```
+
 change on 2025.11.09:
+
 remerge changes [bootmode changes, some config changed (updated), adds support for IA32-UEFI boots (forcingly)]
+
 ```
 Version archiso 87-1
 ```
 
 
 change on 2025.09.15:
+
 remerge changes, no code changes
+
 ```
 Version archiso 85-1
 ```
 
 change on 2025.06.22:
+
 removing architecture from iso name
 
 re-merge upstream changes on 2025.05.03
+
 ```
 Version archiso 83-1
 ```
+
 Update boot entries for systemd and syslinux for usage of UUIDS (Labels)
 
 re-merge upstream changes from 2025.02.08
+
 ```
 Version archiso 82-1
 
 ```
+
 re-merge upstream changes from 2024.09.07
+
 ```
 Version archiso 79-1
 ```
+
 re-merge upstream changes from 2024.01.25
+
 ```
 Version: archiso 75-1
 ```
 
 Fixing issue with changed license package (path changes) [January 2024]
+
 ```
 install -m 0644 -- "${pacstrap_dir}/usr/share/licenses/spdx/GPL-2.0-only.txt" "${isofs_dir}/boot/memtest86+/"
 ```
 
 re-merge upstream changes from 2023.08.29
+
 ```
 Version: archiso 72-1
 ```
 
 removed os-release handling in mkarchiso (16.10.2022):
+
 https://github.com/endeavouros-team/EndeavourOS-ISO/commit/67a5a371967b57edf21b6e8a93a2720a358571ec
 
 merged changes from latest mkarchiso on 02.10.2022 
+
 ```
 Version: archiso 67-1
 ```
 
 merged changes from latest mkarchiso on 17.9.2022 
+
 ```
 Version: archiso 66-1
 ```
+
 clean up of ISO structure:
 
 added:
@@ -113,9 +137,11 @@ _cleanup_pacstrap_dir() {
 
     _msg_info "Done!"
 }
+
 ```
 
 # added parts for run_before_squashfs to run:
+
 
 ```
 script_path="$( cd -P "$( dirname "$(readlink -f "$0")" )" && pwd )"
