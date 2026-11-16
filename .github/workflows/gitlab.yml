@@ -1,14 +1,28 @@
-name: Sync Repo to GitLab
+name: Sync to GitLab
 
 on:
-  push
+  push:
+    branches:
+      - '*'
+    tags:
+      - '*'
+  delete:
+
+permissions:
+  contents: read
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-    - uses: keninkujovic/gitlab-sync@2.0.0
-      with:
-        gitlab_url: https://gitlab.com/endeavouros-filemirror/EndeavourOS-ISO.git
-        username: ${{ secrets.GITLAB_USR }}
-        gitlab_pat: ${{ secrets.GITLAB_PAT }}
+      - name: Mirror repository to GitLab
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_PAT }}
+        run: |
+          # Clone full bare mirror from GitHub (works for both public and private repos)
+          git clone --mirror "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" mirror.git
+          cd mirror.git
+          # Push exact 1:1 state (all branches, tags, and ref deletions) to GitLab
+          git push --mirror "https://oauth2:${GITLAB_TOKEN}@gitlab.com/endeavouros-filemirror/EndeavourOS-ISO.git"
+
