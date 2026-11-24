@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=EndeavourOS Community Editions
+Comment=Select and add a community edition script to the installer
+Exec=/usr/local/bin/editions
+TryExec=yad
+Icon=endeavouros-icon
+Terminal=false
+Categories=System;Utility;
+Keywords=EndeavourOS;Community;Editions;Installer;yad;
+StartupNotify=false
