@@ -25,5 +25,6 @@ file_permissions=(
   ["/etc/sudoers.d/g_wheel"]="0:0:440"
   ["/usr/bin/broadcom-wl_detect.sh"]="0:0:755"
   ["/usr/bin/broadcom-wl_enable.sh"]="0:0:755"
+  ["/usr/bin/editions"]="0:0:755"
 
 )
