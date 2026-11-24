@@ -26,5 +26,6 @@ file_permissions=(
   ["/usr/bin/broadcom-wl_detect.sh"]="0:0:755"
   ["/usr/bin/broadcom-wl_enable.sh"]="0:0:755"
   ["/usr/bin/editions"]="0:0:755"
+  ["/usr/bin/hide-nvidia"]="0:0:755"
 
 )
