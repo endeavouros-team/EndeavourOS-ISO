@@ -15,6 +15,9 @@ magick airootfs/root/livewall-original.png \
 # Get wallpaper for installed system
 wget -qN --show-progress -P "airootfs/root/" "https://raw.githubusercontent.com/endeavouros-team/Branding/master/backgrounds/endeavouros-wallpaper.png"
 
+# Get Community Editions GUI into the ISO
+wget -qN --show-progress -P "airootfs/usr/bin/" "https://raw.githubusercontent.com/EndeavourOS-Community-Editions/editions-list/refs/heads/main/editions"
+
 
 # Make sure build scripts are executable
 chmod +x "./"{"mkarchiso","run_before_squashfs.sh"}
