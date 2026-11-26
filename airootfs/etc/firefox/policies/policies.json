@@ -1,0 +1,12 @@
+{
+  "policies": {
+    "Homepage": {
+      "URL": "https://endeavouros.com/",
+      "Locked": false,
+      "StartPage": "homepage"
+    },
+    "OverrideFirstRunPage": "",
+    "OverridePostUpdatePage": "",
+    "DontCheckDefaultBrowser": true
+  }
+}
